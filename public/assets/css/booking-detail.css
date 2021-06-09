@@ -1,0 +1,593 @@
+/* Review trip css start */
+
+.as-main-booking-heading {
+    background-color: #004499;
+    text-align: center;
+    padding: 10px;
+}
+
+.as-main-booking-heading h3 {
+    color: #fff;
+    font-size: 24px;
+}
+
+.btn-go-back{
+    font-size: 14px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    color: #004499;
+    border: 0px;
+}
+
+.as-goback-btn{
+    display:flex;
+    align-items: center;
+}
+
+.as-main-booking-heading p {
+    color: #fff;
+}
+
+
+/* Review trip css end */
+
+/* hotel details box css start */
+
+.as-hotel-main-details h3{
+    font-size: 22px;
+    color:#004499
+}
+
+.as-hotel-short-detal .as-hotel-star  {
+    color: #f87000 ;
+    font-size: 18px ;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.as-hotel-short-detal p{
+    font-size: 14px;
+    color:#000;
+}
+
+.as-hotel-short-detal span{
+    font-size: 14px;
+    color:green;
+    line-height: 40px;
+}
+
+.as-hotel-include h5{
+    color: #f87000 ;
+    font-size: 18px ;
+}
+
+.as-hotel-include ul{
+    display: flex;
+    align-items: center;
+    color:#000;
+    font-weight: 600;
+    margin-top:10px;
+}
+
+.as-hotel-include ul li{
+margin-right: 50px;
+}
+
+.as-guest-detail{
+    
+    border:2px solid #ddd;
+    margin:15px 0px;
+    padding:10px;
+}
+
+.as-guest-detail h6{
+    font-size: 16px;
+    color:#000;
+}
+
+.as-guest-detail span{
+    font-size: 20px;
+    color:#004499;
+    font-weight: bold;
+}
+
+.as-change-search .btn{
+background-color: #f87000;
+color:#fff;
+border:0px;
+border-radius: 0px;
+}
+
+/* hotel details box css end */
+
+/* hotel price summary start */
+
+.PriceSummary ul li {
+    line-height: 24px;
+    border-bottom: 1px dashed #b0b0b0;
+    font-size: 12px;
+    clear: both;
+    display: block;
+    width: 100%;
+    color: #333;
+}
+
+.as-price-summary .pull-right{
+    float: right;
+}
+
+.as-price-summary .subTotalPayment{
+    font-weight: bold;
+}
+.as-price-summary  .totalPayment{
+    font-weight: bold;
+}
+
+.as-main-totalPayment{
+color: #f87000;
+font-size: 22px;
+font-weight: bold;
+}
+
+.as-total-price{
+    color: #f87000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* hotel price summary end */
+
+/* flight detal box upper css start */
+
+.congrats-slde-show{
+background-color: #FFF1B8;
+box-shadow: 0px 4px 0px 0px green;
+margin-top: 20px;
+padding:5px 15px;
+}
+
+.congrats-slde-show .congratSize{
+    padding-left:3px;
+}
+
+.congrats-slde-show span{
+  font-size: 13px;
+  color:#000;
+}
+
+.free-cancellation-slide-show{
+    background-color: #FFF1B8;
+box-shadow: 0px 4px 0px 0px green;
+margin-top: 20px;
+padding:5px 15px;
+}
+
+.free-cancellation-slide-show .FREE_Cancellation{
+    font-size: 13px;
+    color:#000;
+}
+
+ .FREE_Cancellation .cancellation{
+    padding-left:3px;
+}
+
+.as-book-now-ticket{
+    background-color: #FFE5C0;
+    margin-top: 20px;
+    padding:5px 15px;
+}
+
+.as-book-now-ticket span{
+    font-size: 13px;
+}
+
+.as-flexible-date{
+    background-color: #FFE5C0;
+    margin-top: 20px;
+    padding:5px 10px; 
+  
+}
+
+.as-flexible-date span{
+    font-size: 13px;
+}
+
+.as-saving-price{
+background-color: green;
+color:#fff;
+font-size:13px;
+margin-top: 20px;
+padding: 5px 10px;
+}
+
+
+/* flight detal box upper css end */
+
+/* flight detail box css start */
+
+.as-main-booking-box {
+    margin-top: 20px;
+}
+
+.as-booking-heading {
+    background-color: #004499;
+}
+
+.as-booking-heading h6 {
+    color: #fff;
+    padding: 10px;
+    text-transform: capitalize;
+    display: inline-block;
+}
+
+.as-booking-heading span svg {
+    color: #fff;
+}
+
+.as-listing-ticket-row {
+    padding-top: 20px;
+}
+
+.as-ticket-img {
+    width: 30px
+}
+
+.as-duration-ticket {
+    border-bottom: 1px solid #ddd;
+    display: inline-block;
+}
+
+.as-baggage-dropdown {
+    margin-top: 20px;
+    margin-bottom: 10px;
+   
+}
+
+.as-baggage-dropdown a {
+    color: #000;
+    border: 1px solid #ddd;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.as-payment-img {
+    text-align: center;
+}
+
+.as-img-content {
+    color: #000;
+    font-weight: bold;
+}
+
+.as-listing-ticket-row h6 {
+    color: #000;
+    font-weight: bold;
+}
+
+.as-flight-detail-box {
+    background-color: #fff;
+    padding: 15px 0px;
+}
+
+.as-souce-flight{
+    font-size:13px;
+    color:#000;
+}
+
+
+/* flight detail obx css end */
+
+
+/* travel detail box css start */
+
+.form-check-label {
+    color: #000;
+    font-weight: bold;
+}
+
+label {
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.as-contact-inf {
+    background: #e5e5e5;
+    padding: 0px 10px 10px 10px;
+    width: 330px;
+}
+
+.as-contact-inf p {
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.add-passenger {
+    font-size: 14px;
+    background-color: #004499;
+    color: #fff;
+}
+
+.add-passenger:hover {
+    color: #fff;
+}
+
+.form-control {
+    color: #000;
+    font-size: 12px;
+}
+
+
+/* travel detail box css end */
+
+
+/* Price summary box css start */
+
+.as-price-summary-table {
+    width: 100%
+}
+
+.as-price-summary-table thead td {
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-apply {
+    font-size: 14px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    background-color: #004499;
+    color: #fff;
+    border: 0px;
+}
+
+.btn-apply:hover {
+    color: #fff;
+}
+
+.as-total-price-summary {
+    background-color: #FFE5C0;
+    padding: 10px;
+    color: #000;
+}
+
+.as-subtotal {
+    line-height: 40px;
+}
+
+
+/* Price summary box css end */
+
+
+/* payment method box css start */
+
+.as-copy-right-content h6 {
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    padding-right: 15px;
+}
+
+.as-copy-right-content img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.col-form-label{
+    font-size:12px;
+}
+
+.as-contact-information-box{
+    background-color: #fff;
+    padding:15px;
+}
+
+.Contact_info {
+  
+    background-color: #FFE5C0;
+    width: 100%;
+    color: #5c5c5c;
+    font-style: normal;
+    padding-left:15px;
+}
+
+.as-custom-desktop-height-box{
+    height:332px;
+}
+
+
+/* payment method box css end*/
+
+
+/* Policies & Review css start */
+
+.as-flight-detail-box h4 {
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.as-flight-detail-box p {
+    font-size: 14px;
+}
+
+.as-accepted-term p {
+    text-align: center;
+}
+
+.as-accepted-term .btn {
+    margin: auto;
+    margin-top: 10px;
+}
+
+
+/* Policies & Review css end  */
+
+
+/* Responsive css start */
+
+@media only screen and (max-width:576px){
+    .as-goback-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+.as-main-booking-heading h3 {
+   font-size: 22px;
+   margin-top:15px;
+}
+
+.as-main-booking-heading p {
+    font-size: 13px;
+}
+
+.as-mobile-contact-box{
+    margin-top:15px;
+    padding-left: 0px;
+}
+
+.as-baggage-dropdown {
+  text-align: left;
+}
+
+.as-custom-desktop-height-box {
+    height: auto;
+}
+
+.col-form-label {
+    padding-bottom: 10px;
+}
+}
+
+@media only screen and (min-width:577px) and (max-width:768px){
+    .as-baggage-dropdown {
+        text-align: left;
+      }
+
+      .as-mobile-contact-box{
+        margin-top:15px;
+    }
+}
+/* Responsive css end */
+
+/* Car-thanku page css start */
+
+.as-thanku-heading h3{
+    font-size: 30px;
+}
+
+.as-thanku{
+    color:#f87000;
+    font-weight: 600;
+}
+
+.as-booking-accepted {
+    border-left: 5px solid #F15A29;
+    display: inline-block;
+ }
+
+.as-booking-accepted h6{
+font-size: 18px;
+color:#000;
+font-weight: 600;
+}
+
+.as-booking-accepted span b{
+    color:#F15A29
+}
+
+.as-print-email-btn{
+    display:flex;
+}
+
+.as-print-btn{
+    background-color: #F15A29;
+    color:#fff;
+    font-size: 12px;
+    border:0px;
+    border-radius: 0px;
+    padding:3px 10px;
+    margin-right:5px;
+}
+
+.as-email-btn{
+    background-color: #004499;
+    color:#fff;
+    font-size: 12px;
+    border:0px;
+    border-radius: 0px;
+    padding:3px 10px;
+}
+
+.as-car-detal-heading h3{
+    font-size: 20px;
+    font-weight: 600;
+    color:#000;
+    margin-bottom:15px;
+} 
+
+.as-travel-checlst {
+border:2px solid #ddd;
+padding: 15px;
+margin-bottom: 15px;
+}
+
+.as-travel-checlst h4 {
+    font-size: 16px;
+    color:#000;
+}
+
+.as-car{
+    color:#F15A29;
+    margin-top: 15px;
+}
+
+.as-car-booking-detail h1{
+    font-size: 22px;
+    font-weight: 600;
+    color:#000;
+}
+
+.as-car-pick-up span{
+    color:#F15A29;
+}
+
+.as-car-pick-up p{
+    font-size: 16px;
+    color:#000;
+}
+
+.as-car-pick-up h6{
+    font-size: 16px;
+    font-weight: 600;
+    color:#000;
+}
+
+.as-car-box-thanku li{
+    font-size: 16px;
+    color:#000;
+    
+}
+
+.as-car-thanku-icon{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:8px;
+}
+
+.as-car-total-amount{
+    background-color: #004499;
+}
+
+.as-car-total-amount td{
+   font-size: 22px;
+   color:#fff;
+   font-weight: 600;
+
+}
+/* Car-thanku page css end */

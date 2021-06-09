@@ -1,0 +1,539 @@
+.main_travel_container {
+    margin-top: 40px;
+}
+
+/* Departure css start */
+
+.tvlr-sctn {
+    border-radius: 10px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+    color: #4a4a4a;
+}
+
+.tvlrDtls-heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.tvlrDtls-heading-txt {
+    font-size: 20px;
+    color: #000;
+    width: auto;
+}
+
+.tvlrCollapseble {
+    font-size: 18px;
+    line-height: 18px;
+    -ms-flex-item-align: center;
+    align-self: center;
+    min-width: 92px;
+    text-align: right;
+}
+
+.blue-arrow-icon.open {
+    -webkit-transform: rotate( 180deg);
+    transform: rotate( 180deg);
+}
+
+.collapse.in {
+    display: block;
+}
+
+.travlDtls-body {
+    padding: 0 30px;
+}
+
+.tvlr-sctn .fli-list {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 0;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 10px 0;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.tvlr-sctn .fli-list-body-section {
+    border: 0;
+    padding: 0;
+}
+
+.fli-list-body-section {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    padding: 20px 10px 10px;
+    border-bottom: 1px solid #d8eaff;
+}
+
+.one-way .dept-options {
+    width: 100%;
+    padding: 0;
+    border: 0;
+}
+
+/* Departure css end */
+
+/* Traveller heading css  start*/
+
+.tvlr-heading {
+    font-size: 20px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+/* Traveller heading css end */
+
+/* Login to view css start */
+
+.loginPromptWrapper {
+    min-height: 80px;
+    padding: 15px 27px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.loginPromptWrapper,
+.loginPromt__leftsection {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.loginPromt__leftsection {
+    font-size: 18px;
+    color: #000;
+    width: calc(100% - 250px);
+}
+
+.userIcon_pos {
+    margin-right: 35px;
+}
+
+.loginPromt__loginLink:after {
+    width: 16px;
+    height: 12px;
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 0;
+    background-position: -90px -368px;
+}
+
+/* login to view css end */
+
+/* adult css start */
+
+.append_bottom15 {
+    margin-bottom: 15px;
+}
+
+.tvlrDtls-wrapper {
+    background: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
+}
+
+.tvlr-row {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.tvlrDtls-header {
+    padding: 15px 20px;
+}
+
+.tvlrDtls-heading-txt {
+    font-size: 20px;
+    color: #000;
+    width: auto;
+}
+
+.paddLR15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.tvlr-sctn {
+    border-radius: 10px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+    color: #4a4a4a;
+}
+
+.tvlrDtls-heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.tvlrDtls-heading-txt {
+    font-size: 20px;
+    color: #000;
+    width: auto;
+}
+
+.cabin-tag {
+    color: #fff;
+    background-image: linear-gradient( 260deg, #ff3e5e, #ff7f3f);
+}
+
+.cabin-tag {
+    color: #fff;
+    background-image: linear-gradient( 260deg, #ff3e5e, #ff7f3f);
+}
+
+.cabin-tag,
+.cheaperRail-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 0 12px;
+    border-radius: 20px;
+    line-height: 18px;
+    height: 18px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.tvlrDtls-section {
+    padding: 15px 20px;
+    border-top: 1px solid #f2f2f2;
+}
+
+.tvlrDtls-topInfo {
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 16px;
+}
+
+.trvl-formfield-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.trvl-formfield-col {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 0 15px 10px 0;
+}
+
+.as-radio-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.tvlrDtls-section {
+    padding: 15px 20px;
+    border-top: 1px solid #f2f2f2;
+}
+
+.viewAll-trvlr {
+    padding: 0 15px 15px;
+    border-bottom: 1px solid #f2f2f2;
+    margin-bottom: 15px;
+}
+
+.as-checkbox {
+    margin-top: 7px;
+    margin-right: 7px;
+}
+
+.as-radio input {
+    margin-top: 7px;
+    margin-right: 10px;
+}
+
+/* adult css end */
+
+/* Your ticket and flight information css start */
+
+.tvlr-Gst-sctn {
+    padding: 25px 27px;
+}
+
+.tvlr-sctn {
+    border-radius: 10px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+    color: #4a4a4a;
+}
+
+.tvlr-Gst-sctn-subtitle {
+    font-size: 14px;
+    color: #4a4a4a;
+}
+
+.trvl-formfield-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.tvlr-sctn {
+    border-radius: 10px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+    color: #4a4a4a;
+}
+
+/* your ticket and flight information css end */
+
+/* Add ons css start */
+
+.rvw-sctn {
+    border-radius: 10px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
+    color: #454545;
+}
+
+.airportCabSection {
+    padding: 20px;
+}
+
+.cabAirportTopSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.cabAirportTopSection:before {
+    content: "";
+    width: 4px;
+    height: 20px;
+    position: absolute;
+    background: #008cff;
+    top: 3px;
+    left: -20px;
+}
+
+.bgProperties {
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    background-size: contain;
+}
+
+.pickDropWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pickDropCard {
+    margin-bottom: 15px;
+    width: 49%;
+}
+
+.pickDropCard:nth-child(2n) {
+    margin-right: 0;
+}
+
+.pickDropCardLabel {
+    border: 1px solid #ebebeb;
+    padding: 10px;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 21%);
+    border-radius: 4px;
+    margin-right: 10px;
+    color: #6d7278;
+}
+
+.importantInfo {
+    background: #d9ebff;
+    list-style: disc;
+    list-style-position: inside;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #000;
+}
+
+.tvlrCollapseble {
+    font-size: 18px;
+    line-height: 18px;
+    -ms-flex-item-align: center;
+    align-self: center;
+    min-width: 92px;
+    text-align: right;
+}
+
+.dateInfo {
+    background: #6d7278;
+    color: #fff;
+    padding: 0px 4px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 10px;
+    position: absolute;
+    right: 45px;
+}
+
+/* add ons css end */
+
+/* contact for, css start  */
+
+.css-2b097c-container {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.css-yk16xz-control {
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(204, 204, 204);
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: default;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    min-height: 38px;
+    position: relative;
+    transition: all 100ms ease 0s;
+    box-sizing: border-box;
+    outline: 0px !important;
+}
+
+.css-1hwfws3 {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    flex: 1 1 0%;
+    flex-wrap: wrap;
+    padding: 2px 8px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.css-1wy0on6 {
+    -webkit-box-align: center;
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.tvlrInput {
+    border-radius: 4px;
+    width: 100%;
+    border: 1px solid #9b9b9b;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #4a4a4a;
+    outline: 0;
+}
+
+.dateDropdown label,
+.tvlrFormField label {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* contact form css end */
+
+/* covid css start */
+
+.covidInsuDtlRight {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    align-items: center;
+}
+
+.fli_secondry_btn {
+    background-color: #fff;
+    border: 1px solid #008cff;
+    border-radius: 96px;
+    color: #008cff;
+    font-size: 14px;
+    height: 34px;
+    line-height: 32px;
+    padding: 0 20px;
+    text-align: center;
+    font-weight: 700;
+    outline: 0!important;
+}
+
+.font11 {
+    font-size: 11px;
+    line-height: 11px;
+}
+
+.font18 {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.font10 {
+    font-size: 10px;
+    line-height: 10px;
+}
+
+.lightGreyText {
+    color: #9b9b9b;
+}
+
+/* covid css end */
+
+/* Acknowledgement css start */
+
+.ack-section,
+.contact-sctn {
+    padding: 28px 20px;
+}
+
+.make_flex {
+    display: flex!important;
+}
+
+/* Acknowledgement css end */

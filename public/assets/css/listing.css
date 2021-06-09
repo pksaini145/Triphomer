@@ -1,0 +1,924 @@
+.as-main-listing-page {
+    margin: 30px 0px;
+}
+
+.as-custom-btn-search {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.as-custom-btn-search:hover {
+    background-color: #f44336;
+    color: #fff;
+}
+
+/* as-listing-top-box css start */
+
+.as-listing-search-row{
+    display: flex;
+    align-items: center;
+    margin-bottom:10px;
+}
+
+.as-listing-top-box {
+    background-color: #004499;
+}
+
+.as-listing-top-radio-box {
+    color: #fff !important;
+    padding: 5px 0px;
+}
+
+.as-listing-top-radio-box::after {
+    border: 1px solid #fff !important;
+}
+
+.form-check-label {
+    margin-left: 5px;
+    font-size: 14px;
+    vertical-align: text-bottom;
+}
+
+.as-custom-label {
+    margin-bottom: 0px;
+}
+
+.as-listing-search-feild {
+    padding: 0px;
+}
+
+.as-custom-input-group-text {
+    background-color: #fff;
+}
+
+#myTab3 {
+    padding-top: 5px;
+}
+
+.section-tab {
+    padding-left: 0px !important;
+}
+
+.as-listing-advance {
+    background-color: #fff !important;
+    font-size:13px;
+}
+
+.as-stop-checkbox {
+    color: #fff
+}
+
+.as-custom-btn-search {
+    font-size: 14px;
+}
+
+.as-exchange-icon .fa {
+    font-size: 30px;
+    color: #fff;
+}
+
+.as-exchange-icon {
+    color:#fff;
+}
+
+.as-dropdown{
+    height:38px;
+}
+
+.as-custom-date-input {
+    padding-left: 12px !important;
+}
+
+#collapseSix {
+    padding: 0px
+}
+
+.as-listing-passenger-dropdown {
+    padding: .25rem 1rem !important;
+}
+
+/* as-listing-top-box css end */
+
+/* as-left-listing-box css start */
+
+.as-left-listing-box {
+    background-color: #fff;
+    height: auto;
+}
+
+.as-left-listing-heading {
+    padding: 15px;
+    box-shadow: 0px 4px 1px 0px #ddd;
+    background-color: #eee;
+}
+
+.as-left-listing-heading img {
+    width: 20px;
+}
+
+.as-left-listing-heading p {
+    margin-bottom: 10px !important;
+}
+
+.as-left-listing-heading h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.as-left-listing-heading h5 {
+    color: #000;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.as-left-listing-morning-search {
+    margin-bottom: 10px;
+}
+
+::placeholder {
+    font-size: 13px;
+    color: #000
+}
+
+.as-left-listing-da-icon {
+    display: flex;
+    align-items: center;
+}
+
+.custom-checkbox {
+    display: inline-block !important;
+    margin-bottom: 8px;
+}
+
+#per-person-min-price {
+    font-size: 13px;
+    color: #000;
+}
+
+#per-person-max-price {
+    font-size: 13px;
+}
+
+.depart {
+    font-size: 13px;
+}
+
+#outbound-dept-min-time {
+    font-size: 13px;
+    color: #000;
+}
+
+#outbound-dept-max-time {
+    font-size: 13px;
+}
+
+.arrive {
+    font-size: 13px;
+}
+
+#outbound-arrive-min-time {
+    font-size: 13px;
+    color: #000;
+}
+
+#outbound-arrive-max-time {
+    font-size: 13px;
+}
+
+span.duration {
+    color: #000;
+    font-size: 13px;
+}
+
+#outbound-flight-min-duration {
+    color: #000;
+    font-size: 13px;
+}
+
+#outbound-flight-max-duration {
+    font-size: 13px;
+}
+
+#inbound-dept-min-time {
+    color: #000;
+    font-size: 13px;
+}
+
+#inbound-dept-max-time {
+    font-size: 13px;
+}
+
+#inbound-arrive-min-time {
+    color: #000;
+    font-size: 13px;
+}
+
+#inbound-arrive-max-time {
+    font-size: 13px;
+}
+
+#inbound-flight-min-duration {
+    color: #000;
+    font-size: 13px;
+}
+
+#inbound-flight-max-duration {
+    font-size: 13px;
+}
+
+.as-reset-filter-btn {
+    background-color: #F44336;
+    color: #fff;
+    border: 0px;
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 0px;
+    margin-top: 15px;
+}
+
+.as-reset-filter-btn:hover {
+    color: #fff;
+    border: 0px;
+}
+
+.as-reset-filter-btn:focus {
+    border: 0px;
+}
+
+.custom-range::-webkit-slider-thumb {
+    background: #ddd;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+}
+
+/* as-left-listing-box css end */
+
+/* as-listing-right-box css start */
+
+.as-ticket-box {
+    background: #eee;
+    box-shadow: 0px 4px 1px 0px #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.as-ticket-img-heading {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.as-ticket-img-heading h6 {
+    font-size: 12px;
+}
+
+.as-ticket-img-heading p {
+    font-size: 12px;
+}
+
+.as-listing-img-box {
+    display: flex;
+    align-items: center;
+}
+
+ul.inner-seg li strong.city {
+    font-size: 14px;
+    color: #333;
+}
+
+.inner-seg li .city-name {
+    color: #909090;
+    line-height: 22px;
+    font-size: 13px;
+}
+
+.inner-seg li .time {
+    color: #333;
+    font-size: 14px;
+}
+
+.inner-seg li .date {
+    color: #909090;
+    line-height: 22px;
+    font-size: 14px;
+}
+
+.tech-stopage {
+    font-size: 14px;
+}
+
+.inner-seg .nSpace {
+    padding: 0px;
+    font-size: 14px;
+}
+
+.select-trip {
+    border-top: 1px dashed #333;
+    padding-bottom: 15px;
+}
+
+.itinerary-details {
+    display: flex;
+    align-items: center;
+}
+
+.as-custom-itinerart-button {
+    font-size: 13px;
+}
+
+.cancellation-text {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.free-cancellation {
+    padding: 12px 5px;
+}
+
+.airline-breakup h4 .total-price {
+    color: #1a1a71
+}
+
+.airline-breakup small {
+    color: #909090;
+    display: block;
+    font-size: 11px;
+    line-height: normal;
+}
+
+
+
+.as-airline-booking-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-now-only {
+    font-size: 12px;
+    color: darkblue
+}
+
+.book-now-only .seats {
+    color: red;
+}
+
+.listing-book-now-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listing-book-now-btn .btn {
+    background-color: #004499;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    border-radius: 0px;
+}
+
+/* new code of right listing box end */
+
+.as-listing-depart-box {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-left: 15px;
+}
+
+.as-custom-dropdown-listing {
+    padding-bottom: 15px;
+}
+
+.as-custom-dropdown-listing:last-child {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.as-custom-dropdown-listing a {
+    background-color: #fff;
+    color: #000;
+}
+
+.as-custom-dropdown-listing a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.as-custom-dropdown-listing p {
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+.as-listing-depart-box h6 {
+    display: inline-flex;
+    margin-bottom: 0px;
+    line-height: 34px;
+    margin-right: 30px;
+}
+
+.as-listing-depart-box h6:last-child {
+    margin-right: 0px;
+}
+
+.as-listing-ticket-heading {
+    background-color: #004499;
+    margin: 30px 15px 0px;
+}
+
+.as-listing-ticket-heading h6 {
+    color: #fff;
+    margin-bottom: 0px;
+    line-height: 34px;
+}
+
+.as-listing-ticket-content {
+    background-color: #fff;
+    /*margin-left: 15px;*/
+}
+
+.as-listing-ticket-row {
+    margin-top: 20px;
+}
+
+.as-listing-ticket-content .as-ticket-img {
+    width: 30px;
+    height: 30px;
+}
+
+.as-img-content {
+    font-size: 12px !important;
+    font-weight: 600;
+}
+
+.as-duration-ticket {
+    border-bottom: 1px solid #ddd;
+    display: inline-block;
+}
+
+.as-listing-ticket-content .as-listing-ticket-row h5 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.as-listing-ticket-content .as-listing-ticket-row p {
+    font-size: 14px;
+}
+
+.as-custom-select {
+    padding: 5px 20px 5px 5px;
+    border-radius: 4px;
+    border-color: rgba(128, 137, 150, .2);
+}
+
+.as-listing-btn {
+    background-color: #F44336;
+    color: #fff;
+    border: 0px;
+    padding: 2px 15px;
+    border-radius: 50px;
+    font-size: 14px;
+}
+
+.as-listing-btn:active {
+    border: 0px;
+}
+
+.as-ticket-book-box {
+    padding-top: 15px;
+}
+
+.as-flexible-dropdown {
+    background-color: #fff;
+    box-shadow: 0px 4px 1px 0px #ddd;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    padding-top: 16px;
+}
+
+/* as-listing-right-box css end */
+
+/* as-listing-booking box start */
+
+.as-listing-signup-box {
+    background-color: #eee;
+    padding: 10PX;
+    margin-top: 15PX;
+    box-shadow: 0px 4px 1px 0px #ddd;
+}
+
+.as-listing-signup-box h3 {
+    font-size: 28px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    color: #1a1a71;
+}
+
+.as-listing-signup-box h3 span {
+    font-size: 16px;
+    padding-left: 15px;
+    color: #5c5c5c;
+}
+
+.as-listing-signup-box p {
+    font-size: 12px;
+    color: #928f8f;
+    margin-bottom: 5px;
+    line-height: 15px;
+}
+
+#btnSubscribe {
+    background: #004499;
+    color: #fff;
+    margin-left: 10px;
+    line-height: -1px;
+    border-radius: 0;
+    height: 37px;
+    border: 0px;
+    text-transform: uppercase;
+}
+
+/* as-lisitng-booking box end */
+
+/* product slider start css */
+
+.viewed {
+    background: #eee;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 1px 0px #ddd;
+    padding: 15px;
+}
+
+.owl-item h4 {
+    font-size: 15px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.bbb_viewed {
+    padding: 10px 0px;
+}
+
+.bbb_main_container {
+    background-color: #fff;
+    padding: 11px
+}
+
+.bbb_viewed_title_container .bbb_viewed_title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.bbb_viewed_nav_container {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.bbb_viewed_nav {
+    display: inline-block;
+    cursor: pointer
+}
+
+.bbb_viewed_prev {
+    margin-right: 15px
+}
+
+@media only screen and (min-width:325px) and (max-width:375px) {
+    .header-row .header-icon li {
+        padding: 0px 11px !important;
+    }
+}
+
+@media only screen and (max-width:320px) {
+    .header-row .header-icon li {
+        padding: 0px 9px !important;
+    }
+}
+
+@media (max-width:768px) {
+    .header-row .header-icon {
+        display: flex;
+        float: right;
+    }
+    .header-row .header-icon li .icon-text {
+        display: none !important;
+    }
+    .header-row .header-icon li {
+        display: inline-block;
+        padding: 0px 15px;
+    }
+    .bbb_viewed_nav_container {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+    .bbb_viewed_title {
+        margin-bottom: 16px;
+        margin-top: 8px;
+        font-size: 18px;
+    }
+    .header-logo img {
+        display: none;
+    }
+    .navbar-brand {
+        display: block;
+        width: 125px;
+    }
+    .navbar-toggler {
+        padding: 0px;
+    }
+    .bottom-footer-content li {
+        margin-right: 6px !important;
+        font-size: 14px;
+    }
+}
+
+.bbb_viewed_name a {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    color: #000;
+}
+
+/* product slider end css */
+
+.bbb_viewed_title {
+    margin-bottom: 14px
+}
+
+.bbb_viewed_nav {
+    display: inline-block;
+    cursor: pointer
+}
+
+.bbb_viewed_nav i {
+    color: #dadada;
+    font-size: 18px;
+    padding: 5px;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease
+}
+
+.bbb_viewed_nav:hover i {
+    color: #606264
+}
+
+.bbb_viewed_prev {
+    margin-right: 15px
+}
+
+.bbb_viewed_item {
+    background: #FFFFFF;
+    border: 1px solid #ddd;
+    padding: 5px;
+    width: 95%;
+}
+
+.bbb_viewed_price span {
+    color: #afafaf;
+    font-size: 11px;
+    line-height: 15px;
+    min-height: 30px;
+}
+
+.bbb_viewed_image img {
+    width: 30px !important;
+    display: inline-block;
+}
+
+
+input[class=range] {
+    box-sizing: border-box;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background-color: #ddd;
+    border-radius: 50px;
+    margin: 0;
+    border: 0;
+    outline: none;
+    background-size: 100% 2px;
+    pointer-events: none;
+}
+
+input[type=range]:active,
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: #ddd;
+    border-color: #ddd;
+    color: #ddd;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: #004499;
+    position: relative;
+    z-index: 50;
+    cursor: pointer;
+    appearance: none;
+    pointer-events: all;
+    box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+/* All the same stuff for Firefox */
+
+input[type=range]::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    border: 0px;
+    background-color: #004499;
+    position: relative;
+    z-index: 50;
+    cursor: pointer;
+    appearance: none;
+    pointer-events: all;
+    box-shadow: 0 1px 4px 0.5px rgba(0, 0, 0, 0.25);
+}
+
+
+/* All the same stuff for IE */
+
+input[type=range]::-ms-thumb {
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    border: 0px;
+    background-color: #004499;
+    position: relative;
+    z-index: 50;
+    cursor: pointer;
+    appearance: none;
+    pointer-events: all;
+    box-shadow: 0 1px 4px 0.5px rgba(0, 0, 0, 0.25);
+}
+
+.multi-range {
+    position: relative;
+    height: 20px;
+    display: block;
+    width: 100%;
+}
+
+.input-range {
+    margin-bottom: 5px;
+}
+
+.multi-range input[type=range] {
+    position: absolute;
+}
+
+.range-color {
+    background-color: #004499;
+    border-radius: 50px;
+    width: 100%;
+    display: block;
+    height: 4px;
+    position: absolute;
+    z-index: 10;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #ddd;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #ddd;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #ddd;
+}
+
+/* Car listing css Start */
+
+.as-sidebar-filter{
+    background-color: #fff;
+     padding: 0px;
+     height: fit-content;
+
+}
+
+.as-car-box{
+    background-color: #fff;
+    box-shadow: 1px 1px 4px 2px #ddd;
+    padding: 15px;
+}
+
+.as-car-equal-box{
+    display: flex;
+    flex: 1 0 auto;
+    margin-bottom: 15px;
+}
+
+.as-car-content{
+    background-color: #fff;
+    box-shadow: 1px 1px 4px 2px #ddd;
+    padding: 15px;
+}
+
+.as-car-content h3{
+    font-size: 20px;
+}
+
+.as-car-features{
+    color:#F15A29 !important;
+    font-weight: bold;
+}
+
+.as-alamo b{
+    background-color: #0661A5;
+    color:#C5C53C !important;
+    padding: 3px;
+}
+
+.as-car-content p{
+    font-size: 14px;
+    color:#000;
+}
+.as-car-box-sub-category{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.as-car-right-content .as-book-now-button{
+    float: right;
+}
+
+.as-book-now-button span{
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.as-book-now-button button{
+    background-color: #F15A29;
+    color:#fff;
+    padding: 5px 10px;
+    border:0px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.as-car-box-manual{
+    display: flex;
+    justify-content: space-between; 
+}
+
+.as-car-box-manual li{
+  font-size: 13px; 
+}
+
+/* Car listing css End */

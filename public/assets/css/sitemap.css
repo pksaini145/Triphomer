@@ -1,0 +1,58 @@
+.st_map {
+    padding: 30px 0 40px;
+   
+}
+
+.site_map_bx h2 {
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0 0 6px 0;
+}
+
+.site_map_bx p {
+    font-size: 14px
+}
+
+.site_cat {
+    width: 100%;
+    display: table;
+    border-bottom: 1px dashed #c1c1c1;
+    padding: 15px 0
+}
+
+.site_cat h3 {
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0 0 6px 0;
+}
+
+.site_cat ul {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.site_cat ul li {
+    width: 25%;
+    float: left;
+    line-height: 28px
+}
+
+.site_cat ul li a {
+    color: #494747;
+    font-size: 13px;
+    text-decoration: none;
+    display: block;
+}
+
+.site_cat ul li a i {
+    margin-right: 2px
+}
+
+@media only screen and (max-width:767px) {
+    .site_cat ul li {
+        width: 50%;
+        float: left;
+        line-height: 28px;
+    }
+}

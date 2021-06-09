@@ -1,0 +1,292 @@
+.header__wrap {
+    height: 180px;
+    background-image: linear-gradient(to top, #15457b, #051423);
+}
+
+.main_payment_container {
+    margin-top: 30px
+}
+
+/* card detail tab page css start */
+
+.show__options .payment__options__content {
+    width: 550px;
+    padding: 20px 30px;
+}
+
+.append-bottom20 {
+    margin-bottom: 20px;
+}
+
+.form__field__wrap {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__field__wrap label {
+    display: flex;
+    font-size: 14px;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 8px;
+    align-items: baseline;
+}
+
+.form__field {
+    position: relative;
+    width: 100%;
+    border: solid 1px #9b9b9b;
+    border-radius: 4px;
+    transition: .1s ease-out;
+}
+
+.form__field input {
+    width: 100%;
+    font-size: 14px;
+    outline: 0;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 15px;
+    color: #000;
+    background: 0 0;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+html[dir=ltr] .append-right10 {
+    margin-right: 10px;
+}
+
+.lightgray-text {
+    color: #d3d3d3;
+}
+
+html[dir=ltr] .append-left10 {
+    margin-left: 10px;
+}
+
+.append-bottom25 {
+    margin-bottom: 25px;
+}
+
+.special__rate__tag {
+    width: 68px;
+    height: 18px;
+    border-radius: 10px;
+    font-size: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient( 75deg, #43e1a8, #28beb2);
+}
+
+.add_on_card_provider_image {
+    width: 100px;
+    float: right
+}
+
+.paynow__btn {
+    min-width: 150px;
+}
+
+.prime__btn {
+    background-image: -webkit-linear-gradient( 354deg, #53b2fe, #065af3);
+    background-image: -moz-linear-gradient(354deg, #53b2fe, #065af3);
+    background-image: -o-linear-gradient(354deg, #53b2fe, #065af3);
+    background-image: linear-gradient( 96deg, #53b2fe, #065af3);
+    color: #fff;
+    padding: 0 20px;
+    height: 40px;
+    min-width: 100px;
+    cursor: pointer;
+    -webkit-box-shadow: 0 1px 7px 0 rgb(0 0 0 / 20%);
+    -moz-box-shadow: 0 1px 7px 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 7px 0 rgb(0 0 0 / 20%);
+}
+
+.prime__btn,
+.prime__btn--disable {
+    border: none;
+    outline: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-border-radius: 36px;
+    -moz-border-radius: 36px;
+    border-radius: 36px;
+    float: right;
+}
+
+/* card detail tab page css end */
+
+/* your booking css start */
+
+.booking__card {
+    border-radius: 10px;
+    box-shadow: 0 3px 30px 0 rgb(0 0 0 / 10%);
+    background-color: #fff;
+}
+
+.box-padding {
+    padding: 15px 20px;
+}
+
+.dt__payment__sprite.travelers__icon {
+    width: 24px;
+    height: 27px;
+    background-position: -81px -197px;
+}
+
+.lob__icon__wrap {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paymode-images-icons {
+    width: 24px!important;
+    height: 24px!important;
+}
+
+/* your booking css end */
+
+/* fare summary css start */
+
+.fare__summary__card {
+    border-radius: 10px;
+    box-shadow: 0 3px 30px 0 rgb(0 0 0 / 10%);
+    background-color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+}
+
+.bdr-bottom {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.as-payment-fare-summary {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.as-payment-p .as-p {
+    text-align: center;
+}
+
+.as-fare-summary-border {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.as-summary-right-content {
+    text-align: end;
+}
+
+/* fare summary css end */
+
+/* netbanking tab css start  */
+
+.show__options .payment__options__content {
+    width: 550px;
+    padding: 20px 30px;
+}
+
+.search__bank__wrap {
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+    border: solid 1px #f0f0f0;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.search__bank__wrap input[type=text] {
+    width: 400px;
+    height: 40px;
+    border: none;
+    outline: 0;
+    color: #000;
+}
+
+html[dir=ltr] .append-right10 {
+    margin-right: 10px;
+}
+
+.bank-logo-sprite.bank__logo--sbi {
+    width: 32px;
+    height: 32px;
+    background-position: -271px -405px;
+}
+
+.bank__list li {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #e1e1e1;
+    padding: 0 15px;
+    min-height: 50px;
+}
+
+.make-flex.hrtl-center,
+.make-flex.perfect-center {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.hrtl-center label {
+    display: inline-block;
+    margin-left: .6rem;
+    margin-bottom: 0px;
+}
+
+/* netbanking tab end */
+
+/* additional discounts css start*/
+
+.wallet-balance-card {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* additional discon css end */
+
+.main-payment-left-row {
+    position: relative;
+    top: -50px
+}
+
+.main-payment-right-row {
+    position: relative;
+    top: -50px
+}
+
+@media only screen and (max-width:576px) {
+    .mobile-section-tab {
+        padding-left: 0px
+    }
+    .search-fields-container {
+        margin-bottom: 20px;
+    }
+}

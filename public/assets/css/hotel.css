@@ -1,0 +1,187 @@
+/* Hotel listing css start */
+
+.as-hotel-listing-search-field{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.as-rightside-top-bar ul{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:15px;
+}
+
+.as-rightside-top-bar ul li a{
+    color: #000;
+    border: 2px solid #ddd;
+    padding: 6px;
+    font-size: 14px;
+}
+
+
+.as-rightside-top-bar ul li a:hover{
+    background-color: #E6F3FF;
+    color:#004499
+}
+
+.as-rightbox-header-title h3{
+font-size: 20px;
+font-weight: bold;
+color:#000;
+margin-bottom:15px;
+}
+
+.as-sidebar-filter h3{
+    background-color: #0C0E64;
+    color:#fff;
+    font-size: 18px;
+    padding:5px 15px;
+}
+.as-sidebar{
+    border: 2px solid #ddd;
+    padding: 7px;
+}
+
+.as-rightside-img-box img{
+    height:190px;
+    object-fit: fill;
+}
+
+.as-sidebar-budget-filter h4{
+    font-size: 16px;
+    margin-top:20px;
+    margin-bottom:15px;
+}
+
+.as-sidebar-facilities-box h4{
+    font-size: 16px;
+    margin-bottom:10px;
+    color:#004499;
+}
+
+.as-right-box-content h3{
+    font-size: 18px;
+    color:#004499;
+    margin-right:8px;
+    font-weight: bold;
+}
+
+.as-right-box-content span{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    line-height: 30px;
+    font-size:14px;
+}
+.bui-review-score{
+    padding-right:0px;
+}
+.bui-review-score__title {
+    color: #003580;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.bui-review-score__badge {
+    background: #003580;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    justify-content: center;
+    vertical-align: baseline;
+    border-radius: 6px 6px 6px 0;
+    height: 36px;
+    width: 36px;
+    min-width: 36px;
+    padding-left:0px;
+}
+
+.bui-review-score__text {
+    color: #6b6b6b;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    margin-top: 4px;
+}
+
+.bui-review-score{
+    text-align: right;
+    cursor: pointer;
+}
+
+.as-last-booked{
+    font-size: 14px;
+    color:#000;
+}
+
+.as-suprior-heading h3{
+    color: #004499;
+    font-size: 16px;
+    margin-top:10px;
+}
+
+.as-time-adults {
+    text-align: right;
+}
+
+
+.as-time-adults span{
+    font-size:14px;
+}
+
+.as-time-adults p{
+    font-size:24px;
+    font-weight: bold;
+}
+
+.as-taxes-and-fees-under-price{
+    font-size: 12px;
+}
+
+.as-right-box-content span svg{
+  color:#E35040;
+  font-size: 14px;
+}
+
+.as-right-box-content span a{
+    font-size: 14px;
+    text-decoration: underline;
+    color:#000;
+    margin-right:8px;
+    
+}
+
+.as-city-link p{
+    color:#E35040;
+    margin-left:8px;
+    font-size: 14px;
+  
+}
+
+.as-room-left{
+    color: #E35040;
+}
+
+.as-right-box-review h3{
+    font-size: 18px;
+}
+
+.as-right-main-box{
+    background-color: #E6F3FF;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.as-hotel-listing-btn{
+    background-color: #F15A29;
+    color:#fff;
+    border:0px;
+    padding:5px 15px;
+    margin-top:15px;
+}
+
+
+/* Hotel listing css end */
