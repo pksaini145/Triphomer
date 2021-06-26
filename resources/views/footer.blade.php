@@ -268,6 +268,311 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNFLVPX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<script type="text/javascript">
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+    // $("input.form-control").keyup(function(event){
+        $(document).on('click', '.originair', function(event) {
+            var originval = $(this).html();
+            var originCode = $(this).attr('for');
+            $('#originCode').val(originval).attr('origincode',originCode);
+            $('#originCodeo').val(originCode);
+             $('.originCodesreach').css('display','none');
+
+
+        });
+        $(document).on('click', '.toriginair', function(event) {
+            var originval = $(this).html();
+            var originCode = $(this).attr('for');
+            $('#toriginCode').val(originval);
+            $('#toriginCodeo').val(originCode);
+             $('.toriginCodesreach').css('display','none');
+
+
+        });
+        $(document).on('keyup', '#originCode', function(event) {
+             var originCode = $(this).val();
+            
+      
+      var originCoden = originCode.length;
+      
+      if(originCoden>2){
+
+            var _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "{{route('airports')}}",
+        type:"GET",
+        data:{
+          name:originCode,
+          _token: _token
+        },
+        success:function(response){
+          console.log(response);
+          if(response) {
+
+             data = JSON.parse(response);
+        var html = "";
+    for (var i = 0; i < data.length; i++) {
+       
+       
+        html = html + "<li for='" + data[i].iata_code + "' class='originair'>"+data[i].name+"</li>";
+    };
+            console.log(html);
+            // $('#flyto').html(html);
+            $('ul.originCodesreach').html(html);
+    
+          }
+        },
+       });
+      $('.originCodesreach').css('display','block');
+
+      }
+        });
+        $(document).on('keyup', '#originCode12', function(event) {
+            var originCode = $(this).val();
+            
+      
+      var originCoden = originCode.length;
+      
+      if(originCoden>2){
+
+         var _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "{{route('airports')}}",
+        type:"GET",
+        data:{
+          name:originCode,
+          _token: _token
+        },
+        success:function(response){
+          console.log(response);
+          if(response) {
+            data = JSON.parse(response);
+        var html = "";
+    for (var i = 0; i < data.length; i++) {
+       
+       
+        html = html + "<li for='" + data[i].iata_code + "' class='originair'>"+data[i].name+"</li>";
+    };
+            console.log(html);
+            // $('#flyto').html(html);
+            $('ul.originCodesreach').html(html);
+            // $("#ajaxform")[0].reset();
+          }
+        },
+       });
+            
+            $('.originCodesreach').css('display','block');
+        }
+        });
+
+            $(document).on('keyup', '#toriginCode', function(event) {
+            var originCode = $(this).val();
+            
+      
+      var originCoden = originCode.length;
+      
+      if(originCoden>2){
+
+         var _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "{{route('airports')}}",
+        type:"GET",
+        data:{
+          name:originCode,
+          _token: _token
+        },
+        success:function(response){
+          console.log(response);
+          if(response) {
+            data = JSON.parse(response);
+        var html = "";
+    for (var i = 0; i < data.length; i++) {
+       
+       
+        html = html + "<li for='" + data[i].iata_code + "' class='toriginair'>"+data[i].name+"</li>";
+    };
+            console.log(html);
+            // $('#flyto').html(html);
+            $('ul.toriginCodesreach').html(html);
+            // $("#ajaxform")[0].reset();
+          }
+        },
+       });
+            
+            $('.toriginCodesreach').css('display','block');
+        }
+        });
+
+        $(document).on('click', '.destair', function(event) {
+            var destval = $(this).html();
+            var destCode = $(this).attr('for');
+            $('#destCode').val(destval);
+            $('#destCodeo').val(destCode);
+             $('.destiCodesreach').css('display','none');
+
+
+        });
+         $(document).on('click', '.tdestair', function(event) {
+            var destval = $(this).html();
+            var destCode = $(this).attr('for');
+            $('#tdestCode').val(destval);
+            $('#tdestCodeo').val(destCode);
+             $('.tdestiCodesreach').css('display','none');
+        });
+        $(document).on('keyup', '#destCode', function(event) {
+            var destCode = $(this).val();
+            
+      
+      var destCoden = destCode.length;
+      
+      if(destCoden>2){
+
+         var _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "{{route('airports')}}",
+        type:"GET",
+        data:{
+          name:destCode,
+          _token: _token
+        },
+        success:function(response){
+          console.log(response);
+          if(response) {
+            data = JSON.parse(response);
+        var html = "";
+    for (var i = 0; i < data.length; i++) {
+       
+       
+        html = html + "<li for='" + data[i].iata_code + "' class='destair'>"+data[i].name+"</li>";
+    };
+            console.log(html);
+            // $('#flyto').html(html);
+            $('ul.destiCodesreach').html(html);
+            // $("#ajaxform")[0].reset();
+          }
+        },
+       });
+            
+            $('.destiCodesreach').css('display','block');
+        }
+        });
+
+
+        $(document).on('keyup', '#tdestCode', function(event) {
+            var destCode = $(this).val();
+            
+      
+      var destCoden = destCode.length;
+      
+      if(destCoden>2){
+
+         var _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "{{route('airports')}}",
+        type:"GET",
+        data:{
+          name:destCode,
+          _token: _token
+        },
+        success:function(response){
+          console.log(response);
+          if(response) {
+            data = JSON.parse(response);
+        var html = "";
+    for (var i = 0; i < data.length; i++) {
+       
+       
+        html = html + "<li for='" + data[i].iata_code + "' class='tdestair'>"+data[i].name+"</li>";
+    };
+            console.log(html);
+            // $('#flyto').html(html);
+            $('ul.tdestiCodesreach').html(html);
+            // $("#ajaxform")[0].reset();
+          }
+        },
+       });
+            
+            $('.tdestiCodesreach').css('display','block');
+        }
+        });
+        $(document).on('keyup', 'input.form-control', function(event) {
+        //console.log('test');
+      event.preventDefault();
+
+
+      var serval = $(this).val();
+      
+      var n = serval.length;
+      console.log(serval,n);
+      if(n>2){
+        var _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "{{route('airports')}}",
+        type:"GET",
+        data:{
+          name:serval,
+          _token: _token
+        },
+        success:function(response){
+          console.log(response);
+          if(response) {
+            data = JSON.parse(response);
+        var html = "";
+    for (var i = 0; i < data.length; i++) {
+       
+        
+        html = html + "<li><a role='option' value='" + data[i].iata_code + "' class='dropdown-item' id='bs-select-1-'"+i+"' tabindex='0'><span class='text'>"+data[i].name+"</span></a></li>";
+    };
+            console.log(html);
+            // $('#flyto').html(html);
+            $('ul.dropdown-menu.inner.show').html(html);
+            // $("#ajaxform")[0].reset();
+          }
+        },
+       });
+      }
+      
+      
+  });
+$(document).on('click','.listing-filter',function(){
+    var way = [];
+    $('.listing-filter:checked').each(function() {
+   way.push(this.value);
+
+});
+console.log(way);
+    var output12 = [];
+    var filtered = flights.filter(filterFlight);
+
+    function filterFlight(fvalue){
+     if (fvalue.FlightSegmentDetails.OutBoundSegment.length == way[0] || fvalue.FlightSegmentDetails.OutBoundSegment.length == way[1] || fvalue.FlightSegmentDetails.OutBoundSegment.length == way[2]) {
+      output12.push(fvalue);
+     }
+    }
+    console.log(output12)
+    var outputdatht ='';
+    $.each(output12,function(k,v){
+      // console.log(v.FlightSegmentDetails.OutBoundSegment); 
+      outputdatht +'<div class="row"><div class="col-lg-12 as-ticket-box"><div class="row">'; 
+      $.each(v.FlightSegmentDetails.OutBoundSegment,function(ko,vo){
+        console.log(vo.MarketingCarrier.AirlineCode); 
+         outputdatht = outputdatht +'<div class="col-lg-12 col-md-12 col-12 as-ticket-under-box"><div class="row"><div class="col-lg-3 as-listing-img-box"><img src="https://skyhikes.com/ImageApp/AirlineLogo/'+vo.MarketingCarrier.AirlineCode+'.png" alt="'+vo.MarketingCarrier.AirlineName+'" width="60" height="35"><div class="as-ticket-img-heading"><h6>'+vo.MarketingCarrier.AirlineName+'</h6><p>Economy</p></div></div><div class="col-lg-3 col-md-4 col-6"><ul class="inner-seg"><li><strong class="city">'+vo.Origin+', </strong><span class="city-name hidden-xs">'+vo.OriginCity+'</span></li><li><time class="time">'+vo.DepartureTime+' | </time><span class="date hidden-xs">'+vo.DepartureDate+'</span></li></ul></div> <div class="col-lg-3 col-md-4 col-6"> <ul class="inner-seg"> <li> <strong class="city"> '+vo.Destination+', </strong><span class="city-name hidden-xs"> '+vo.DestinationCity+' </span> </li> <li><time class="time">'+vo.ArrivalTime+' | </time> <span class="date hidden-xs"> '+vo.ArrivalDate+'</span></li> </ul> </div> <div class="col-lg-3 col-md-4 text-right"> <ul class="inner-seg"> <li class="nSpace text-right col-xs-6 col-sm-12"> 2 Stops </li> <li class="nSpace text-right col-xs-6 col-sm-12"><span class="list-ico hidden-xs"></span><span class="hidden-xs">Trip Time :</span> 09:25:00</li> </ul> </div> </div> </div>';
+      })
+      outputdatht = outputdatht +'<div class="col-lg-12 as-ticket-book-box"> <div class="col-lg-12 select-trip"></div> <div class="row"> <div class="col-lg-2 col-md-4 col-6 itinerary-details"> <div class="dropdown"> <button class="btn dropdown-toggle as-custom-itinerart-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Itinerary Details </button> <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a> </div> </div> </div> <div class="col-lg-3 col-md-4 col-6 cancellation-text"> <svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><span class="free-cancellation"> Free Cancellation </span> <svg class="svg-inline--fa fa-question-circle fa-w-16" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="question-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"></path></svg> </div> <div class="col-lg-5 as-airline-booking-detail"> <li class="airline-breakup col-lg-7"> <h4><span class="total-price">$'+v.TotalGDSFareV2+'</span></h4> <small>Price Per Person (Incl fee)</small> </li> <li class="book-now-only">Book Now only <strong class="seats">'+v.MinSeatAvailableForContract+' seats </strong> left at the price!</li> </div> <div class="col-lg-2 listing-book-now-btn"> <a href="http://localhost/triphomer/public/flight_payment/1?CacheKey=cROomxudMNYMkIPDFB11ha9ZibuurzDQaLby4QDr"> <button type="button" class="btn btn-block ">Book Now</button></a> </div> </div> </div></div></div></div>';
+    })
+$('.col-lg-9.col-md-9.as-right-listing-box').html(outputdatht);
+})
+</script>
 </body>
 
 </html>

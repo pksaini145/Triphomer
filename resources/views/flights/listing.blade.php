@@ -2,6 +2,16 @@
 @extends('layouts.home')
 @section('content')
 <!-- END HEADER AREA -->
+<style type="text/css">
+    .returnflights{
+        border-top: 1px dashed #333;
+    padding-bottom: 15px;
+    }
+</style>
+
+<script type="text/javascript">
+    var flights = @json($resultdatao->FlightContracts);
+</script>
 
     <section class="as-listing-top-box">
         <div class="container">
@@ -878,15 +888,15 @@
                                 <h3>Refine Your Search</h3>
                                 <h5>Stops</h5>
                                 <div class="checkbox">
-                                    <input type="checkbox" class="custom-checkbox" id="Check1">
+                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="1">
                                     <label class="form-check-label" for="Check1">Non Stop</label>
                                 </div>
                                 <div class="checkbox">
-                                    <input type="checkbox" class="custom-checkbox" id="Check1">
+                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="2">
                                     <label class="form-check-label" for="Check1">One Stop</label>
                                 </div>
                                 <div class="checkbox">
-                                    <input type="checkbox" class="custom-checkbox" id="Check1">
+                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="3">
                                     <label class="form-check-label" for="Check1">Multi Stops</label>
                                 </div>
 
@@ -895,13 +905,13 @@
                                     <span><strong id="per-person-min-price">USD $916.62</strong> - <span
                                             id="per-person-max-price">USD $7954.69</span></span>
                                 </div>
-                                <div class="multi-range-container">
+                                 <div class="multi-range-container">
                                     <div class="multi-range">
                                         <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                            id="lower">
+                                            id="lower" >
                                         <span id="range-color" class="range-color"></span>
                                         <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                            id="upper">
+                                            id="upper" >
                                     </div>
                                 </div>
 
@@ -917,10 +927,28 @@
                                 <div class="multi-range-container">
                                     <div class="multi-range">
                                         <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                            id="lower">
-                                        <span id="range-color" class="range-color"></span>
+                                            id="lower1">
+                                        <span id="range-color1" class="range-color"></span>
                                         <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                            id="upper">
+                                            id="upper1" >
+                                    </div>
+
+                                    
+                                    <div class="row slider-labels">
+                                        <div class="col-xs-6 caption">
+                                          <span id="slider-range-value1"></span>
+                                        </div>
+                                        <div class="col-xs-6 text-right caption">
+                                            <span id="slider-range-value2"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <form>
+                                                <input type="hidden" name="min-value" value="">
+                                                <input type="hidden" name="max-value" value="">
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -936,10 +964,10 @@
                                     <div class="multi-range-container">
                                         <div class="multi-range">
                                             <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower">
-                                            <span id="range-color" class="range-color"></span>
+                                                id="lower2">
+                                            <span id="range-color2" class="range-color"></span>
                                             <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper">
+                                                id="upper2">
                                         </div>
                                     </div>
                                 </div>
@@ -953,10 +981,10 @@
                                     <div class="multi-range-container">
                                         <div class="multi-range">
                                             <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower">
-                                            <span id="range-color" class="range-color"></span>
+                                                id="lower3">
+                                            <span id="range-color3" class="range-color"></span>
                                             <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper">
+                                                id="upper3">
                                         </div>
                                     </div>
                                 </div>
@@ -973,10 +1001,10 @@
                                     <div class="multi-range-container">
                                         <div class="multi-range">
                                             <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower">
-                                            <span id="range-color" class="range-color"></span>
+                                                id="lower4">
+                                            <span id="range-color4" class="range-color"></span>
                                             <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper">
+                                                id="upper4">
                                         </div>
                                     </div>
                                     <h6 class="arrive">
@@ -990,10 +1018,10 @@
                                     <div class="multi-range-container">
                                         <div class="multi-range">
                                             <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower">
-                                            <span id="range-color" class="range-color"></span>
+                                                id="lower5">
+                                            <span id="range-color5" class="range-color"></span>
                                             <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper">
+                                                id="upper5">
                                         </div>
                                     </div>
 
@@ -1005,10 +1033,10 @@
                                     <div class="multi-range-container">
                                         <div class="multi-range">
                                             <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower">
-                                            <span id="range-color" class="range-color"></span>
+                                                id="lower6">
+                                            <span id="range-color6" class="range-color"></span>
                                             <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper">
+                                                id="upper6">
                                         </div>
                                     </div>
                                 </div>
@@ -1048,16 +1076,38 @@
                                 <p>Compare cheapest price for nearby days</p>
                             </div>
                         </div>
+                        @foreach($resultdatao->FlightContracts as $flight_listing)
 
+                                                    @php
+                                                    $DepartureDate = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->DepartureDate;
+
+                                                    $ArrivalDate = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->ArrivalDate;
+
+                                                    $DepartureTime = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->DepartureTime;
+
+                                                    $ArrivalTime = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->ArrivalTime;
+
+                                                    $FlightDuration = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->FlightDuration;
+
+                                                    
+
+                                                    $AvailableSeats = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->AvailableSeats;
+                                                    
+                                                    $AirlineCode = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->MarketingCarrier->AirlineCode;
+
+                                                    $AirlineName = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->MarketingCarrier->AirlineName;
+                                                    @endphp
                         <div class="row">
                             <div class="col-lg-12 as-ticket-box">
                                 <div class="row">
+                                    @foreach($flight_listing->FlightSegmentDetails->OutBoundSegment as $flights)
                                     <div class="col-lg-12 col-md-12 col-12 as-ticket-under-box">
                                         <div class="row">
                                             <div class="col-lg-3 as-listing-img-box">
-                                                <img src="assets/img/checkout-img/flydubai.gif" alt="">
+                                                <img src="https://skyhikes.com/ImageApp/AirlineLogo/{{$flights->MarketingCarrier->AirlineCode}}.png" alt="{{$flights->MarketingCarrier->AirlineName}}" width="60" height="35">
                                                 <div class="as-ticket-img-heading">
-                                                    <h6>Flydubai</h6>
+                                                    <!-- <h6>{{$flight_listing->Provider}}</h6> -->
+                                                    <h6>{{$flights->MarketingCarrier->AirlineName}}</h6>
                                                     <p>Economy</p>
                                                 </div>
 
@@ -1066,15 +1116,18 @@
                                                 <ul class="inner-seg">
                                                     <li>
                                                         <strong class="city">
-                                                            DEL,
-                                                        </strong><span class="city-name hidden-xs">
-                                                            Delhi
+                                                            {{$flights->Origin}}, </strong>
+                                                            
+                                                        <span class="city-name hidden-xs">
+                                                           {{$flights->OriginCity}}
                                                         </span>
                                                     </li>
                                                     <li>
-                                                        <time class="time">12:00 PM | </time> <span
+                                                        <time class="time">{{ date("g:i a", strtotime($flights->DepartureTime)) }} | </time>
+                                                         <span
                                                             class="date hidden-xs">
-                                                            Fri, Apr 16, 2021
+                                                            {{ date('l',strtotime($flights->DepartureDate)) }}, {{date('F',strtotime($flights->DepartureDate))}} {{date('j',strtotime($flights->DepartureDate))}}, {{date('Y',strtotime($flights->DepartureDate))}}
+                                                        </span>
                                                         </span>
                                                     </li>
                                                 </ul>
@@ -1083,29 +1136,98 @@
                                                 <ul class="inner-seg">
                                                     <li>
                                                         <strong class="city">
-                                                            FDF,
+                                                          {{$flights->Destination}}, 
                                                         </strong><span class="city-name hidden-xs">
-                                                            Fort De France
+                                                            {{$flights->DestinationCity}}
                                                         </span>
                                                     </li>
-                                                    <li><time class="time">05:35 PM | </time> <span
-                                                            class="date hidden-xs"> Sat, Apr 17, 2021</span></li>
+                                                    <li><time class="time">{{ date("g:i a", strtotime($flights->ArrivalTime)) }} | </time> <span
+                                                            class="date hidden-xs"> {{ date('l',strtotime($flights->ArrivalDate)) }}, {{date('F',strtotime($flights->ArrivalDate))}} {{date('j',strtotime($flights->ArrivalDate))}}, {{date('Y',strtotime($flights->ArrivalDate))}}</span></li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-3 col-md-4 text-right">
                                                 <ul class="inner-seg">
                                                     <li class="nSpace text-right col-xs-6 col-sm-12">
-                                                        2 Stops
+                                                        @if($loop->index == 0)
+                                                        {{$loop->count}} Stops
+                                                        @endif
 
                                                     </li>
                                                     <!-- <span class="tech-stopage">ORD, ATL </span> -->
                                                     <li class="nSpace text-right col-xs-6 col-sm-12"><span
                                                             class="list-ico hidden-xs"></span><span
-                                                            class="hidden-xs">Trip Time :</span> 46h 6m</li>
+                                                            class="hidden-xs">Trip Time :</span> {{$flights->FlightDuration}}</li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
+                                    @if($flight_listing->FlightSegmentDetails->InBoundSegment)
+                                    <div class="returnflights">
+                                     @foreach($flight_listing->FlightSegmentDetails->InBoundSegment as $flightsr)
+                                    <div class="col-lg-12 col-md-12 col-12 as-ticket-under-box">
+                                        <div class="row">
+                                            <div class="col-lg-3 as-listing-img-box">
+                                                <img src="https://skyhikes.com/ImageApp/AirlineLogo/{{$flightsr->MarketingCarrier->AirlineCode}}.png" alt="{{$flightsr->MarketingCarrier->AirlineName}}" width="60" height="35">
+                                                <div class="as-ticket-img-heading">
+                                                    <!-- <h6>{{$flight_listing->Provider}}</h6> -->
+                                                    <h6>{{$flightsr->MarketingCarrier->AirlineName}}</h6>
+                                                    <p>Economy</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-6">
+                                                <ul class="inner-seg">
+                                                    <li>
+                                                        <strong class="city">
+                                                            {{$flightsr->Origin}}, </strong>
+                                                            
+                                                        <span class="city-name hidden-xs">
+                                                           {{$flightsr->OriginCity}}
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <time class="time">{{ date("g:i a", strtotime($flightsr->DepartureTime)) }} | </time>
+                                                         <span
+                                                            class="date hidden-xs">
+                                                            {{ date('l',strtotime($flightsr->DepartureDate)) }}, {{date('F',strtotime($flightsr->DepartureDate))}} {{date('j',strtotime($flightsr->DepartureDate))}}, {{date('Y',strtotime($flightsr->DepartureDate))}}
+                                                        </span>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-6">
+                                                <ul class="inner-seg">
+                                                    <li>
+                                                        <strong class="city">
+                                                          {{$flightsr->Destination}}, 
+                                                        </strong><span class="city-name hidden-xs">
+                                                            {{$flightsr->DestinationCity}}
+                                                        </span>
+                                                    </li>
+                                                    <li><time class="time">{{ date("g:i a", strtotime($flightsr->ArrivalTime)) }} | </time> <span
+                                                            class="date hidden-xs"> {{ date('l',strtotime($flightsr->ArrivalDate)) }}, {{date('F',strtotime($flightsr->ArrivalDate))}} {{date('j',strtotime($flightsr->ArrivalDate))}}, {{date('Y',strtotime($flightsr->ArrivalDate))}}</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 text-right">
+                                                <ul class="inner-seg">
+                                                    <li class="nSpace text-right col-xs-6 col-sm-12">
+                                                        @if($loop->index == 0)
+                                                        {{$loop->count}} Stops
+                                                        @endif
+
+                                                    </li>
+                                                    <!-- <span class="tech-stopage">ORD, ATL </span> -->
+                                                    <li class="nSpace text-right col-xs-6 col-sm-12"><span
+                                                            class="list-ico hidden-xs"></span><span
+                                                            class="hidden-xs">Trip Time :</span> {{$flightsr->FlightDuration}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     @endforeach
+                                 </div>
+                                    @endif
 
                                     <div class="col-lg-12 as-ticket-book-box">
                                         <div class="col-lg-12 select-trip"></div>
@@ -1133,16 +1255,16 @@
 
                                             <div class="col-lg-5 as-airline-booking-detail">
                                                 <li class="airline-breakup col-lg-7">
-                                                    <h4><span class="total-price">$93</span></h4>
+                                                    <h4><span class="total-price">${{$flight_listing->AdultFare->TotalFareV2}}</span></h4>
                                                     <small>Price Per Person (Incl fee)</small>
                                                 </li>
-                                                <li class="book-now-only">Book Now only <strong class="seats">9 seats
+                                                <li class="book-now-only">Book Now only <strong class="seats">{{$AvailableSeats}} seats
                                                     </strong> left at the price!</li>
                                             </div>
 
 
                                             <div class="col-lg-2 listing-book-now-btn">
-                                                <a href="{{ route('flight_payment') }}"> <button type="button" class="btn btn-block ">Book Now</button></a>
+                                                <a href="{{ route('flight_payment',['id'=>$flight_listing->ContractID, 'CacheKey'=>$resultdatao->CacheKey]) }}"> <button type="button" class="btn btn-block ">Book Now</button></a>
                                             </div>
 
                                         </div>
@@ -1151,419 +1273,9 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
 
-                        <div class="row">
-                            <div class="col-lg-12 as-ticket-box">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-12 as-ticket-under-box">
-                                        <div class="row">
-                                            <div class="col-lg-3 as-listing-img-box">
-                                                <img src="assets/img/checkout-img/flydubai.gif" alt="">
-                                                <div class="as-ticket-img-heading">
-                                                    <h6>Flydubai</h6>
-                                                    <p>Economy</p>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            DEL,
-                                                        </strong><span class="city-name hidden-xs">
-                                                            Delhi
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <time class="time">12:00 PM | </time> <span
-                                                            class="date hidden-xs">
-                                                            Fri, Apr 16, 2021
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            FDF,
-                                                        </strong><span class="city-name hidden-xs">
-                                                            Fort De France
-                                                        </span>
-                                                    </li>
-                                                    <li><time class="time">05:35 PM | </time> <span
-                                                            class="date hidden-xs"> Sat, Apr 17, 2021</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 text-right">
-                                                <ul class="inner-seg">
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12">
-                                                        2 Stops
-
-                                                    </li>
-                                                    <!-- <span class="tech-stopage">ORD, ATL </span> -->
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12"><span
-                                                            class="list-ico hidden-xs"></span><span
-                                                            class="hidden-xs">Trip Time :</span> 46h 6m</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 as-ticket-book-box">
-                                        <div class="col-lg-12 select-trip"></div>
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-4 col-6 itinerary-details">
-                                                <div class="dropdown">
-                                                    <button class="btn dropdown-toggle as-custom-itinerart-button"
-                                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        Itinerary Details
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Action</a>
-                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-4 col-6 cancellation-text">
-                                                <i class="fa fa-check" aria-hidden="true"></i> <span
-                                                    class="free-cancellation"> Free Cancellation </span>
-                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                            </div>
-
-                                            <div class="col-lg-5 as-airline-booking-detail">
-                                                <li class="airline-breakup col-lg-7">
-                                                    <h4><span class="total-price">$93</span></h4>
-                                                    <small>Price Per Person (Incl fee)</small>
-                                                </li>
-                                                <li class="book-now-only">Book Now only <strong class="seats">9 seats
-                                                    </strong> left at the price!</li>
-                                            </div>
-
-
-                                            <div class="col-lg-2 listing-book-now-btn">
-                                                <a href="{{ route('flight_payment') }}"> <button type="button" class="btn btn-block ">Book Now</button></a>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12 as-ticket-box">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-12 as-ticket-under-box">
-                                        <div class="row">
-                                            <div class="col-lg-3 as-listing-img-box">
-                                                <img src="assets/img/checkout-img/flydubai.gif" alt="">
-                                                <div class="as-ticket-img-heading">
-                                                    <h6>Flydubai</h6>
-                                                    <p>Economy</p>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            DEL,
-                                                        </strong><span class="city-name hidden-xs">
-                                                            Delhi
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <time class="time">12:00 PM | </time> <span
-                                                            class="date hidden-xs">
-                                                            Fri, Apr 16, 2021
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            FDF,
-                                                        </strong><span class="city-name hidden-xs">
-                                                            Fort De France
-                                                        </span>
-                                                    </li>
-                                                    <li><time class="time">05:35 PM | </time> <span
-                                                            class="date hidden-xs"> Sat, Apr 17, 2021</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 text-right">
-                                                <ul class="inner-seg">
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12">
-                                                        2 Stops
-
-                                                    </li>
-                                                    <!-- <span class="tech-stopage">ORD, ATL </span> -->
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12"><span
-                                                            class="list-ico hidden-xs"></span><span
-                                                            class="hidden-xs">Trip Time :</span> 46h 6m</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 as-ticket-book-box">
-                                        <div class="col-lg-12 select-trip"></div>
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-4 col-6 itinerary-details">
-                                                <div class="dropdown">
-                                                    <button class="btn dropdown-toggle as-custom-itinerart-button"
-                                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        Itinerary Details
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Action</a>
-                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-4 col-6 cancellation-text">
-                                                <i class="fa fa-check" aria-hidden="true"></i> <span
-                                                    class="free-cancellation"> Free Cancellation </span>
-                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                            </div>
-
-                                            <div class="col-lg-5 as-airline-booking-detail">
-                                                <li class="airline-breakup col-lg-7">
-                                                    <h4><span class="total-price">$93</span></h4>
-                                                    <small>Price Per Person (Incl fee)</small>
-                                                </li>
-                                                <li class="book-now-only">Book Now only <strong class="seats">9 seats
-                                                    </strong> left at the price!</li>
-                                            </div>
-
-
-                                            <div class="col-lg-2 listing-book-now-btn">
-                                                <a href="{{ route('flight_payment') }}"> <button type="button" class="btn btn-block ">Book Now</button></a>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12 as-ticket-box">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-12 as-ticket-under-box">
-                                        <div class="row">
-                                            <div class="col-lg-3 as-listing-img-box">
-                                                <img src="assets/img/checkout-img/flydubai.gif" alt="">
-                                                <div class="as-ticket-img-heading">
-                                                    <h6>Flydubai</h6>
-                                                    <p>Economy</p>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            DEL,
-                                                        </strong><span class="city-name hidden-xs">
-                                                            Delhi
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <time class="time">12:00 PM | </time> <span
-                                                            class="date hidden-xs">
-                                                            Fri, Apr 16, 2021
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            FDF,
-                                                        </strong><span class="city-name hidden-xs">
-                                                            Fort De France
-                                                        </span>
-                                                    </li>
-                                                    <li><time class="time">05:35 PM | </time> <span
-                                                            class="date hidden-xs"> Sat, Apr 17, 2021</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 text-right">
-                                                <ul class="inner-seg">
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12">
-                                                        2 Stops
-
-                                                    </li>
-                                                    <!-- <span class="tech-stopage">ORD, ATL </span> -->
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12"><span
-                                                            class="list-ico hidden-xs"></span><span
-                                                            class="hidden-xs">Trip Time :</span> 46h 6m</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 as-ticket-book-box">
-                                        <div class="col-lg-12 select-trip"></div>
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-4 col-6 itinerary-details">
-                                                <div class="dropdown">
-                                                    <button class="btn dropdown-toggle as-custom-itinerart-button"
-                                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        Itinerary Details
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Action</a>
-                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-4 col-6 cancellation-text">
-                                                <i class="fa fa-check" aria-hidden="true"></i> <span
-                                                    class="free-cancellation"> Free Cancellation </span>
-                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                            </div>
-
-                                            <div class="col-lg-5 as-airline-booking-detail">
-                                                <li class="airline-breakup col-lg-7">
-                                                    <h4><span class="total-price">$93</span></h4>
-                                                    <small>Price Per Person (Incl fee)</small>
-                                                </li>
-                                                <li class="book-now-only">Book Now only <strong class="seats">9 seats
-                                                    </strong> left at the price!</li>
-                                            </div>
-
-
-                                            <div class="col-lg-2 listing-book-now-btn">
-                                                <a href="{{ route('flight_payment') }}"> <button type="button" class="btn btn-block ">Book Now</button></a>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-lg-12 as-ticket-box">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-12 as-ticket-under-box">
-                                        <div class="row">
-                                            <div class="col-lg-3 as-listing-img-box">
-                                                <img src="assets/img/checkout-img/flydubai.gif" alt="">
-                                                <div class="as-ticket-img-heading">
-                                                    <h6>Flydubai</h6>
-                                                    <p>Economy</p>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            DEL,
-                                                        </strong><span class="city-name hidden-xs">
-                                                            Delhi
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <time class="time">12:00 PM | </time> <span
-                                                            class="date hidden-xs">
-                                                            Fri, Apr 16, 2021
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            FDF,
-                                                        </strong><span class="city-name hidden-xs">
-                                                            Fort De France
-                                                        </span>
-                                                    </li>
-                                                    <li><time class="time">05:35 PM | </time> <span
-                                                            class="date hidden-xs"> Sat, Apr 17, 2021</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 text-right">
-                                                <ul class="inner-seg">
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12">
-                                                        2 Stops
-
-                                                    </li>
-                                                    <!-- <span class="tech-stopage">ORD, ATL </span> -->
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12"><span
-                                                            class="list-ico hidden-xs"></span><span
-                                                            class="hidden-xs">Trip Time :</span> 46h 6m</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 as-ticket-book-box">
-                                        <div class="col-lg-12 select-trip"></div>
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-4 col-6 itinerary-details">
-                                                <div class="dropdown">
-                                                    <button class="btn dropdown-toggle as-custom-itinerart-button"
-                                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        Itinerary Details
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Action</a>
-                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-4 col-6 cancellation-text">
-                                                <i class="fa fa-check" aria-hidden="true"></i> <span
-                                                    class="free-cancellation"> Free Cancellation </span>
-                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                            </div>
-
-                                            <div class="col-lg-5 as-airline-booking-detail">
-                                                <li class="airline-breakup col-lg-7">
-                                                    <h4><span class="total-price">$93</span></h4>
-                                                    <small>Price Per Person (Incl fee)</small>
-                                                </li>
-                                                <li class="book-now-only">Book Now only <strong class="seats">9 seats
-                                                    </strong> left at the price!</li>
-                                            </div>
-
-
-                                            <div class="col-lg-2 listing-book-now-btn">
-                                                <a href="{{ route('flight_payment') }}"> <button type="button" class="btn btn-block ">Book Now</button></a>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

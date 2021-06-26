@@ -16,7 +16,7 @@ Auth::routes();
 Route::get('/hotels','MainController@hotels')->name('hotels');
 Route::get('flights/{url?}','MainController@flights')->name('flights');
 Route::get('cars','MainController@cars')->name('cars');
-Route::get('mytrip','MainController@mytrip')->name('mytrip');
+Route::match(['get', 'post'],'mytrip','MainController@mytrip')->name('mytrip');
 Route::get('/login','MainController@login')->name('login');
 Route::get('/about-us','MainController@about')->name('about');
 Route::get('/contact-us','MainController@contact')->name('contact');
@@ -27,10 +27,13 @@ Route::get('airlines','MainController@airlines')->name('airlines');
 Route::get('hotel_destinations','MainController@hotel_destinations')->name('hotel_destinations');
 Route::get('hotel_listing','MainController@hotel_listing')->name('hotel_listing');
 Route::get('hotel_payment','MainController@hotel_payment')->name('hotel_payment');
-Route::get('flight_listing','MainController@flight_listing')->name('flight_listing');
+Route::post('flight_listing','MainController@flight_listing')->name('flight_listing');
 Route::get('flight_destinations','MainController@flight_destinations')->name('flight_destinations');
-Route::get('flight_payment','MainController@flight_payment')->name('flight_payment');
+Route::get('flight_payment/{id}','MainController@flight_payment')->name('flight_payment');
+Route::post('flight_pay','MainController@flight_pay')->name('flight_pay');
+Route::get('flight-thankyou','MainController@flight_thankyou')->name('flight_thankyou');
 Route::get('sitemap','MainController@sitemap')->name('sitemap');
+Route::get('airports','MainController@airports')->name('airports');
 // Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 
 Route::group(['prefix' => 'dashboard','middleware' => 'auth'],function(){

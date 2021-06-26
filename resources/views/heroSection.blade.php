@@ -93,69 +93,60 @@
                                 <div class="tab-pane fade show active" id="one-way" role="tabpanel"
                                     aria-labelledby="one-way-tab">
                                     <div class="contact-form-action">
-                                        <form action="{{ route('flight_listing') }}" class="row align-items-center">
+                                        <style type="text/css">
+                                            .as-booking-city{
+        background-color: #ddd !important;
+        line-height: 30px !important;
+    }
+
+    .as-booking-city li{
+        display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+  
+    }
+
+    .as-booking-city li:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+.error{
+    color: red;
+}
+                                        </style>
+                                        <form action="{{ route('flight_listing') }}" method="post" class="row align-items-center">
+                                            @if($errors->any())
+                                            @foreach($errors->all() as $error)
+                                            <div class="error">{{$error}}</div><br>
+                                            @endforeach
+                                            @endif
+                                            @csrf
+                                            <input type="hidden" name="tripType" value="1">
                                             <div class="col-lg-6 pr-0">
                                                 <div class="input-box ">
                                                     <label class="label-text">Flying from</label>
                                                     <div class="form-group ">
-                                                        <span class="fa fa-map-marker form-icon"></span>
-                                                        <select class="selectpicker form-control"
-                                                            data-live-search="true">
-                                                            <option></option>
-                                                            <option value="New York">New York</option>
-                                                            <option value="	Los Angeles">Los Angeles</option>
-                                                            <option value="Chicago">Chicago</option>
-                                                            <option value="Houston">Houston</option>
-                                                            <option value="Phoenix">Phoenix</option>
-                                                            <option value="	Philadelphia">Philadelphia</option>
-                                                            <option value="	San Antonio">San Antonio</option>
-                                                            <option value="	San Diego"> San Diego,</option>
-                                                            <option value="Dallas"> Dallas</option>
-                                                            <option value="	San Jose">San Jose</option>
-                                                            <option value="Austin">Austin</option>
-                                                            <option value="	Jacksonville"> Jacksonville</option>
-                                                            <option value="Fort Worth">Fort Worth</option>
-                                                            <option value="Columbus">Columbus</option>
-                                                            <option value="Charlotte">Charlotte</option>
-                                                            <option value="	San Francisco"> San Francisco</option>
-                                                            <option value="Indianapolis">Indianapolis</option>
-                                                            <option value="Seattle">Seattle</option>
-                                                            <option value="Denver">Denver</option>
-                                                            <option value="Washington">Washington</option>
-                                                            <option value="	Boston">Boston</option>
-                                                            <option value="	El Paso"> El Paso</option>
-                                                            <option value="	Nashville-Davidson">Nashville-Davidson
-                                                            </option>
-                                                            <option value="Detroit">Detroit</option>
-                                                            <option value="	Oklahoma City"> Oklahoma City</option>
-                                                            <option value="Portland">Portland</option>
-                                                            <option value="	Las Vegas">Las Vegas</option>
-                                                            <option value="	Memphis">Memphis</option>
-                                                            <option value="	Louisville-Jefferson County">
-                                                                Louisville-Jefferson County</option>
-                                                            <option value="	Baltimore"> Baltimore</option>
-                                                            <option value="	Milwaukee"> Milwaukee</option>
-                                                            <option value="Albuquerque">Albuquerque</option>
-                                                            <option value="	Tucson">Tucson</option>
-                                                            <option value="	Fresno">Fresno</option>
-                                                            <option value="	Mesa">Mesa</option>
-                                                            <option value="Sacramento">Sacramento</option>
-                                                            <option value="	Atlanta"> Atlanta</option>
-                                                            <option value="Kansas City">Kansas City</option>
-                                                            <option value="Colorado Springs">Colorado Springs
-                                                            </option>
-                                                            <option value="Omaha">Omaha</option>
-                                                            <option value="	Raleigh">Raleigh</option>
-                                                            <option value="	Miami"> Miami</option>
-                                                            <option value="	Long Beach">Long Beach</option>
-                                                            <option value="Virginia Beach">Virginia Beach</option>
-                                                            <option value="	Oakland">Oakland</option>
-                                                            <option value="Minneapolis">Minneapolis</option>
-                                                            <option value="	Tulsa"> Tulsa</option>
-                                                            <option value="Tampa">Tampa</option>
-                                                            <option value="Arlington">Arlington</option>
-                                                            <option value="	New Orleans">New Orleans</option>
-                                                        </select>
+                                                        <!-- <span class="fa fa-map-marker form-icon"></span> -->
+                                                        <input type="hidden" name="originCode" value="" id="originCodeo"  >
+                                                        <input type="text" name="originCodeshow" id="originCode" class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
+                                                        <ul class="as-booking-city originCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
+                                                        
+            
+                                                        
+        
+    
+                    
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,64 +155,13 @@
                                                 <div class="input-box">
                                                     <label class="label-text">Flying to</label>
                                                     <div class="form-group">
-                                                        <span class="fa fa-map-marker form-icon"></span>
-                                                        <select class="selectpicker form-control"
-                                                            data-live-search="true">
-                                                            <option></option>
-                                                            <option value="New York">New York</option>
-                                                            <option value="	Los Angeles">Los Angeles</option>
-                                                            <option value="Chicago">Chicago</option>
-                                                            <option value="Houston">Houston</option>
-                                                            <option value="Phoenix">Phoenix</option>
-                                                            <option value="	Philadelphia">Philadelphia</option>
-                                                            <option value="	San Antonio">San Antonio</option>
-                                                            <option value="	San Diego"> San Diego,</option>
-                                                            <option value="Dallas"> Dallas</option>
-                                                            <option value="	San Jose">San Jose</option>
-                                                            <option value="Austin">Austin</option>
-                                                            <option value="	Jacksonville"> Jacksonville</option>
-                                                            <option value="Fort Worth">Fort Worth</option>
-                                                            <option value="Columbus">Columbus</option>
-                                                            <option value="Charlotte">Charlotte</option>
-                                                            <option value="	San Francisco"> San Francisco</option>
-                                                            <option value="Indianapolis">Indianapolis</option>
-                                                            <option value="Seattle">Seattle</option>
-                                                            <option value="Denver">Denver</option>
-                                                            <option value="Washington">Washington</option>
-                                                            <option value="	Boston">Boston</option>
-                                                            <option value="	El Paso"> El Paso</option>
-                                                            <option value="	Nashville-Davidson">Nashville-Davidson
-                                                            </option>
-                                                            <option value="Detroit">Detroit</option>
-                                                            <option value="	Oklahoma City"> Oklahoma City</option>
-                                                            <option value="Portland">Portland</option>
-                                                            <option value="	Las Vegas">Las Vegas</option>
-                                                            <option value="	Memphis">Memphis</option>
-                                                            <option value="	Louisville-Jefferson County">
-                                                                Louisville-Jefferson County</option>
-                                                            <option value="	Baltimore"> Baltimore</option>
-                                                            <option value="	Milwaukee"> Milwaukee</option>
-                                                            <option value="Albuquerque">Albuquerque</option>
-                                                            <option value="	Tucson">Tucson</option>
-                                                            <option value="	Fresno">Fresno</option>
-                                                            <option value="	Mesa">Mesa</option>
-                                                            <option value="Sacramento">Sacramento</option>
-                                                            <option value="	Atlanta"> Atlanta</option>
-                                                            <option value="Kansas City">Kansas City</option>
-                                                            <option value="Colorado Springs">Colorado Springs
-                                                            </option>
-                                                            <option value="Omaha">Omaha</option>
-                                                            <option value="	Raleigh">Raleigh</option>
-                                                            <option value="	Miami"> Miami</option>
-                                                            <option value="	Long Beach">Long Beach</option>
-                                                            <option value="Virginia Beach">Virginia Beach</option>
-                                                            <option value="	Oakland">Oakland</option>
-                                                            <option value="Minneapolis">Minneapolis</option>
-                                                            <option value="	Tulsa"> Tulsa</option>
-                                                            <option value="Tampa">Tampa</option>
-                                                            <option value="Arlington">Arlington</option>
-                                                            <option value="	New Orleans">New Orleans</option>
-                                                        </select>
+                                                        <!-- <span class="fa fa-map-marker form-icon"></span> -->
+                                                       <input type="hidden" name="destCode" value="" id="destCodeo">
+                                                         <input type="text" name="destCodeshow" id="destCode" class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
+                                                         <ul class="as-booking-city destiCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
+                                                         
                                                     </div>
                                                 </div>
                                             </div>
@@ -232,8 +172,9 @@
                                                     <div class="form-group">
                                                         <span
                                                             class="fa fa-calendar form-icon as-custom-icon"></span>
+
                                                         <input class="date-range form-control" type="text"
-                                                            name="daterange-single" readonly>
+                                                            name="daterangesingle"  required="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -261,8 +202,8 @@
                                                                             class="qtyBtn d-flex align-items-center">
                                                                             <div class="qtyDec"><i
                                                                                     class="fas fa-minus"></i></div>
-                                                                            <input type="text" name="adult_number"
-                                                                                value="0">
+                                                                            <input type="text" name="adult"
+                                                                                value="0" required="">
                                                                             <div class="qtyInc"><i
                                                                                     class="fas fa-plus"></i></div>
                                                                         </div>
@@ -276,7 +217,7 @@
                                                                             class="qtyBtn d-flex align-items-center">
                                                                             <div class="qtyDec"><i
                                                                                     class="fas fa-minus"></i></div>
-                                                                            <input type="text" name="child_number"
+                                                                            <input type="text" name="child"
                                                                                 value="0">
                                                                             <div class="qtyInc"><i
                                                                                     class="fas fa-plus"></i></div>
@@ -291,7 +232,7 @@
                                                                             class="qtyBtn d-flex align-items-center">
                                                                             <div class="qtyDec"><i
                                                                                     class="fas fa-minus"></i></div>
-                                                                            <input type="text" name="infants_number"
+                                                                            <input type="text" name="infant"
                                                                                 value="0" class="qty-input">
                                                                             <div class="qtyInc"><i
                                                                                     class="fas fa-plus"></i></div>
@@ -306,10 +247,10 @@
                                             </div>
 
                                             <div class="col-lg-3 pr-0">
-                                                <select class="as-trip-value mt-3">
-                                                    <option value="0 Adult 0 Child">Economy</option>
+                                                <select class="as-trip-value mt-3" name="cabinClass" required="">
+                                                    <option value="">Select Class</option>
                                                     <option value="1">1</option>
-                                                    <option value="2">2</option>
+                                                    <option value="2">Business</option>
                                                     <option value="3">3</option>
                                                 </select>
                                             </div>
@@ -329,69 +270,23 @@
                                 <div class="tab-pane fade" id="round-trip" role="tabpanel"
                                     aria-labelledby="round-trip-tab">
                                     <div class="contact-form-action">
-                                        <form action="{{ route('flight_listing') }}" class="row align-items-center">
+                                        <form action="{{ route('flight_listing') }}" method="post" class="row align-items-center">
+                                            @if($errors->any())
+                                            @foreach($errors->all() as $error)
+                                            <div class="error">{{$error}}</div><br>
+                                            @endforeach
+                                            @endif
+                                            @csrf
+                                            <input type="hidden" name="tripType" value="2">
                                             <div class="col-lg-6 pr-0">
                                                 <div class="input-box">
                                                     <label class="label-text">Flying from</label>
                                                     <div class="form-group">
-                                                        <span class="fa fa-map-marker form-icon"></span>
-                                                        <select class="selectpicker form-control"
-                                                            data-live-search="true">
-                                                            <option></option>
-                                                            <option value="New York">New York</option>
-                                                            <option value="	Los Angeles">Los Angeles</option>
-                                                            <option value="Chicago">Chicago</option>
-                                                            <option value="Houston">Houston</option>
-                                                            <option value="Phoenix">Phoenix</option>
-                                                            <option value="	Philadelphia">Philadelphia</option>
-                                                            <option value="	San Antonio">San Antonio</option>
-                                                            <option value="	San Diego"> San Diego,</option>
-                                                            <option value="Dallas"> Dallas</option>
-                                                            <option value="	San Jose">San Jose</option>
-                                                            <option value="Austin">Austin</option>
-                                                            <option value="	Jacksonville"> Jacksonville</option>
-                                                            <option value="Fort Worth">Fort Worth</option>
-                                                            <option value="Columbus">Columbus</option>
-                                                            <option value="Charlotte">Charlotte</option>
-                                                            <option value="	San Francisco"> San Francisco</option>
-                                                            <option value="Indianapolis">Indianapolis</option>
-                                                            <option value="Seattle">Seattle</option>
-                                                            <option value="Denver">Denver</option>
-                                                            <option value="Washington">Washington</option>
-                                                            <option value="	Boston">Boston</option>
-                                                            <option value="	El Paso"> El Paso</option>
-                                                            <option value="	Nashville-Davidson">Nashville-Davidson
-                                                            </option>
-                                                            <option value="Detroit">Detroit</option>
-                                                            <option value="	Oklahoma City"> Oklahoma City</option>
-                                                            <option value="Portland">Portland</option>
-                                                            <option value="	Las Vegas">Las Vegas</option>
-                                                            <option value="	Memphis">Memphis</option>
-                                                            <option value="	Louisville-Jefferson County">
-                                                                Louisville-Jefferson County</option>
-                                                            <option value="	Baltimore"> Baltimore</option>
-                                                            <option value="	Milwaukee"> Milwaukee</option>
-                                                            <option value="Albuquerque">Albuquerque</option>
-                                                            <option value="	Tucson">Tucson</option>
-                                                            <option value="	Fresno">Fresno</option>
-                                                            <option value="	Mesa">Mesa</option>
-                                                            <option value="Sacramento">Sacramento</option>
-                                                            <option value="	Atlanta"> Atlanta</option>
-                                                            <option value="Kansas City">Kansas City</option>
-                                                            <option value="Colorado Springs">Colorado Springs
-                                                            </option>
-                                                            <option value="Omaha">Omaha</option>
-                                                            <option value="	Raleigh">Raleigh</option>
-                                                            <option value="	Miami"> Miami</option>
-                                                            <option value="	Long Beach">Long Beach</option>
-                                                            <option value="Virginia Beach">Virginia Beach</option>
-                                                            <option value="	Oakland">Oakland</option>
-                                                            <option value="Minneapolis">Minneapolis</option>
-                                                            <option value="	Tulsa"> Tulsa</option>
-                                                            <option value="Tampa">Tampa</option>
-                                                            <option value="Arlington">Arlington</option>
-                                                            <option value="	New Orleans">New Orleans</option>
-                                                        </select>
+                                                        <input type="hidden" name="originCode" value="" id="toriginCodeo"   >
+                                                        <input type="text" name="originCodeshow"  id="toriginCode" class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
+                                                        <ul class="as-booking-city toriginCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -400,64 +295,11 @@
                                                 <div class="input-box">
                                                     <label class="label-text">Flying to</label>
                                                     <div class="form-group">
-                                                        <span class="fa fa-map-marker form-icon"></span>
-                                                        <select class="selectpicker form-control"
-                                                            data-live-search="true">
-                                                            <option></option>
-                                                            <option value="New York">New York</option>
-                                                            <option value="	Los Angeles">Los Angeles</option>
-                                                            <option value="Chicago">Chicago</option>
-                                                            <option value="Houston">Houston</option>
-                                                            <option value="Phoenix">Phoenix</option>
-                                                            <option value="	Philadelphia">Philadelphia</option>
-                                                            <option value="	San Antonio">San Antonio</option>
-                                                            <option value="	San Diego"> San Diego,</option>
-                                                            <option value="Dallas"> Dallas</option>
-                                                            <option value="	San Jose">San Jose</option>
-                                                            <option value="Austin">Austin</option>
-                                                            <option value="	Jacksonville"> Jacksonville</option>
-                                                            <option value="Fort Worth">Fort Worth</option>
-                                                            <option value="Columbus">Columbus</option>
-                                                            <option value="Charlotte">Charlotte</option>
-                                                            <option value="	San Francisco"> San Francisco</option>
-                                                            <option value="Indianapolis">Indianapolis</option>
-                                                            <option value="Seattle">Seattle</option>
-                                                            <option value="Denver">Denver</option>
-                                                            <option value="Washington">Washington</option>
-                                                            <option value="	Boston">Boston</option>
-                                                            <option value="	El Paso"> El Paso</option>
-                                                            <option value="	Nashville-Davidson">Nashville-Davidson
-                                                            </option>
-                                                            <option value="Detroit">Detroit</option>
-                                                            <option value="	Oklahoma City"> Oklahoma City</option>
-                                                            <option value="Portland">Portland</option>
-                                                            <option value="	Las Vegas">Las Vegas</option>
-                                                            <option value="	Memphis">Memphis</option>
-                                                            <option value="	Louisville-Jefferson County">
-                                                                Louisville-Jefferson County</option>
-                                                            <option value="	Baltimore"> Baltimore</option>
-                                                            <option value="	Milwaukee"> Milwaukee</option>
-                                                            <option value="Albuquerque">Albuquerque</option>
-                                                            <option value="	Tucson">Tucson</option>
-                                                            <option value="	Fresno">Fresno</option>
-                                                            <option value="	Mesa">Mesa</option>
-                                                            <option value="Sacramento">Sacramento</option>
-                                                            <option value="	Atlanta"> Atlanta</option>
-                                                            <option value="Kansas City">Kansas City</option>
-                                                            <option value="Colorado Springs">Colorado Springs
-                                                            </option>
-                                                            <option value="Omaha">Omaha</option>
-                                                            <option value="	Raleigh">Raleigh</option>
-                                                            <option value="	Miami"> Miami</option>
-                                                            <option value="	Long Beach">Long Beach</option>
-                                                            <option value="Virginia Beach">Virginia Beach</option>
-                                                            <option value="	Oakland">Oakland</option>
-                                                            <option value="Minneapolis">Minneapolis</option>
-                                                            <option value="	Tulsa"> Tulsa</option>
-                                                            <option value="Tampa">Tampa</option>
-                                                            <option value="Arlington">Arlington</option>
-                                                            <option value="	New Orleans">New Orleans</option>
-                                                        </select>
+                                                        <input type="hidden" name="destCode" value="" id="tdestCodeo" class="destCodeo">
+                                                         <input type="text" name="destCodeshow" id="tdestCode"  class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
+                                                         <ul class="as-booking-city tdestiCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -497,7 +339,7 @@
                                                                             class="qtyBtn d-flex align-items-center">
                                                                             <div class="qtyDec"><i
                                                                                     class="fas fa-minus"></i></div>
-                                                                            <input type="text" name="adult_number"
+                                                                            <input type="text" name="adult"
                                                                                 value="0">
                                                                             <div class="qtyInc"><i
                                                                                     class="fas fa-plus"></i></div>
@@ -512,7 +354,7 @@
                                                                             class="qtyBtn d-flex align-items-center">
                                                                             <div class="qtyDec"><i
                                                                                     class="fas fa-minus"></i></div>
-                                                                            <input type="text" name="child_number"
+                                                                            <input type="text" name="child"
                                                                                 value="0">
                                                                             <div class="qtyInc"><i
                                                                                     class="fas fa-plus"></i></div>
@@ -527,7 +369,7 @@
                                                                             class="qtyBtn d-flex align-items-center">
                                                                             <div class="qtyDec"><i
                                                                                     class="fas fa-minus"></i></div>
-                                                                            <input type="text" name="infants_number"
+                                                                            <input type="text" name="infant"
                                                                                 value="0" class="qty-input">
                                                                             <div class="qtyInc"><i
                                                                                     class="fas fa-plus"></i></div>
@@ -546,7 +388,7 @@
                                                     <label class="label-text">Coach</label>
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
-                                                            <select class="as-trip-value">
+                                                            <select class="as-trip-value" name="cabinClass">
                                                                 <option value="1" selected>Economy</option>
                                                                 <option value="2">Business</option>
                                                                 <option value="3">First class</option>

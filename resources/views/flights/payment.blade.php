@@ -6,6 +6,10 @@
     background-color: #fff;
     margin-left: 0px;
 }
+.returnflights{
+        border-top: 1px dashed #333;
+    padding-bottom: 15px;
+    }
 </style>
  <section class="as-main-booking-box as-main-booking-heading">
         <div class="container ">
@@ -52,14 +56,14 @@
 
         <div class="row">
             <div class="col-lg-10 mx-auto">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-4 as-book-now-ticket">
                         <b>Book Now</b> only <span style="color: brown">9 seats</span> left at this price!
                     </div>
 
                     <div class="col-lg-3 offset-lg-3 as-flexible-date">
                         <span class="Flexi_nearby">
-                            &nbsp; &nbsp;<img src="assets/img/calender.png" style="vertical-align: middle;">
+                            &nbsp; &nbsp;<img src="{{ asset('/assets/img/calender.png')}}" style="vertical-align: middle;">
                             This is a Flexible Date option. <i class="fa fa-question-circle"></i>
 
                         </span>
@@ -69,12 +73,15 @@
                             <b>Saving</b> $413.04 <i class="fa fa-question-circle"></i>
                         </span>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
 
         <div class="row">
+            <form method="POST" action="{{ route('flight_pay')}}">
+                @csrf
+            
             <div class="col-lg-10 mx-auto as-main-booking-box">
                 <div class="row">
                     <div class="col-lg-12 col-12 as-booking-heading">
@@ -84,73 +91,81 @@
                         </span>
                     </div>
                 </div>
+
+                
                 <div class="row as-flight-detail-box">
+                    @foreach($resultdatao->SelectedContract->FlightSegmentDetails->OutBoundSegment as $flights)
                     <div class="col-lg-12 as-listing-ticket-content">
                         <div class="row as-listing-ticket-row">
                             <div class="col-lg-3 col-md-3 col-3 as-payment-img">
-                                <img src="assets/img/air-logo.png" alt="airlogo" class="img-fluid as-ticket-img">
-                                <p class="as-img-content">American Airlines</p>
+                                <!-- <img src="assets/img/air-logo.png" alt="airlogo" class="img-fluid as-ticket-img"> -->
+                                <img src="https://skyhikes.com/ImageApp/AirlineLogo/{{$flights->MarketingCarrier->AirlineCode}}.png" alt="{{$flights->MarketingCarrier->AirlineName}}" width="60" height="35">
+                                <p class="as-img-content">{{$flights->MarketingCarrier->AirlineName}}</p>
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
                                 <span class="as-souce-flight">
 
-                                    <span><strong class="highlight bg-high">DEL, </strong>Delhi Indira Gandhi
-                                        Intl</span><br>
+                                    <span><strong class="highlight bg-high">{{$flights->Origin}}, </strong>{{$flights->OriginCity}}</span><br>
 
-                                    <strong class="highlight">01:15 AM, </strong><span
-                                        class="date_bg LightYellowBack">Sat, Apr 17, 2021</span><br>
+                                    <strong class="highlight">{{ date("g:i a", strtotime($flights->DepartureTime)) }}, </strong><span
+                                        class="date_bg LightYellowBack"> {{ date('l',strtotime($flights->DepartureDate)) }}, {{date('F',strtotime($flights->DepartureDate))}} {{date('j',strtotime($flights->DepartureDate))}}, {{date('Y',strtotime($flights->DepartureDate))}}</span><br>
                                 </span>
 
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
-                                <h6 class="as-duration-ticket">02h 38m </h6>
-                                <p>Non Stop</p>
+                                <h6 class="as-duration-ticket">{{$flights->FlightDuration}} </h6>
+                                <!-- <p>Non Stop</p> -->
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
                                 <span class="as-souce-flight">
 
-                                    <span><strong class="highlight bg-high">CDG, </strong>Charles De Gaulle Intl
-                                        Arpt</span><br>
-                                    <strong class="highlight">06:40 AM, </strong> Sat, Apr 17, 2021<br>
+                                    <span><strong class="highlight bg-high">{{$flights->Destination}}, </strong>{{$flights->DestinationCity}}</span><br>
+                                    <strong class="highlight">{{ date("g:i a", strtotime($flights->ArrivalTime)) }}, </strong> {{ date('l',strtotime($flights->ArrivalDate)) }}, {{date('F',strtotime($flights->ArrivalDate))}} {{date('j',strtotime($flights->ArrivalDate))}}, {{date('Y',strtotime($flights->ArrivalDate))}}<br>
                                 </span>
                             </div>
 
                         </div>
                     </div>
+                    @endforeach
 
-                    <div class="col-lg-12 as-listing-ticket-content">
+                    @if($resultdatao->SelectedContract->FlightSegmentDetails->InBoundSegment)
+                                    <div class="returnflights">
+                                     @foreach($resultdatao->SelectedContract->FlightSegmentDetails->InBoundSegment as $flightsr)
+                                    <div class="col-lg-12 as-listing-ticket-content">
                         <div class="row as-listing-ticket-row">
                             <div class="col-lg-3 col-md-3 col-3 as-payment-img">
-                                <img src="assets/img/air-logo.png" alt="airlogo" class="img-fluid as-ticket-img">
-                                <p class="as-img-content">American Airlines</p>
+                                <!-- <img src="assets/img/air-logo.png" alt="airlogo" class="img-fluid as-ticket-img"> -->
+                                <img src="https://skyhikes.com/ImageApp/AirlineLogo/{{$flightsr->MarketingCarrier->AirlineCode}}.png" alt="{{$flightsr->MarketingCarrier->AirlineName}}" width="60" height="35">
+                                <p class="as-img-content">{{$flightsr->MarketingCarrier->AirlineName}}</p>
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
                                 <span class="as-souce-flight">
 
-                                    <span><strong class="highlight bg-high">DEL, </strong>Delhi Indira Gandhi
-                                        Intl</span><br>
+                                    <span><strong class="highlight bg-high">{{$flightsr->Origin}}, </strong>{{$flightsr->OriginCity}}</span><br>
 
-                                    <strong class="highlight">01:15 AM, </strong><span
-                                        class="date_bg LightYellowBack">Sat, Apr 17, 2021</span><br>
+                                    <strong class="highlight">{{ date("g:i a", strtotime($flightsr->DepartureTime)) }}, </strong><span
+                                        class="date_bg LightYellowBack"> {{ date('l',strtotime($flightsr->DepartureDate)) }}, {{date('F',strtotime($flightsr->DepartureDate))}} {{date('j',strtotime($flightsr->DepartureDate))}}, {{date('Y',strtotime($flightsr->DepartureDate))}}</span><br>
                                 </span>
+
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
-                                <h6 class="as-duration-ticket">02h 38m </h6>
-                                <p>Non Stop</p>
+                                <h6 class="as-duration-ticket">{{$flightsr->FlightDuration}} </h6>
+                                <!-- <p>Non Stop</p> -->
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
                                 <span class="as-souce-flight">
 
-                                    <span><strong class="highlight bg-high">DEL, </strong>Delhi Indira Gandhi
-                                        Intl</span><br>
-
-                                    <strong class="highlight">01:15 AM, </strong><span
-                                        class="date_bg LightYellowBack">Sat, Apr 17, 2021</span><br>
+                                    <span><strong class="highlight bg-high">{{$flightsr->Destination}}, </strong>{{$flightsr->DestinationCity}}</span><br>
+                                    <strong class="highlight">{{ date("g:i a", strtotime($flightsr->ArrivalTime)) }}, </strong> {{ date('l',strtotime($flightsr->ArrivalDate)) }}, {{date('F',strtotime($flightsr->ArrivalDate))}} {{date('j',strtotime($flightsr->ArrivalDate))}}, {{date('Y',strtotime($flightsr->ArrivalDate))}}<br>
                                 </span>
                             </div>
 
                         </div>
                     </div>
+                                     @endforeach
+                                 </div>
+                                    @endif
+
 
                     <div class="col-lg-5 as-baggage-dropdown">
                         <a href="#"> Additional Baggage Charges may apply</a>
@@ -167,6 +182,9 @@
                         </span>
                     </div>
                 </div>
+                <input type="hidden" name="ContractID" value="{{ request()->id }}">
+                <input type="hidden" name="CacheKey" value="{{ request()->CacheKey }}">
+                @for ($i =0; $i <$resultdatao->SelectedContract->Adult; $i++)
                 <div class="row as-flight-detail-box">
                     <div class="col-lg-12 as-listing-ticket-content">
                         <div class="row as-listing-ticket-row">
@@ -179,15 +197,6 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-lg-6 col-md-6 col-6" style="text-align: end;">
-
-                                <span>
-                                    1/1 selected
-                                </span>
-                            </div>
-
-
                         </div>
                     </div>
 
@@ -199,23 +208,23 @@
                                 <div class="form-row">
                                     <div class="form-group col-lg-1 col-md-3">
                                         <label for="title">Title</label>
-                                        <select id="inputState" class="form-control">
+                                        <select id="inputState" class="form-control" name="PaxTItle[]">
                                             <option selected>Mr</option>
                                             <option>Mrs</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-2 col-md-3">
                                         <label for="firstName">First Name</label>
-                                        <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                                        <input type="text" class="form-control" id="firstname" placeholder="First Name" name="FirstName[]">
                                     </div>
                                     <div class="form-group col-lg-2 col-md-3">
                                         <label for="middleName">Middle Name</label>
                                         <input type="text" class="form-control" id="middletname"
-                                            placeholder="Middle Name">
+                                            placeholder="Middle Name" name="MiddleName[]">
                                     </div>
                                     <div class="form-group col-lg-2 col-md-3">
                                         <label for="lasttName">Last Name</label>
-                                        <input type="text" class="form-control" id="lasttname" placeholder="Last Name">
+                                        <input type="text" class="form-control" id="lasttname" placeholder="Last Name" name="LastName[]">
                                     </div>
 
                                     <div class="col-lg-4 col-md-9">
@@ -256,7 +265,7 @@
 
                                     <div class="form-group col-md-1 col-md-3">
                                         <label for="inputState">Gender</label>
-                                        <select id="inputState" class="form-control">
+                                        <select id="inputState" class="form-control" name="Gender[]">
                                             <option selected>Male</option>
                                             <option>Female</option>
                                         </select>
@@ -266,11 +275,198 @@
 
                         </div>
                     </div>
+                </div>
+                @endfor
 
-                    <div class="col-lg-3 as-baggage-dropdown">
-                        <button type="button" class="btn add-passenger">ADD Passanger</button>
+                @for ($i =0; $i <$resultdatao->SelectedContract->Child; $i++)
+                <div class="row as-flight-detail-box">
+                    <div class="col-lg-12 as-listing-ticket-content">
+                        <div class="row as-listing-ticket-row">
+                            <div class="col-lg-6 col-md-6 col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Child
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 as-listing-ticket-content">
+                        <div class="row as-listing-ticket-row">
+                            <div class="col-lg-12">
+
+
+                                <div class="form-row">
+                                    <div class="form-group col-lg-1 col-md-3">
+                                        <label for="title">Title</label>
+                                        <select id="inputState" class="form-control" name="PaxTItle[]">
+                                            <option selected>Mr</option>
+                                            <option>Mrs</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-2 col-md-3">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" class="form-control" id="firstname" placeholder="First Name" name="FirstName[]">
+                                    </div>
+                                    <div class="form-group col-lg-2 col-md-3">
+                                        <label for="middleName">Middle Name</label>
+                                        <input type="text" class="form-control" id="middletname"
+                                            placeholder="Middle Name" name="MiddleName[]">
+                                    </div>
+                                    <div class="form-group col-lg-2 col-md-3">
+                                        <label for="lasttName">Last Name</label>
+                                        <input type="text" class="form-control" id="lasttname" placeholder="Last Name" name="LastName[]">
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-9">
+
+                                        <label for="dob">DOB</label>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-4">
+                                                <select id="month" class="form-control">
+                                                    <option selected>Month</option>
+                                                    <option>Jan</option>
+                                                    <option>Feb</option>
+                                                    <option>Mar</option>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="col-lg-4 col-md-4 col-4">
+                                                <select id="day" class="form-control">
+                                                    <option selected>Day</option>
+                                                    <option>Jan</option>
+                                                    <option>Feb</option>
+                                                    <option>Mar</option>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="col-lg-4 col-md-4 col-4">
+                                                <select id="year" class="form-control">
+                                                    <option selected>Year</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-md-1 col-md-3">
+                                        <label for="inputState">Gender</label>
+                                        <select id="inputState" class="form-control" name="Gender[]">
+                                            <option selected>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+                @endfor
+
+                @for ($i =0; $i <$resultdatao->SelectedContract->Infant; $i++)
+                <div class="row as-flight-detail-box">
+                    <div class="col-lg-12 as-listing-ticket-content">
+                        <div class="row as-listing-ticket-row">
+                            <div class="col-lg-6 col-md-6 col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Infant
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 as-listing-ticket-content">
+                        <div class="row as-listing-ticket-row">
+                            <div class="col-lg-12">
+
+
+                                <div class="form-row">
+                                    <div class="form-group col-lg-1 col-md-3">
+                                        <label for="title">Title</label>
+                                        <select id="inputState" class="form-control" name="PaxTItle[]">
+                                            <option selected>Mr</option>
+                                            <option>Mrs</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-2 col-md-3">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" class="form-control" id="firstname" placeholder="First Name" name="FirstName[]">
+                                    </div>
+                                    <div class="form-group col-lg-2 col-md-3">
+                                        <label for="middleName">Middle Name</label>
+                                        <input type="text" class="form-control" id="middletname"
+                                            placeholder="Middle Name" name="MiddleName[]">
+                                    </div>
+                                    <div class="form-group col-lg-2 col-md-3">
+                                        <label for="lasttName">Last Name</label>
+                                        <input type="text" class="form-control" id="lasttname" placeholder="Last Name" name="LastName[]">
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-9">
+
+                                        <label for="dob">DOB</label>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-4">
+                                                <select id="month" class="form-control">
+                                                    <option selected>Month</option>
+                                                    <option>Jan</option>
+                                                    <option>Feb</option>
+                                                    <option>Mar</option>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="col-lg-4 col-md-4 col-4">
+                                                <select id="day" class="form-control">
+                                                    <option selected>Day</option>
+                                                    <option>Jan</option>
+                                                    <option>Feb</option>
+                                                    <option>Mar</option>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="col-lg-4 col-md-4 col-4">
+                                                <select id="year" class="form-control">
+                                                    <option selected>Year</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-md-1 col-md-3">
+                                        <label for="inputState">Gender</label>
+                                        <select id="inputState" class="form-control" name="Gender[]">
+                                            <option selected>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @endfor
+
+
             </div>
 
             <div class="col-lg-10 mx-auto as-main-booking-box">
@@ -294,12 +490,31 @@
                                         <td>Sub Total</td>
                                     </thead>
                                     <tbody>
+                                        @if($resultdatao->SelectedContract->Adult)
                                         <tr>
-                                            <td>1 Adult</td>
-                                            <td>$130</td>
-                                            <td>$54</td>
-                                            <td>$184</td>
+                                            <td>{{$resultdatao->SelectedContract->Adult}} Adult</td>
+                                            <td>${{$resultdatao->SelectedContract->AdultFare->BaseFare}}</td>
+                                            <td>${{$resultdatao->SelectedContract->AdultFare->Tax}}</td>
+                                            <td>${{$resultdatao->SelectedContract->AdultFare->TotalFare * $resultdatao->SelectedContract->Adult}}</td>
                                         </tr>
+                                        @endif
+                                        @if($resultdatao->SelectedContract->Child)
+                                        <tr>
+                                            <td>{{$resultdatao->SelectedContract->Child}} Child</td>
+                                            <td>${{$resultdatao->SelectedContract->ChildFare->BaseFare}}</td>
+                                            <td>${{$resultdatao->SelectedContract->ChildFare->Tax}}</td>
+                                            <td>${{$resultdatao->SelectedContract->ChildFare->TotalFare * $resultdatao->SelectedContract->Child}}</td>
+                                        </tr>
+                                        @endif
+                                        @if($resultdatao->SelectedContract->Infant)
+                                        <tr>
+                                            <td>{{$resultdatao->SelectedContract->Infant}} Infant</td>
+                                            <td>${{$resultdatao->SelectedContract->InfantFare->BaseFare}}</td>
+                                            <td>${{$resultdatao->SelectedContract->InfantFare->Tax}}</td>
+                                            <td>${{$resultdatao->SelectedContract->InfantFare->TotalFare * $resultdatao->SelectedContract->Infant}}</td>
+                                        </tr>
+                                        @endif
+                                        
 
                                     </tbody>
 
@@ -307,7 +522,7 @@
                                         <td>Sub Total</td>
                                         <td></td>
                                         <td></td>
-                                        <td>$184</td>
+                                        <td>${{$resultdatao->SelectedContract->TotalGDSFareV2}}</td>
                                     </thead>
 
                                 </table class="as-price-toal">
@@ -342,7 +557,7 @@
                                         </h6>
                                     </div>
                                     <div class="col-lg-3 col-md-3">
-                                        <h6>$184</h6>
+                                        <h6>${{$resultdatao->SelectedContract->TotalGDSFareV2}}</h6>
 
                                     </div>
                                 </div>
@@ -378,7 +593,7 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <form>
+                    
                         <div class="form-group row">
                             <label for="inputPassword" class="col-lg-3 col-md-4 col-form-label">Credit / Debit Card
                                 Number*</label>
@@ -397,7 +612,7 @@
                                             </svg><!-- <i class="fa fa-credit-card"></i> --></span>
                                     </div>
                                     <input class="form-control" required="" type="text"
-                                        placeholder="Credit / Debit Card Number" name="username">
+                                        placeholder="Credit / Debit Card Number" name="CardNumber">
                                 </div>
 
                             </div>
@@ -418,7 +633,7 @@
                                                 </path>
                                             </svg><!-- <i class="fa fa-user"></i> --></span>
                                     </div>
-                                    <input type="text" class="form-control" name="username"
+                                    <input type="text" class="form-control" name="CCHolderName"
                                         placeholder="Card Holder's Name" required="">
                                 </div>
                             </div>
@@ -430,7 +645,7 @@
                                 <div class="form-group">
 
                                     <div class="form-inline">
-                                        <select class="form-control" style="width:45%">
+                                        <select class="form-control" style="width:45%" name="ExpiryMonth">
                                             <option selected="" value="1">Month</option>
                                             <option>Janaury</option>
                                             <option value="2">February</option>
@@ -446,7 +661,7 @@
                                             <option value="12">December</option>
                                         </select>
                                         <span style="width:10%; text-align: center"> / </span>
-                                        <select class="form-control" style="width:45%">
+                                        <select class="form-control" style="width:45%" name="ExpiryYear">
                                             <option>Year</option>
                                             <option value="2020">2020</option>
                                             <option value="2019">2019</option>
@@ -468,12 +683,12 @@
                             <label for="inputPassword" class="col-lg-3 col-md-4 col-form-label">Card Verification
                                 Number*</label>
                             <div class="col-lg-5 col-md-6">
-                                <input type="text" class="form-control" id="inputPassword" placeholder="CVV">
+                                <input type="text" class="form-control" id="inputPassword" placeholder="CVV" name="CVVNumber">
                             </div>
                         </div>
 
 
-                    </form>
+                    
 
                 </div>
             </div>
@@ -493,11 +708,11 @@
                     </div>
                     <div class="row as-flight-detail-box as-custom-desktop-height-box">
                         <div class="col-lg-12">
-                            <form>
+                            
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Country*</label>
                                     <div class="col-sm-9">
-                                        <select id="inputState" class="form-control">
+                                        <select id="inputState" class="form-control" name="Country">
                                             <option selected>India</option>
                                             <option>United state</option>
                                             <option>United kindom</option>
@@ -509,14 +724,14 @@
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Address*</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="inputPassword" placeholder="" name="AddressLine1">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label"></label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="inputPassword" placeholder="" name="AddressLine2">
                                     </div>
                                 </div>
 
@@ -524,14 +739,14 @@
                                     <label for="inputPassword" class="col-sm-3 col-form-label">City</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="inputPassword"
-                                            placeholder="City Name">
+                                            placeholder="City Name" name="City">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">State*</label>
                                     <div class="col-sm-9">
-                                        <select id="inputState" class="form-control">
+                                        <select id="inputState" class="form-control" name="State">
                                             <option selected>Delhi</option>
                                             <option>Bihar</option>
                                             <option>Punjab</option>
@@ -543,10 +758,10 @@
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Zip*</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="Zip">
+                                        <input type="text" class="form-control" id="inputPassword" placeholder="Zip" name="ZipCode">
                                     </div>
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -560,26 +775,26 @@
                         </div>
 
                         <div class="col-lg-12 as-contact-information-box">
-                            <form>
+                            
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Billing Phone*</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="inputPassword"
-                                            placeholder="Billing Phone">
+                                            placeholder="Billing Phone" name="BillingPhone">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Mobile Phone*</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="inputPassword"
-                                            placeholder="Mobile Phone">
+                                            placeholder="Mobile Phone" name="ContactPhone">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Email*</label>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="inputPassword" placeholder="Email">
+                                        <input type="email" class="form-control" id="inputPassword" placeholder="Email" name="Email">
                                     </div>
                                 </div>
 
@@ -602,7 +817,7 @@
                                 <div class="right Contact_info"> <small>We'll personalise your Confirmation email and
                                         other notifications to fit your travel needs</small></div>
 
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -663,7 +878,7 @@
                                     href="terms.html">Terms and
                                     Condition</a> and <a href="policy.html"> Privacy Policy</a> </p>
 
-                            <button type="button" class="btn btn-apply">Book Now</button>
+                            <button type="submit" class="btn btn-apply">Book Now</button>
                         </div>
                     </div>
 
@@ -672,6 +887,7 @@
             </div>
         </div>
 
+</form>
     </div>
     </div>   
 @endsection
