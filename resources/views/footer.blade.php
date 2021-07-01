@@ -264,6 +264,7 @@
 <script src="{{ asset('/assets/js/fontawesome.min.js') }}"></script>
 <script src="{{ asset('/assets/js/main.js') }}"></script>
 <script src="{{ asset('/assets/js/listing.js') }}"></script>
+<script src="{{ asset('/assets/js/airports.js') }}"></script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNFLVPX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -274,74 +275,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-    // $("input.form-control").keyup(function(event){
-        $(document).on('click', '.originair', function(event) {
-            var originval = $(this).html();
-            var originCode = $(this).attr('for');
-            $('#originCode').val(originval).attr('origincode',originCode);
-            $('#originCodeo').val(originCode);
-             $('.originCodesreach').css('display','none');
 
+$(document).on('click', '.originair', function(event) {
+    var originval = $(this).html();
+    var originCode = $(this).attr('for');
+    $('#originCode').val(originval).attr('origincode', originCode);
+    $('#originCodeo').val(originCode);
+    $('.originCodesreach').css('display', 'none');
+});
+$(document).on('click', '.toriginairtest', function(event) {
+    var originval = $(this).html();
+    var originCode = $(this).attr('for');
+    $('#toriginCode').val(originval);
+    $('#toriginCodeo').val(originCode);
+    $('.toriginCodesreach').css('display', 'none');
+});
+$(document).on('click', '.toriginair', function(event) {
+    var originval = $(this).html();
+    var originCode = $(this).attr('for');
+    $('#destCode').val(originval);
+    // $('#toriginCodeo').val(originCode);
+    $('.destiCodesreach').css('display', 'none');
+});
+///// to every word capitalise string //
+function capitalize(input) {
+    var words = input.split(' ');
+    var CapitalizedWords = [];
+    words.forEach(element => {
+        CapitalizedWords.push(element[0].toUpperCase() + element.slice(1, element.length));
+    });
+    return CapitalizedWords.join(' ');
+}
+////////////////////////////////////////
 
-        });
-        $(document).on('click', '.toriginair', function(event) {
-            var originval = $(this).html();
-            var originCode = $(this).attr('for');
-            $('#toriginCode').val(originval);
-            $('#toriginCodeo').val(originCode);
-             $('.toriginCodesreach').css('display','none');
-
-
-        });
-        $(document).on('keyup', '#originCode', function(event) {
-             var originCode = $(this).val();
-            
-      
-      var originCoden = originCode.length;
-      
-      if(originCoden>2){
-
-            var _token   = $('meta[name="csrf-token"]').attr('content');
-
-      $.ajax({
-        url: "{{route('airports')}}",
-        type:"GET",
-        data:{
-          name:originCode,
-          _token: _token
-        },
-        success:function(response){
-          console.log(response);
-          if(response) {
-
-             data = JSON.parse(response);
-        var html = "";
-    for (var i = 0; i < data.length; i++) {
-       
-       
-        html = html + "<li for='" + data[i].iata_code + "' class='originair'>"+data[i].name+"</li>";
-    };
-            console.log(html);
-            // $('#flyto').html(html);
+$(document).on('keyup', '#originCode', function(event) {
+    var originCode = $(this).val();
+    var originCoden = originCode.length;
+    var outputdata = [];
+    if (originCoden > 2) {
+        if (originCoden == 3) {
+            var originCode = originCode.toUpperCase();
+            myairports.filter(function(person) {
+                if (person.iata.indexOf(originCode) > -1) {
+                    outputdata.push(person);
+                }
+            });
+            var html = '';
+            for (var i = 0; i < outputdata.length; i++) {
+                html = html + "<li for='" + outputdata[i].iata + "' class='originair'>" + outputdata[i].iata + '-' + outputdata[i].name + ',' + outputdata[i].city + ',' + outputdata[i].country + "</li>";
+            };
             $('ul.originCodesreach').html(html);
-    
-          }
-        },
-       });
-      $('.originCodesreach').css('display','block');
+        } else {
+            var originCode = capitalize(originCode);
+            myairports.filter(function(person) {
+                if (person.name.indexOf(originCode) > -1 || person.city.indexOf(originCode) > -1) {
+                    outputdata.push(person); 
+                }
+            });
+            var html = '';
+            for (var i = 0; i < outputdata.length; i++) {
+                html = html + "<li for='" + outputdata[i].iata + "' class='originair'>" + outputdata[i].iata + '-' + outputdata[i].name + ',' + outputdata[i].city + ',' + outputdata[i].country + "</li>";
+            };
+            $('ul.originCodesreach').html(html);
+        }
+        $('.originCodesreach').css('display', 'block');
+    }
+});
 
-      }
-        });
-        $(document).on('keyup', '#originCode12', function(event) {
+$(document).on('keyup', '#originCode12', function(event) {
             var originCode = $(this).val();
-            
-      
       var originCoden = originCode.length;
-      
       if(originCoden>2){
-
          var _token   = $('meta[name="csrf-token"]').attr('content');
-
       $.ajax({
         url: "{{route('airports')}}",
         type:"GET",
@@ -371,179 +376,135 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         });
 
-            $(document).on('keyup', '#toriginCode', function(event) {
-            var originCode = $(this).val();
-            
-      
+$(document).on('keyup', '#toriginCode', function(event) {
+    var originCode = $(this).val();
       var originCoden = originCode.length;
+      var outputdata = [];
       
       if(originCoden>2){
 
-         var _token   = $('meta[name="csrf-token"]').attr('content');
-
-      $.ajax({
-        url: "{{route('airports')}}",
-        type:"GET",
-        data:{
-          name:originCode,
-          _token: _token
-        },
-        success:function(response){
-          console.log(response);
-          if(response) {
-            data = JSON.parse(response);
-        var html = "";
-    for (var i = 0; i < data.length; i++) {
-       
-       
-        html = html + "<li for='" + data[i].iata_code + "' class='toriginair'>"+data[i].name+"</li>";
-    };
-            console.log(html);
-            // $('#flyto').html(html);
+        if (originCoden == 3) {
+            var originCode = originCode.toUpperCase();
+            myairports.filter(function(person) {
+                if (person.iata.indexOf(originCode) > -1) {
+                    outputdata.push(person);
+                }
+            });
+            var html = '';
+            for (var i = 0; i < outputdata.length; i++) {
+                html = html + "<li for='" + outputdata[i].iata + "' class='toriginairtest'>" + outputdata[i].iata + '-' + outputdata[i].name + ',' + outputdata[i].city + ',' + outputdata[i].country + "</li>";
+            };
             $('ul.toriginCodesreach').html(html);
-            // $("#ajaxform")[0].reset();
-          }
-        },
-       });
+        } else {
+            var originCode = capitalize(originCode);
+            myairports.filter(function(person) {
+                if (person.name.indexOf(originCode) > -1 || person.city.indexOf(originCode) > -1) {
+                    outputdata.push(person); 
+                }
+            });
+            var html = '';
+            for (var i = 0; i < outputdata.length; i++) {
+                html = html + "<li for='" + outputdata[i].iata + "' class='toriginairtest'>" + outputdata[i].iata + '-' + outputdata[i].name + ',' + outputdata[i].city + ',' + outputdata[i].country + "</li>";
+            };
+            $('ul.toriginCodesreach').html(html);
+        }
+
+    
             
             $('.toriginCodesreach').css('display','block');
         }
         });
 
-        $(document).on('click', '.destair', function(event) {
-            var destval = $(this).html();
-            var destCode = $(this).attr('for');
-            $('#destCode').val(destval);
-            $('#destCodeo').val(destCode);
-             $('.destiCodesreach').css('display','none');
+        // $(document).on('click', '.destair', function(event) {
+        //     var destval = $(this).html();
+        //     var destCode = $(this).attr('for');
+        //     $('#destCode').val(destval);
+        //     $('#destCodeo').val(destCode);
+        //      $('.destiCodesreach').css('display','none');
 
 
-        });
-         $(document).on('click', '.tdestair', function(event) {
-            var destval = $(this).html();
-            var destCode = $(this).attr('for');
-            $('#tdestCode').val(destval);
-            $('#tdestCodeo').val(destCode);
-             $('.tdestiCodesreach').css('display','none');
-        });
-        $(document).on('keyup', '#destCode', function(event) {
+        // });
+ $(document).on('click', '.tdestair', function(event) {
+    var destval = $(this).html();
+    var destCode = $(this).attr('for');
+    $('#tdestCode').val(destval);
+    $('#tdestCodeo').val(destCode);
+     $('.tdestiCodesreach').css('display','none');
+});
+$(document).on('keyup', '#destCode', function(event) {
             var destCode = $(this).val();
-            
-      
       var destCoden = destCode.length;
-      
+      var outputdata = [];
       if(destCoden>2){
-
-         var _token   = $('meta[name="csrf-token"]').attr('content');
-
-      $.ajax({
-        url: "{{route('airports')}}",
-        type:"GET",
-        data:{
-          name:destCode,
-          _token: _token
-        },
-        success:function(response){
-          console.log(response);
-          if(response) {
-            data = JSON.parse(response);
-        var html = "";
-    for (var i = 0; i < data.length; i++) {
-       
-       
-        html = html + "<li for='" + data[i].iata_code + "' class='destair'>"+data[i].name+"</li>";
-    };
-            console.log(html);
-            // $('#flyto').html(html);
+    if (destCoden == 3) {
+            var destCode = destCode.toUpperCase();
+            myairports.filter(function(person) {
+                if (person.iata.indexOf(destCode) > -1) {
+                    outputdata.push(person);
+                }
+            });
+            var html = '';
+            for (var i = 0; i < outputdata.length; i++) {
+                html = html + "<li for='" + outputdata[i].iata + "' class='toriginair'>" + outputdata[i].iata + '-' + outputdata[i].name + ',' + outputdata[i].city + ',' + outputdata[i].country + "</li>";
+            };
             $('ul.destiCodesreach').html(html);
-            // $("#ajaxform")[0].reset();
-          }
-        },
-       });
+        } else {
+            var destCode = capitalize(destCode);
+            myairports.filter(function(person) {
+                if (person.name.indexOf(destCode) > -1 || person.city.indexOf(destCode) > -1) {
+                    outputdata.push(person); 
+                }
+            });
+            var html = '';
+            for (var i = 0; i < outputdata.length; i++) {
+                html = html + "<li for='" + outputdata[i].iata + "' class='toriginair'>" + outputdata[i].iata + '-' + outputdata[i].name + ',' + outputdata[i].city + ',' + outputdata[i].country + "</li>";
+            };
+            $('ul.destiCodesreach').html(html);
+        }
             
             $('.destiCodesreach').css('display','block');
         }
         });
 
 
-        $(document).on('keyup', '#tdestCode', function(event) {
-            var destCode = $(this).val();
-            
-      
+$(document).on('keyup', '#tdestCode', function(event) {
+    var destCode = $(this).val();
       var destCoden = destCode.length;
+      var outputdata = [];
       
       if(destCoden>2){
 
-         var _token   = $('meta[name="csrf-token"]').attr('content');
-
-      $.ajax({
-        url: "{{route('airports')}}",
-        type:"GET",
-        data:{
-          name:destCode,
-          _token: _token
-        },
-        success:function(response){
-          console.log(response);
-          if(response) {
-            data = JSON.parse(response);
-        var html = "";
-    for (var i = 0; i < data.length; i++) {
-       
-       
-        html = html + "<li for='" + data[i].iata_code + "' class='tdestair'>"+data[i].name+"</li>";
-    };
-            console.log(html);
-            // $('#flyto').html(html);
+        if (destCoden == 3) {
+            var destCode = destCode.toUpperCase();
+            myairports.filter(function(person) {
+                if (person.iata.indexOf(destCode) > -1) {
+                    outputdata.push(person);
+                }
+            });
+            var html = '';
+            for (var i = 0; i < outputdata.length; i++) {
+                html = html + "<li for='" + outputdata[i].iata + "' class='tdestair'>" + outputdata[i].iata + '-' + outputdata[i].name + ',' + outputdata[i].city + ',' + outputdata[i].country + "</li>";
+            };
             $('ul.tdestiCodesreach').html(html);
-            // $("#ajaxform")[0].reset();
-          }
-        },
-       });
+        } else {
+            var destCode = capitalize(destCode);
+            myairports.filter(function(person) {
+                if (person.name.indexOf(destCode) > -1 || person.city.indexOf(destCode) > -1) {
+                    outputdata.push(person); 
+                }
+            });
+            var html = '';
+            for (var i = 0; i < outputdata.length; i++) {
+                html = html + "<li for='" + outputdata[i].iata + "' class='tdestair'>" + outputdata[i].iata + '-' + outputdata[i].name + ',' + outputdata[i].city + ',' + outputdata[i].country + "</li>";
+            };
+            $('ul.tdestiCodesreach').html(html);
+        }
+
             
             $('.tdestiCodesreach').css('display','block');
         }
         });
-        $(document).on('keyup', 'input.form-control', function(event) {
-        //console.log('test');
-      event.preventDefault();
-
-
-      var serval = $(this).val();
-      
-      var n = serval.length;
-      console.log(serval,n);
-      if(n>2){
-        var _token   = $('meta[name="csrf-token"]').attr('content');
-
-      $.ajax({
-        url: "{{route('airports')}}",
-        type:"GET",
-        data:{
-          name:serval,
-          _token: _token
-        },
-        success:function(response){
-          console.log(response);
-          if(response) {
-            data = JSON.parse(response);
-        var html = "";
-    for (var i = 0; i < data.length; i++) {
-       
-        
-        html = html + "<li><a role='option' value='" + data[i].iata_code + "' class='dropdown-item' id='bs-select-1-'"+i+"' tabindex='0'><span class='text'>"+data[i].name+"</span></a></li>";
-    };
-            console.log(html);
-            // $('#flyto').html(html);
-            $('ul.dropdown-menu.inner.show').html(html);
-            // $("#ajaxform")[0].reset();
-          }
-        },
-       });
-      }
-      
-      
-  });
+     
 $(document).on('click','.listing-filter',function(){
     var way = [];
     $('.listing-filter:checked').each(function() {
@@ -572,6 +533,66 @@ console.log(way);
     })
 $('.col-lg-9.col-md-9.as-right-listing-box').html(outputdatht);
 })
+
+ $("#slider-range-time-cus").slider({
+    range: true,
+    min: 0,
+    max: 1440,
+    step: 15,
+    values: [0, 1440],
+    slide: function (e, ui) {
+        var hours1 = Math.floor(ui.values[0] / 60);
+        var minutes1 = ui.values[0] - (hours1 * 60);
+
+        if (hours1.length == 1) hours1 = '0' + hours1;
+        if (minutes1.length == 1) minutes1 = '0' + minutes1;
+        if (minutes1 == 0) minutes1 = '00';
+        if (hours1 >= 12) {
+            if (hours1 == 12) {
+                hours1 = hours1;
+                minutes1 = minutes1 + " PM";
+            } else {
+                hours1 = hours1 - 12;
+                minutes1 = minutes1 + " PM";
+            }
+        } else {
+            hours1 = hours1;
+            minutes1 = minutes1 + " AM";
+        }
+        if (hours1 == 0) {
+            hours1 = 12;
+            minutes1 = minutes1;
+        }
+
+
+
+        $('.slider-time').html(hours1 + ':' + minutes1);
+
+        var hours2 = Math.floor(ui.values[1] / 60);
+        var minutes2 = ui.values[1] - (hours2 * 60);
+
+        if (hours2.length == 1) hours2 = '0' + hours2;
+        if (minutes2.length == 1) minutes2 = '0' + minutes2;
+        if (minutes2 == 0) minutes2 = '00';
+        if (hours2 >= 12) {
+            if (hours2 == 12) {
+                hours2 = hours2;
+                minutes2 = minutes2 + " PM";
+            } else if (hours2 == 24) {
+                hours2 = 11;
+                minutes2 = "59 PM";
+            } else {
+                hours2 = hours2 - 12;
+                minutes2 = minutes2 + " PM";
+            }
+        } else {
+            hours2 = hours2;
+            minutes2 = minutes2 + " AM";
+        }
+
+        $('.slider-time2').html(hours2 + ':' + minutes2);
+    }
+});
 </script>
 </body>
 

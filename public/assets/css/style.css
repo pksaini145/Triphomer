@@ -3360,3 +3360,55 @@ font-size: 14px;
     }
 
 /* Flight destination and Airline css end */
+
+.as-booking-city{
+    background-color: #fff;
+    border:1px solid #000;
+    border-bottom:0px;
+    line-height: 26px;
+    border-radius:4px;
+    position: absolute;
+    z-index: 999;
+    }
+
+    .as-booking-city li{
+    display: block;
+    width: 440px;
+    padding: .25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    font-size:14px;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+     overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: transparent;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+  
+    }
+
+    .as-booking-city li:first-child {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+
+    .as-booking-city li:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+.error{
+    color: red;
+}
+
+@media only screen and (max-width:576px){
+    .as-booking-city li{
+     width:100%;
+     white-space: pre-wrap;
+} 
+}
+
+/* as-booking Engine css end */

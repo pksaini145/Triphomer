@@ -11,7 +11,14 @@
 
 <script type="text/javascript">
     var flights = @json($resultdatao->FlightContracts);
+
 </script>
+
+@php 
+
+
+@endphp
+
 
     <section class="as-listing-top-box">
         <div class="container">
@@ -19,7 +26,7 @@
                 <div class="col-lg-12 col-12 responsive--column-l">
 
 
-                    <!-- end section-tab -->
+                  
                     <div class="tab-content " id="myTas-ul-hover-navontent">
                         <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
                             <div class="section-tab section-tab-2 mobile-tab pb-1">
@@ -51,6 +58,14 @@
                             <div class="tab-content" id="myTas-ul-hover-navontent3">
                                 <div class="tab-pane fade show active" id="one-way" role="tabpanel"
                                     aria-labelledby="one-way-tab">
+                                    <form method="POST" action="{{ route('flight_listing')}}">
+                                        @if($errors->any())
+                                            @foreach($errors->all() as $error)
+                                            <div class="error">{{$error}}</div><br>
+                                            @endforeach
+                                            @endif
+                                        @csrf
+                                        <input type="hidden" name="tripType" value="1">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-12 as-listing-search-feild">
                                             <div class="row as-listing-search-row">
@@ -62,8 +77,12 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-departure"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" class="as-custom-search form-control"
-                                                            placeholder="Denver, CO (Den-Denver...">
+                                                        <input type="text" id="originCode" class="as-custom-search form-control"
+                                                        value=" {{$searchdata['origin']}}" 
+                                                            >
+                                                            <ul class="as-booking-city originCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
                                                     </div>
                                                 </div>
                                                 <div class="as-exchange-icon ">
@@ -77,8 +96,11 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-arrival"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" class="as-custom-search form-control"
-                                                            placeholder="LOS Angles CA (LAX.....">
+                                                        <input type="text" id="destCode" class="as-custom-search form-control" value="{{$searchdata['destination']}}"
+                                                            >
+                                                            <ul class="as-booking-city destiCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
                                                     </div>
                                                 </div>
 
@@ -92,7 +114,9 @@
                                                         </div>
                                                         <input type="text"
                                                             class="date-range form-control as-custom-date-input"
-                                                            name="daterange-single" placeholder="Departing">
+                                                            name="daterange-single" placeholder="Departing"
+                                                            value=""
+                                                            >
                                                     </div>
                                                 </div>
 
@@ -137,10 +161,10 @@
                                                                                         d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
                                                                                     </path>
                                                                                 </svg>
-                                                                                <!-- <i class="fas fa-minus"></i> -->
+                                                                                
                                                                             </div>
-                                                                            <input type="text" name="adult_number"
-                                                                                value="0">
+                                                                            <input type="text" name="adult"
+                                                                                value=" {{$searchdata['adult']}}">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -153,7 +177,7 @@
                                                                                         d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
                                                                                     </path>
                                                                                 </svg>
-                                                                                <!-- <i class="fas fa-plus"></i> -->
+                                                                                
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -176,10 +200,10 @@
                                                                                         d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
                                                                                     </path>
                                                                                 </svg>
-                                                                                <!-- <i class="fas fa-minus"></i> -->
+                                                                                
                                                                             </div>
-                                                                            <input type="text" name="child_number"
-                                                                                value="0">
+                                                                            <input type="text" name="child"
+                                                                                value=" {{$searchdata['child']}}">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -217,8 +241,8 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="infants_number"
-                                                                                value="0" class="qty-input">
+                                                                            <input type="text" name="infant"
+                                                                                value=" {{$searchdata['infant']}}" class="qty-input">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -231,7 +255,7 @@
                                                                                         d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
                                                                                     </path>
                                                                                 </svg>
-                                                                                <!-- <i class="fas fa-plus"></i> -->
+                                                                               
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -268,10 +292,19 @@
                                         </div>
 
                                     </div>
+                                    </form>
                                 </div>
 
                                 <div class="tab-pane fade " id="round-trip" role="tabpane1"
                                     aria-labelledby="round-trip-tab">
+                                     <form method="POST" action="{{ route('flight_listing')}}">
+                                        @if($errors->any())
+                                            @foreach($errors->all() as $error)
+                                            <div class="error">{{$error}}</div><br>
+                                            @endforeach
+                                            @endif
+                                        @csrf
+                                        <input type="hidden" name="tripType" value="2">
                                     <div class="row">
                                         <div class="col-lg-12 as-listing-search-feild">
                                             <div class="row as-listing-search-row">
@@ -284,7 +317,7 @@
                                                                     aria-hidden="true"></i></span>
                                                         </div>
                                                         <input type="text" class="as-custom-search form-control"
-                                                            placeholder="Denver, CO (Den-Denver...">
+                                                            value=" {{$searchdata['origin']}}">
                                                     </div>
                                                 </div>
                                                 <div class="as-exchange-icon ">
@@ -299,7 +332,7 @@
                                                                     aria-hidden="true"></i></span>
                                                         </div>
                                                         <input type="text" class="as-custom-search form-control"
-                                                            placeholder="LOS Angles CA (LAX.....">
+                                                            value="{{$searchdata['destination']}}">
                                                     </div>
                                                 </div>
 
@@ -360,7 +393,7 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="adult_number"
+                                                                            <input type="text" name="adult"
                                                                                 value="0">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
@@ -399,7 +432,7 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="child_number"
+                                                                            <input type="text" name="child"
                                                                                 value="0">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
@@ -438,7 +471,7 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="infants_number"
+                                                                            <input type="text" name="infants"
                                                                                 value="0" class="qty-input">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
@@ -486,6 +519,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                </form>
                                 </div>
 
                                 <div class="tab-pane fade multi-flight-wrap" id="multi-city" role="tabpane1"
@@ -502,7 +536,7 @@
                                                                     aria-hidden="true"></i></span>
                                                         </div>
                                                         <input type="text" class="as-custom-search form-control"
-                                                            placeholder="Denver, CO (Den-Denver...">
+                                                            value={{$searchdata['origin']}}">
                                                     </div>
                                                 </div>
                                                 <div class="as-exchange-icon ">
@@ -517,7 +551,7 @@
                                                                     aria-hidden="true"></i></span>
                                                         </div>
                                                         <input type="text" class="as-custom-search form-control"
-                                                            placeholder="LOS Angles CA (LAX.....">
+                                                            value="{{$searchdata['destination']}}">
                                                     </div>
                                                 </div>
 
@@ -578,7 +612,7 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="adult_number"
+                                                                            <input type="text" name="adult"
                                                                                 value="0">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
@@ -617,7 +651,7 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="child_number"
+                                                                            <input type="text" name="child"
                                                                                 value="0">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
@@ -656,7 +690,7 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="infants_number"
+                                                                            <input type="text" name="infants"
                                                                                 value="0" class="qty-input">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
@@ -771,7 +805,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="as-listing-signup-box">
-                    <p>Get Most Updated Low Airfare <br><strong>Delhi – Dehra Dun</strong></p>
+                    <p>Get Most Updated Low Airfare <br><strong> – </strong></p>
                     <div class="input-group">
 
                         <input type="text" id="txtEmail" class="form-control" autocomplete="off" autocompletetype="none"
@@ -782,10 +816,41 @@
                 </div>
 
             </div>
+            @php
+            $ori = explode('-',$searchdata['origin']);
+            $oriar = explode(',',$ori[1]);
+            $dest = explode('-',$searchdata['destination']);
+            $destar = explode(',',$dest[1]);
+            if($searchdata['tripType'] == 2){
+                     if (isset($searchdata['daterange'])) {
+                 $dater = $searchdata['daterange'];   
+                }else{
+                  $dater = $searchdata['daterangedeal'];  
+                }
+                $datea = explode(' - ',$dater);
+                $departureDate = $datea[0];
+                $departureDatestr = strtotime($departureDate);
+                $return_date = $datea[1];
+                $return_datestr = strtotime($return_date);
+
+            }else{
+              $origindate = $searchdata['daterangesingle']; 
+              $oridatestr = strtotime($origindate);
+              
+            }
+            
+            
+            @endphp
             <div class="col-lg-9">
                 <div class="as-listing-signup-box">
-                    <h3>Delhi to Dehra Dun <span>
-                            Fri, Apr 09, 2021 - Fri, Apr 09, 2021 </span></h3>
+                    <h3>{{$oriar[1]}} to {{$destar[1]}} <span>
+                        @if($searchdata['tripType'] == 2)
+                        {{ date('D, M d', $departureDatestr )}}-{{date('D, M d', $return_datestr)}}
+                        @else
+                        {{date('D, M d', $oridatestr)}}
+                        @endif
+
+                             </span></h3>
                     <p>Prices are ROUNDTRIP per person, include all taxes and fees, but do not include baggage fees.</p>
 
                 </div>
@@ -793,7 +858,7 @@
             </div>
         </div>
 
-        <section>
+        <!-- <section>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 viewed">
@@ -877,7 +942,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <div class="row">
             <div class="col-lg-12 col-md-12 as-main-listing-page">
@@ -900,7 +965,7 @@
                                     <label class="form-check-label" for="Check1">Multi Stops</label>
                                 </div>
 
-                                <h5>Per Person Price</h5>
+                                <!-- <h5>Per Person Price</h5>
                                 <div class="input-range">
                                     <span><strong id="per-person-min-price">USD $916.62</strong> - <span
                                             id="per-person-max-price">USD $7954.69</span></span>
@@ -913,14 +978,14 @@
                                         <input class="range" type="range" min="0" max="10" value="10" step="0.1"
                                             id="upper" >
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <h5>Outbound Time/Duration</h5>
                                 <h6 class="depart">
                                     <strong>Depart</strong> : FLL - Ft Lauderdale Hollywood Intl Arpt, Ft Lauderdale,
                                     Florida, United States
                                 </h6>
-                                <div class="input-range">
+                                <!-- <div class="input-range">
                                     <strong id="outbound-dept-min-time">Tue 03:30 AM </strong>- <span
                                         id="outbound-dept-max-time">Tue 11:00 PM</span>
                                 </div>
@@ -950,45 +1015,127 @@
                                             </form>
                                         </div>
                                     </div>
+                                </div> -->
+                                <style>
+    #time-range p {
+    font-family:"Arial", sans-serif;
+    font-size:14px;
+    color:#333;
+}
+.ui-slider-horizontal {
+    height: 8px;
+    background: #D7D7D7;
+    border: 1px solid #BABABA;
+    box-shadow: 0 1px 0 #FFF, 0 1px 0 #CFCFCF inset;
+    clear: both;
+    margin: 8px 0;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+}
+.ui-slider {
+    position: relative;
+    text-align: left;
+}
+.ui-slider-horizontal .ui-slider-range {
+    top: -1px;
+    height: 100%;
+}
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    height: 8px;
+    font-size: .7em;
+    display: block;
+    border: 1px solid #5BA8E1;
+    box-shadow: 0 1px 0 #AAD6F6 inset;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    border-radius: 6px;
+    background: #81B8F3;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #A0D4F5), color-stop(100%, #81B8F3));
+    background-image: -webkit-linear-gradient(top, #A0D4F5, #81B8F3);
+    background-image: -moz-linear-gradient(top, #A0D4F5, #81B8F3);
+    background-image: -o-linear-gradient(top, #A0D4F5, #81B8F3);
+    background-image: linear-gradient(top, #A0D4F5, #81B8F3);
+}
+.ui-slider .ui-slider-handle {
+    border-radius: 50%;
+    background: #F9FBFA;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #C7CED6), color-stop(100%, #F9FBFA));
+    background-image: -webkit-linear-gradient(top, #C7CED6, #F9FBFA);
+    background-image: -moz-linear-gradient(top, #C7CED6, #F9FBFA);
+    background-image: -o-linear-gradient(top, #C7CED6, #F9FBFA);
+    background-image: linear-gradient(top, #C7CED6, #F9FBFA);
+    width: 22px;
+    height: 22px;
+    -webkit-box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.6), 0 -1px 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 0 1px rgba(255, 255, 255, 0.9) inset;
+    -moz-box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.6), 0 -1px 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 0 1px rgba(255, 255, 255, 0.9) inset;
+    box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.6), 0 -1px 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 0 1px rgba(255, 255, 255, 0.9) inset;
+    -webkit-transition: box-shadow .3s;
+    -moz-transition: box-shadow .3s;
+    -o-transition: box-shadow .3s;
+    transition: box-shadow .3s;
+}
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 22px;
+    height: 22px;
+    cursor: default;
+    border: none;
+    cursor: pointer;
+}
+.ui-slider .ui-slider-handle:after {
+    content:"";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top: 50%;
+    margin-top: -4px;
+    left: 50%;
+    margin-left: -4px;
+    background: #30A2D2;
+    -webkit-box-shadow: 0 1px 1px 1px rgba(22, 73, 163, 0.7) inset, 0 1px 0 0 #FFF;
+    -moz-box-shadow: 0 1px 1px 1px rgba(22, 73, 163, 0.7) inset, 0 1px 0 0 white;
+    box-shadow: 0 1px 1px 1px rgba(22, 73, 163, 0.7) inset, 0 1px 0 0 #FFF;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -.5em;
+    margin-left: -.6em;
+}
+.ui-slider a:focus {
+    outline:none;
+}
+
+#slider-range {
+  width: 90%;
+  margin: 0 auto;
+}
+/*#time-range {
+  width: 400px;
+}*/
+</style>
+                                <div id="time-range">
+                                    <p>Time Range: <span class="slider-time">12:00 AM</span> - <span class="slider-time2">11:59 PM</span>
+
+                                    </p>
+                                    <div class="sliders_step1">
+                                        <div id="slider-range-time-cus"></div>
+                                    </div>
                                 </div>
 
 
-                                <div>
-                                    <h6 class="arrive">
-                                        <strong>Arrive </strong>: BOM - Chhatrapati Shivaji, Mumbai, India
-                                    </h6>
-                                    <div class="input-range">
-                                        <strong id="outbound-arrive-min-time">Tue 12:35 AM </strong>- <span
-                                            id="outbound-arrive-max-time">Tue 09:56 PM</span>
-                                    </div>
-                                    <div class="multi-range-container">
-                                        <div class="multi-range">
-                                            <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower2">
-                                            <span id="range-color2" class="range-color"></span>
-                                            <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper2">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <span class="duration"><strong>Flight Duration</strong></span>
-                                    <div class="input-range">
-                                        <strong id="outbound-flight-min-duration">20hrs 45mins </strong> - <span
-                                            id="outbound-flight-max-duration">40hrs 15mins</span>
-                                    </div>
-                                    <div class="multi-range-container">
-                                        <div class="multi-range">
-                                            <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower3">
-                                            <span id="range-color3" class="range-color"></span>
-                                            <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper3">
-                                        </div>
-                                    </div>
-                                </div>
-
+                               
+                                @if($searchdata['tripType'] == 2)
                                 <div class="inbound-duration">
                                     <h5>Inbound Time/Duration</h5>
                                     <h6 class="depart">
@@ -1007,7 +1154,7 @@
                                                 id="upper4">
                                         </div>
                                     </div>
-                                    <h6 class="arrive">
+                                    <!-- <h6 class="arrive">
                                         <strong>Arrive </strong>: FLL - Ft Lauderdale Hollywood Intl Arpt, Ft
                                         Lauderdale, Florida, United States
                                     </h6>
@@ -1038,8 +1185,10 @@
                                             <input class="range" type="range" min="0" max="10" value="10" step="0.1"
                                                 id="upper6">
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
+                                @endif
+
                                 <button type="button" class="btn as-reset-filter-btn btn-block">Reset All
                                     Filter</button>
                             </div>
@@ -1052,7 +1201,7 @@
                     <div class="col-lg-9 col-md-9 as-right-listing-box">
 
 
-                        <div class="row as-flexible-dropdown">
+                        <!-- <div class="row as-flexible-dropdown">
                             <div class="col-lg-5 col-6 as-custom-dropdown-listing">
                                 <select class="as-custom-select">
                                     <option>Flexible Date</option>
@@ -1075,27 +1224,11 @@
                                 </select>
                                 <p>Compare cheapest price for nearby days</p>
                             </div>
-                        </div>
+                        </div> -->
                         @foreach($resultdatao->FlightContracts as $flight_listing)
 
                                                     @php
-                                                    $DepartureDate = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->DepartureDate;
-
-                                                    $ArrivalDate = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->ArrivalDate;
-
-                                                    $DepartureTime = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->DepartureTime;
-
-                                                    $ArrivalTime = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->ArrivalTime;
-
-                                                    $FlightDuration = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->FlightDuration;
-
-                                                    
-
                                                     $AvailableSeats = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->AvailableSeats;
-                                                    
-                                                    $AirlineCode = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->MarketingCarrier->AirlineCode;
-
-                                                    $AirlineName = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->MarketingCarrier->AirlineName;
                                                     @endphp
                         <div class="row">
                             <div class="col-lg-12 as-ticket-box">

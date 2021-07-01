@@ -17,7 +17,18 @@ class MainController extends Controller
 {
     public function airports(Request $request){
         $search = $request->name;
-        $airports = Airports::Select('name','iata_code')
+        $slen = strlen($search);
+        if ($slen == 3) {
+           $airports = Airports::Select('name','iata_code')
+        ->Where('type', '=', 'large_airport')
+        ->Where('iata_code','<>','')
+        ->where(function($query) use ($search){
+                            $query->where('iata_code', 'LIKE', '%'.$search.'%');
+                                  
+                        })
+        ->get();
+        }else{
+         $airports = Airports::Select('name','iata_code')
         ->Where('type', '=', 'large_airport')
         ->Where('iata_code','<>','')
         ->where(function($query) use ($search){
@@ -25,7 +36,9 @@ class MainController extends Controller
                                   ->orWhere('name', 'LIKE', '%'.$search.'%')
                                   ->orWhere('iata_code', 'LIKE', '%'.$search.'%');
                         })
-        ->get();
+        ->get();   
+        }
+        
 
         return json_encode($airports);
 
@@ -140,18 +153,29 @@ class MainController extends Controller
     public function flight_listing(Request $request){
         // echo"<pre>";
         // print_r($request->all());
-        
         // die();
+        $searchdata = $request->all();
+        $ori = explode('-',$request->origin);
+        $desti = explode('-',$request->destination);
+        $origincode = $ori[0];
+        $destinationcode = $desti[0];
         $request->validate([
-            'originCode' => 'required',
-            'destCode' => 'required',
+            'origin' => 'required',
+            'destination' => 'required',
             'adult' => 'required'
         ]);
         
         $tripType = $request->tripType;
 
         if ($tripType == 2) {
-        $dater = $request->daterange;
+
+            if (isset($request->daterange)) {
+             $dater = $request->daterange;   
+            }else{
+              $dater = $request->daterangedeal;  
+            }
+        
+
         $datea = explode(' - ',$dater);
         $departureDate = $datea[0];
         $return_date = $datea[1]; 
@@ -160,8 +184,8 @@ class MainController extends Controller
             $return_date = ''; 
         }
         $token = $request->_token;
-        $originCode = $request->originCode;
-        $destCode = $request->destCode;
+        $originCode = $origincode;
+        $destCode = $destinationcode;
         $adult = $request->adult;
         $child = $request->child;
         $infant = $request->infant;
@@ -183,7 +207,7 @@ class MainController extends Controller
 
         $flight_destinations = Flight::select('slug','heading')->where('footer_link',1)->where('type',1)->limit(12)->get();
             $flight_destinations2 = Flight::select('slug','heading')->where('footer_link',1)->where('type',2)->limit(12)->get();
-        return view('flights.listing',compact('flight_destinations','flight_destinations2','resultdatao','response'));
+        return view('flights.listing',compact('flight_destinations','flight_destinations2','resultdatao','response','searchdata'));
     }
     public function flight_payment(Request $request){
             $data = array("ContractID"=> $request->id, "CacheKey"=> $request->CacheKey);

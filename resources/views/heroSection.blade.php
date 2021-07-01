@@ -93,36 +93,7 @@
                                 <div class="tab-pane fade show active" id="one-way" role="tabpanel"
                                     aria-labelledby="one-way-tab">
                                     <div class="contact-form-action">
-                                        <style type="text/css">
-                                            .as-booking-city{
-        background-color: #ddd !important;
-        line-height: 30px !important;
-    }
-
-    .as-booking-city li{
-        display: block;
-    width: 100%;
-    padding: .25rem 1.5rem;
-    clear: both;
-    font-weight: 400;
-    color: #212529;
-    text-align: inherit;
-    white-space: nowrap;
-    background-color: transparent;
-    border-bottom: 1px solid #000;
-    cursor: pointer;
-  
-    }
-
-    .as-booking-city li:hover {
-    color: #16181b;
-    text-decoration: none;
-    background-color: #f8f9fa;
-}
-.error{
-    color: red;
-}
-                                        </style>
+                                        
                                         <form action="{{ route('flight_listing') }}" method="post" class="row align-items-center">
                                             @if($errors->any())
                                             @foreach($errors->all() as $error)
@@ -135,9 +106,7 @@
                                                 <div class="input-box ">
                                                     <label class="label-text">Flying from</label>
                                                     <div class="form-group ">
-                                                        <!-- <span class="fa fa-map-marker form-icon"></span> -->
-                                                        <input type="hidden" name="originCode" value="" id="originCodeo"  >
-                                                        <input type="text" name="originCodeshow" id="originCode" class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
+                                                        <input type="text" name="origin" id="originCode" class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
                                                         <ul class="as-booking-city originCodesreach as-booking-city" style="display:none;">
                                                                                                                       
                                                         </ul>
@@ -155,9 +124,7 @@
                                                 <div class="input-box">
                                                     <label class="label-text">Flying to</label>
                                                     <div class="form-group">
-                                                        <!-- <span class="fa fa-map-marker form-icon"></span> -->
-                                                       <input type="hidden" name="destCode" value="" id="destCodeo">
-                                                         <input type="text" name="destCodeshow" id="destCode" class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
+                                                         <input type="text" name="destination" id="destCode" class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
                                                          <ul class="as-booking-city destiCodesreach as-booking-city" style="display:none;">
                                                                                                                       
                                                         </ul>
@@ -203,7 +170,7 @@
                                                                             <div class="qtyDec"><i
                                                                                     class="fas fa-minus"></i></div>
                                                                             <input type="text" name="adult"
-                                                                                value="0" required="">
+                                                                                value="1" required="">
                                                                             <div class="qtyInc"><i
                                                                                     class="fas fa-plus"></i></div>
                                                                         </div>
@@ -249,9 +216,9 @@
                                             <div class="col-lg-3 pr-0">
                                                 <select class="as-trip-value mt-3" name="cabinClass" required="">
                                                     <option value="">Select Class</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">Business</option>
-                                                    <option value="3">3</option>
+                                                    <option value="1">Economy </option>
+                                                    <option value="4">Business </option>
+                                                    <option value="6">First </option>
                                                 </select>
                                             </div>
 
@@ -282,8 +249,7 @@
                                                 <div class="input-box">
                                                     <label class="label-text">Flying from</label>
                                                     <div class="form-group">
-                                                        <input type="hidden" name="originCode" value="" id="toriginCodeo"   >
-                                                        <input type="text" name="originCodeshow"  id="toriginCode" class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
+                                                        <input type="text" name="origin"  id="toriginCode" class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
                                                         <ul class="as-booking-city toriginCodesreach as-booking-city" style="display:none;">
                                                                                                                       
                                                         </ul>
@@ -295,8 +261,7 @@
                                                 <div class="input-box">
                                                     <label class="label-text">Flying to</label>
                                                     <div class="form-group">
-                                                        <input type="hidden" name="destCode" value="" id="tdestCodeo" class="destCodeo">
-                                                         <input type="text" name="destCodeshow" id="tdestCode"  class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
+                                                         <input type="text" name="destination" id="tdestCode"  class=" form-control" required="" placeholder="Enter city airport code" autocomplete="off">
                                                          <ul class="as-booking-city tdestiCodesreach as-booking-city" style="display:none;">
                                                                                                                       
                                                         </ul>
@@ -340,7 +305,7 @@
                                                                             <div class="qtyDec"><i
                                                                                     class="fas fa-minus"></i></div>
                                                                             <input type="text" name="adult"
-                                                                                value="0">
+                                                                                value="1">
                                                                             <div class="qtyInc"><i
                                                                                     class="fas fa-plus"></i></div>
                                                                         </div>
@@ -389,9 +354,10 @@
                                                     <div class="form-group">
                                                         <div class="select-contain w-auto">
                                                             <select class="as-trip-value" name="cabinClass">
-                                                                <option value="1" selected>Economy</option>
-                                                                <option value="2">Business</option>
-                                                                <option value="3">First class</option>
+                                                               <option value="">Select Class</option>
+                                                    <option value="1">Economy </option>
+                                                    <option value="4">Business </option>
+                                                    <option value="6">First </option>
                                                             </select>
                                                         </div>
                                                     </div>

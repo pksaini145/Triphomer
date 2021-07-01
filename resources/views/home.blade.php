@@ -114,12 +114,31 @@ START ROUND-TRIP AREA
                     <!-- end section-tab -->
                 </div>
                 <!-- end flight-filter-tab -->
+                @php
+                                        $date = strtotime(date('Y-m-d H:i:s'));
+                                        $date = strtotime("+7 day", $date);
+                                        $dpdate = date("Y-m-d",strtotime("+7 days"));
+                                        $rdate = strtotime("+10 day", $date);
+                                        $apdate = date("Y-m-d",strtotime("+17 days"));
+                                        $tdate = date('D, M d', $date);
+                                        $trdate = date('D, M d', $rdate);
+                                        @endphp
                 <div class="popular-round-trip-wrap padding-top-40px">
                     <div class="tab-content" id="myTas-ul-hover-navontent4">
                         <div class="tab-pane fade show active" id="new-york" role="tabpanel"
                             aria-labelledby="new-york-tab">
                             <div class="row">
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="JFK-John F Kennedy Intl,New York,United States">
+                                        <input type="hidden" name="destination" value="LAX-Los Angeles Intl,Los Angeles,United States">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img.png" alt="air-line-img">
@@ -129,19 +148,32 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
+                                        
+                                        
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                    </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="JFK-John F Kennedy Intl,New York,United States">
+                                        <input type="hidden" name="destination" value="BCN-Barcelona,Barcelona,Spain">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img2.png" alt="air-line-img">
@@ -151,19 +183,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="JFK-John F Kennedy Intl,New York,United States">
+                                        <input type="hidden" name="destination" value="DAL-Dallas Love Fld,Dallas,United States">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img3.png" alt="air-line-img">
@@ -173,19 +216,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="JFK-John F Kennedy Intl,New York,United States">
+                                        <input type="hidden" name="destination" value="SFO-San Francisco Intl,San Francisco,United States">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -195,19 +249,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="JFK-John F Kennedy Intl,New York,United States">
+                                        <input type="hidden" name="destination" value="OXD-Miami University Airport,Oxford,United States">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -217,19 +282,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="JFK-John F Kennedy Intl,New York,United States">
+                                        <input type="hidden" name="destination" value="YXU-London,London,Canada">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img6.png" alt="air-line-img">
@@ -239,15 +315,16 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
@@ -257,6 +334,17 @@ START ROUND-TRIP AREA
                         <div class="tab-pane fade" id="hong-kong" role="tabpanel" aria-labelledby="hong-kong-tab">
                             <div class="row">
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HKG">
+                                        <input type="hidden" name="destination" value="XSP"><input type="hidden" name="originshow" value="New York">
+                                        <input type="hidden" name="destinationshow" value="Singapore">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img7.png" alt="air-line-img">
@@ -266,19 +354,31 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HKG">
+                                        <input type="hidden" name="destination" value="HND"><input type="hidden" name="originshow" value="New York">
+                                        <input type="hidden" name="destinationshow" value="Tokyo">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img8.png" alt="air-line-img">
@@ -288,19 +388,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HKG">
+                                        <input type="hidden" name="destination" value="SSN">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img9.png" alt="air-line-img">
@@ -310,19 +421,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HKG">
+                                        <input type="hidden" name="destination" value="MNL">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -332,19 +454,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HKG">
+                                        <input type="hidden" name="destination" value="KEP">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -354,19 +487,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HKG">
+                                        <input type="hidden" name="destination" value="NAY">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img6.png" alt="air-line-img">
@@ -376,15 +520,16 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
@@ -394,6 +539,16 @@ START ROUND-TRIP AREA
                         <div class="tab-pane fade" id="seoul" role="tabpanel" aria-labelledby="seoul-tab">
                             <div class="row">
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="NAY">
+                                        <input type="hidden" name="destination" value="TSA">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img.png" alt="air-line-img">
@@ -403,19 +558,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="NAY">
+                                        <input type="hidden" name="destination" value="TSA">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img2.png" alt="air-line-img">
@@ -425,19 +591,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="NAY">
+                                        <input type="hidden" name="destination" value="NAY">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img3.png" alt="air-line-img">
@@ -447,19 +624,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="NAY">
+                                        <input type="hidden" name="destination" value="HND">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -469,19 +657,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="NAY">
+                                        <input type="hidden" name="destination" value="HKG">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -491,19 +690,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="NAY">
+                                        <input type="hidden" name="destination" value="HAN">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img6.png" alt="air-line-img">
@@ -513,15 +723,16 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
@@ -531,6 +742,16 @@ START ROUND-TRIP AREA
                         <div class="tab-pane fade" id="tokyo" role="tabpanel" aria-labelledby="tokyo-tab">
                             <div class="row">
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HND">
+                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img7.png" alt="air-line-img">
@@ -540,19 +761,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HND">
+                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img8.png" alt="air-line-img">
@@ -562,19 +794,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HND">
+                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img3.png" alt="air-line-img">
@@ -584,19 +827,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HND">
+                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -606,19 +860,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HND">
+                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -628,19 +893,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="HND">
+                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img6.png" alt="air-line-img">
@@ -650,15 +926,16 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
@@ -668,6 +945,16 @@ START ROUND-TRIP AREA
                         <div class="tab-pane fade" id="beijing" role="tabpanel" aria-labelledby="beijing-tab">
                             <div class="row">
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="SSN">
+                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img.png" alt="air-line-img">
@@ -677,19 +964,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="SSN">
+                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img2.png" alt="air-line-img">
@@ -699,19 +997,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$740</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="SSN">
+                                        <input type="hidden" name="destination" value="NAY">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img3.png" alt="air-line-img">
@@ -721,19 +1030,30 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$140</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="SSN">
+                                        <input type="hidden" name="destination" value="HND">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -743,19 +1063,31 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$340</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+                                        @csrf
+                                        <input type="hidden" name="origin" value="SSN">
+                                        <input type="hidden" name="destination" value="HND">
+
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -765,19 +1097,32 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$100</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
                                 <div class="col-lg-4 responsive-column">
+                                    <form method="POST" action="{{ route('flight_listing') }}">
+
+                                        @csrf
+                                        <input type="hidden" name="origin" value="SSN">
+                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="tripType" value="2">
+                                        <input type="hidden" name="adult" value="1">
+                                        <input type="hidden" name="child" value="0">
+                                        <input type="hidden" name="infant" value="0">
+                                        <input type="hidden" name="cabinClass" value="4">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img6.png" alt="air-line-img">
@@ -787,15 +1132,16 @@ START ROUND-TRIP AREA
                                                 </a>
                                             </h3>
                                         </div>
-                                        <p class="deal__meta">Tue, Jul 14-Fri, Jul 24</p>
+                                        <p class="deal__meta">{{ $tdate}}-{{ $trdate}}</p>
                                         <div
                                             class="deal-action-box d-flex align-items-center justify-content-between">
                                             <div class="price-box d-flex align-items-center"><span
                                                     class="price__from mr-1">From</span><span
                                                     class="price__num">$640</span></div>
-                                            <a href="#" class="btn-text">Book Now</a>
+                                            <button type="submit" class="btn-text">Book Now</button>
                                         </div>
                                     </div>
+                                </form>
                                     <!-- end deal-card -->
                                 </div>
                                 <!-- end col-lg-4 -->
@@ -1028,7 +1374,7 @@ START ROUND-TRIP AREA
                                         <span class="price__num">$23.00</span>
                                         <span class="price__text">Per day</span>
                                     </p>
-                                    <a href="#" class="btn-text">Book Now</a>
+                                    <button type="submit" class="btn-text">Book Now</button>
                                 </div>
                             </div>
                         </div>
@@ -1067,7 +1413,7 @@ START ROUND-TRIP AREA
                                         <span class="price__num">$33.00</span>
                                         <span class="price__text">Per day</span>
                                     </p>
-                                    <a href="#" class="btn-text">Book Now</a>
+                                    <button type="submit" class="btn-text">Book Now</button>
                                 </div>
                             </div>
                         </div>
@@ -1107,7 +1453,7 @@ START ROUND-TRIP AREA
                                         <span class="price__num">$23.00</span>
                                         <span class="price__text">Per day</span>
                                     </p>
-                                    <a href="#" class="btn-text">Book Now</a>
+                                    <button type="submit" class="btn-text">Book Now</button>
                                 </div>
                             </div>
                         </div>
@@ -1147,7 +1493,7 @@ START ROUND-TRIP AREA
                                         <span class="price__num">$45.00</span>
                                         <span class="price__text">Per day</span>
                                     </p>
-                                    <a href="#" class="btn-text">Book Now</a>
+                                    <button type="submit" class="btn-text">Book Now</button>
                                 </div>
                             </div>
                         </div>
@@ -1186,7 +1532,7 @@ START ROUND-TRIP AREA
                                         <span class="price__num">$58.00</span>
                                         <span class="price__text">Per day</span>
                                     </p>
-                                    <a href="#" class="btn-text">Book Now</a>
+                                    <button type="submit" class="btn-text">Book Now</button>
                                 </div>
                             </div>
                         </div>
@@ -1226,7 +1572,7 @@ START ROUND-TRIP AREA
                                         <span class="price__num">$23.00</span>
                                         <span class="price__text">Per day</span>
                                     </p>
-                                    <a href="#" class="btn-text">Book Now</a>
+                                    <button type="submit" class="btn-text">Book Now</button>
                                 </div>
                             </div>
                         </div>
