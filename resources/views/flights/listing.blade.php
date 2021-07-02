@@ -11,6 +11,7 @@
 
 <script type="text/javascript">
     var flights = @json($resultdatao->FlightContracts);
+    var CacheKey = '{{$resultdatao->CacheKey}}';
 
 </script>
 
@@ -953,15 +954,15 @@
                                 <h3>Refine Your Search</h3>
                                 <h5>Stops</h5>
                                 <div class="checkbox">
-                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="1">
+                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="1" checked="">
                                     <label class="form-check-label" for="Check1">Non Stop</label>
                                 </div>
                                 <div class="checkbox">
-                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="2">
+                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="2" checked="">
                                     <label class="form-check-label" for="Check1">One Stop</label>
                                 </div>
                                 <div class="checkbox">
-                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="3">
+                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="3" checked="">
                                     <label class="form-check-label" for="Check1">Multi Stops</label>
                                 </div>
 
@@ -1125,7 +1126,7 @@
 }*/
 </style>
                                 <div id="time-range">
-                                    <p>Time Range: <span class="slider-time">12:00 AM</span> - <span class="slider-time2">11:59 PM</span>
+                                    <p>Time Range: <span class="slider-time">{{$filterbar['departminshow']}}</span> - <span class="slider-time2">{{$filterbar['departmaxshow']}}</span>
 
                                     </p>
                                     <div class="sliders_step1">
@@ -1197,7 +1198,7 @@
 
 
                     </div>
-
+<p><span id="totalflights">{{ count($resultdatao->FlightContracts)}}</span> Flights</p>
                     <div class="col-lg-9 col-md-9 as-right-listing-box">
 
 
@@ -1225,12 +1226,14 @@
                                 <p>Compare cheapest price for nearby days</p>
                             </div>
                         </div> -->
+                        
                         @foreach($resultdatao->FlightContracts as $flight_listing)
 
                                                     @php
                                                     $AvailableSeats = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->AvailableSeats;
                                                     @endphp
                         <div class="row">
+
                             <div class="col-lg-12 as-ticket-box">
                                 <div class="row">
                                     @foreach($flight_listing->FlightSegmentDetails->OutBoundSegment as $flights)
@@ -1414,6 +1417,10 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        
+    </script>
 
 
 

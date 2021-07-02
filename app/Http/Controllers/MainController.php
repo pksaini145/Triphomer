@@ -205,9 +205,52 @@ class MainController extends Controller
          //die;
          $resultdatao = json_decode($response);
 
+         foreach ($resultdatao->FlightContracts as  $value) {
+             foreach($value->FlightSegmentDetails->OutBoundSegment as $key => $flights){
+                $lastkey =  count($value->FlightSegmentDetails->OutBoundSegment)-1;
+                if ($key == 0) {
+                    $onedeparturetime[] = $flights->DepartureTime;
+                }
+                if ($key == $lastkey) {
+                    $onearival[] = $flights->ArrivalTime;
+                }
+
+             }
+             foreach($value->FlightSegmentDetails->InBoundSegment as $key => $flights){
+                $lastkey =  count($value->FlightSegmentDetails->InBoundSegment)-1;
+                if ($key == 0) {
+                    $twodeparturetime[] = $flights->DepartureTime;
+                }if ($key == $lastkey) {
+                    $twoarival[] = $flights->ArrivalTime;
+                }
+
+             }
+         }
+         
+         
+//          print_r($onedeparturetime);
+$minonedeparturetime = explode(':',min($onedeparturetime));
+// print_r($minonedeparturetime);
+$minonedeparturetime = $minonedeparturetime[0]*60+$minonedeparturetime[1];
+$minonedeparturetimeshow = min($onedeparturetime);
+
+ $maxonedeparturetime = explode(':',max($onedeparturetime));
+ $maxonedeparturetime = $maxonedeparturetime[0]*60+$maxonedeparturetime[1];
+ $maxonedeparturetimeshow = max($onedeparturetime);
+//  print_r($twodeparturetime);
+//          echo $min = min($twodeparturetime);
+ $mintwodeparturetime = explode(':',min($twodeparturetime));
+ $mintwodeparturetime = $mintwodeparturetime[0]*60+$mintwodeparturetime[1];
+ $maxtwodeparturetime = explode(':',max($twodeparturetime));
+ $maxtwodeparturetime = $maxtwodeparturetime[0]*60+$maxtwodeparturetime[1];
+// echo $max = max($twodeparturetime);
+
+$filterbar = array('departmin'=>$minonedeparturetime,'departmax' => $maxonedeparturetime,'departminshow'=>$minonedeparturetimeshow,'departmaxshow' => $maxonedeparturetimeshow,'rdepartmin' => $mintwodeparturetime,'rdepartmax' =>$maxtwodeparturetime);
+         
+
         $flight_destinations = Flight::select('slug','heading')->where('footer_link',1)->where('type',1)->limit(12)->get();
             $flight_destinations2 = Flight::select('slug','heading')->where('footer_link',1)->where('type',2)->limit(12)->get();
-        return view('flights.listing',compact('flight_destinations','flight_destinations2','resultdatao','response','searchdata'));
+        return view('flights.listing',compact('flight_destinations','flight_destinations2','resultdatao','response','searchdata','filterbar'));
     }
     public function flight_payment(Request $request){
             $data = array("ContractID"=> $request->id, "CacheKey"=> $request->CacheKey);
