@@ -241,11 +241,13 @@ $minonedeparturetimeshow = min($onedeparturetime);
 //          echo $min = min($twodeparturetime);
  $mintwodeparturetime = explode(':',min($twodeparturetime));
  $mintwodeparturetime = $mintwodeparturetime[0]*60+$mintwodeparturetime[1];
+ $mintwodeparturetimetimeshow = min($twodeparturetime);
  $maxtwodeparturetime = explode(':',max($twodeparturetime));
  $maxtwodeparturetime = $maxtwodeparturetime[0]*60+$maxtwodeparturetime[1];
+ $maxtwodeparturetimetimeshow = max($twodeparturetime);
 // echo $max = max($twodeparturetime);
 
-$filterbar = array('departmin'=>$minonedeparturetime,'departmax' => $maxonedeparturetime,'departminshow'=>$minonedeparturetimeshow,'departmaxshow' => $maxonedeparturetimeshow,'rdepartmin' => $mintwodeparturetime,'rdepartmax' =>$maxtwodeparturetime);
+$filterbar = array('departmin'=>$minonedeparturetime,'departmax' => $maxonedeparturetime,'departminshow'=>$minonedeparturetimeshow,'departmaxshow' => $maxonedeparturetimeshow,'rdepartmin' => $mintwodeparturetime,'rdepartmax' =>$maxtwodeparturetime,'rdepartminshow'=>$mintwodeparturetimetimeshow,'rdepartmaxshow' => $maxtwodeparturetimetimeshow,);
          
 
         $flight_destinations = Flight::select('slug','heading')->where('footer_link',1)->where('type',1)->limit(12)->get();

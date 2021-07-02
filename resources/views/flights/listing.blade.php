@@ -983,8 +983,7 @@
 
                                 <h5>Outbound Time/Duration</h5>
                                 <h6 class="depart">
-                                    <strong>Depart</strong> : FLL - Ft Lauderdale Hollywood Intl Arpt, Ft Lauderdale,
-                                    Florida, United States
+                                    <strong>Depart</strong> : {{$searchdata['origin']}}
                                 </h6>
                                 <!-- <div class="input-range">
                                     <strong id="outbound-dept-min-time">Tue 03:30 AM </strong>- <span
@@ -1126,7 +1125,7 @@
 }*/
 </style>
                                 <div id="time-range">
-                                    <p>Time Range: <span class="slider-time">{{$filterbar['departminshow']}}</span> - <span class="slider-time2">{{$filterbar['departmaxshow']}}</span>
+                                    <p>Time Range: <span class="slider-time">{{date('h:i A', strtotime($filterbar['departminshow']))}}</span> - <span class="slider-time2">{{date('h:i A', strtotime($filterbar['departmaxshow']))}}</span>
 
                                     </p>
                                     <div class="sliders_step1">
@@ -1140,9 +1139,9 @@
                                 <div class="inbound-duration">
                                     <h5>Inbound Time/Duration</h5>
                                     <h6 class="depart">
-                                        <strong>Depart </strong>: BOM - Chhatrapati Shivaji, Mumbai, India
+                                        <strong>Depart </strong>: {{$searchdata['destination']}}
                                     </h6>
-                                    <div class="input-range">
+                                    <!-- <div class="input-range">
                                         <strong id="inbound-dept-min-time">Mon 02:45 AM </strong> - <span
                                             id="inbound-dept-max-time">Mon 09:15 PM</span>
                                     </div>
@@ -1154,7 +1153,15 @@
                                             <input class="range" type="range" min="0" max="10" value="10" step="0.1"
                                                 id="upper4">
                                         </div>
+                                    </div> -->
+                                    <div id="time-ranger">
+                                    <p>Time Range: <span class="slider-timer">{{date('h:i A', strtotime($filterbar['rdepartminshow']))}}</span> - <span class="slider-timer2">{{date('h:i A', strtotime($filterbar['rdepartmaxshow']))}}</span>
+
+                                    </p>
+                                    <div class="sliders_stepr1">
+                                        <div id="slider-range-time-cusr"></div>
                                     </div>
+                                </div>
                                     <!-- <h6 class="arrive">
                                         <strong>Arrive </strong>: FLL - Ft Lauderdale Hollywood Intl Arpt, Ft
                                         Lauderdale, Florida, United States
@@ -1198,8 +1205,11 @@
 
 
                     </div>
-<p><span id="totalflights">{{ count($resultdatao->FlightContracts)}}</span> Flights</p>
+
                     <div class="col-lg-9 col-md-9 as-right-listing-box">
+                    <p><span id="totalflights">{{ count($resultdatao->FlightContracts)}}</span> Flights</p>
+                    <div id="flightresult">
+                    
 
 
                         <!-- <div class="row as-flexible-dropdown">
@@ -1411,7 +1421,7 @@
                         </div>
                         @endforeach
 
-                       
+                        </div>
                     </div>
                 </div>
             </div>

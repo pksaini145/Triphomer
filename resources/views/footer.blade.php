@@ -522,17 +522,35 @@ $(document).on('click','.listing-filter',function(){
     }
     console.log(output12.length)
     $('#totalflights').html(output12.length);
+    
+    var listing_data = create_listing_dom(output12);
+    
+$('#flightresult').html(listing_data);
+})
+
+function time_converter(timeString){
+var H = +timeString.substr(0, 2);
+var h = (H % 12) || 12;
+var ampm = H < 12 ? "AM" : "PM";
+timeString = h + timeString.substr(2, 3) + ampm;
+return timeString;
+}
+
+function create_listing_dom(output12){
     var outputdatht ='';
     $.each(output12,function(k,v){
       outputdatht +'<div class="row"><div class="col-lg-12 as-ticket-box"><div class="row">'; 
       $.each(v.FlightSegmentDetails.OutBoundSegment,function(ko,vo){
         // console.log(vo.MarketingCarrier.AirlineCode); 
-         outputdatht = outputdatht +'<div class="col-lg-12 col-md-12 col-12 as-ticket-under-box"><div class="row"><div class="col-lg-3 as-listing-img-box"><img src="https://skyhikes.com/ImageApp/AirlineLogo/'+vo.MarketingCarrier.AirlineCode+'.png" alt="'+vo.MarketingCarrier.AirlineName+'" width="60" height="35"><div class="as-ticket-img-heading"><h6>'+vo.MarketingCarrier.AirlineName+'</h6><p>Economy</p></div></div><div class="col-lg-3 col-md-4 col-6"><ul class="inner-seg"><li><strong class="city">'+vo.Origin+', </strong><span class="city-name hidden-xs">'+vo.OriginCity+'</span></li><li><time class="time">'+vo.DepartureTime+' | </time><span class="date hidden-xs">'+vo.DepartureDate+'</span></li></ul></div> <div class="col-lg-3 col-md-4 col-6"> <ul class="inner-seg"> <li> <strong class="city"> '+vo.Destination+', </strong><span class="city-name hidden-xs"> '+vo.DestinationCity+' </span> </li> <li><time class="time">'+vo.ArrivalTime+' | </time> <span class="date hidden-xs"> '+vo.ArrivalDate+'</span></li> </ul> </div> <div class="col-lg-3 col-md-4 text-right"> <ul class="inner-seg"> <li class="nSpace text-right col-xs-6 col-sm-12"> 2 Stops </li> <li class="nSpace text-right col-xs-6 col-sm-12"><span class="list-ico hidden-xs"></span><span class="hidden-xs">Trip Time :</span> 09:25:00</li> </ul> </div> </div> </div>';
+         outputdatht = outputdatht +'<div class="col-lg-12 col-md-12 col-12 as-ticket-under-box"><div class="row"><div class="col-lg-3 as-listing-img-box"><img src="https://skyhikes.com/ImageApp/AirlineLogo/'+vo.MarketingCarrier.AirlineCode+'.png" alt="'+vo.MarketingCarrier.AirlineName+'" width="60" height="35"><div class="as-ticket-img-heading"><h6>'+vo.MarketingCarrier.AirlineName+'</h6><p>Economy</p></div></div><div class="col-lg-3 col-md-4 col-6"><ul class="inner-seg"><li><strong class="city">'+vo.Origin+', </strong><span class="city-name hidden-xs">'+vo.OriginCity+'</span></li><li><time class="time">'+time_converter(vo.DepartureTime)+' | </time><span class="date hidden-xs">'+vo.DepartureDate+'</span></li></ul></div> <div class="col-lg-3 col-md-4 col-6"> <ul class="inner-seg"> <li> <strong class="city"> '+vo.Destination+', </strong><span class="city-name hidden-xs"> '+vo.DestinationCity+' </span> </li> <li><time class="time">'+time_converter(vo.ArrivalTime)+' | </time> <span class="date hidden-xs"> '+vo.ArrivalDate+'</span></li> </ul> </div> <div class="col-lg-3 col-md-4 text-right"> <ul class="inner-seg"> <li class="nSpace text-right col-xs-6 col-sm-12"> '+v.FlightSegmentDetails.OutBoundSegment.length+' Stops </li> <li class="nSpace text-right col-xs-6 col-sm-12"><span class="list-ico hidden-xs"></span><span class="hidden-xs">Trip Time :</span> '+vo.FlightDuration+'</li> </ul> </div> </div> </div>';
+      })
+      $.each(v.FlightSegmentDetails.InBoundSegment,function(rko,rvo){
+        outputdatht = outputdatht +'<div class="returnflights"><div class="col-lg-12 col-md-12 col-12 as-ticket-under-box"><div class="row"><div class="col-lg-3 as-listing-img-box"><img src="https://skyhikes.com/ImageApp/AirlineLogo/'+rvo.MarketingCarrier.AirlineCode+'.png" alt="'+rvo.MarketingCarrier.AirlineName+'" width="60" height="35"><div class="as-ticket-img-heading"<h6>'+rvo.MarketingCarrier.AirlineName+'</h6><p>Economy</p></div></div><div class="col-lg-3 col-md-4 col-6"> <ul class="inner-seg"> <li> <strong class="city"> '+rvo.Origin+', </strong> <span class="city-name hidden-xs"> '+rvo.OriginCity+' </span> </li> <li> <time class="time">'+time_converter(rvo.DepartureTime)+' | </time> <span class="date hidden-xs"> '+rvo.DepartureDate+' </span> </li> </ul> </div><div class="col-lg-3 col-md-4 col-6"> <ul class="inner-seg"> <li> <strong class="city"> '+rvo.Destination+', </strong><span class="city-name hidden-xs"> '+rvo.DestinationCity+' </span> </li> <li><time class="time">'+time_converter(rvo.ArrivalTime)+' | </time> <span class="date hidden-xs"> '+rvo.ArrivalDate+'</span></li> </ul> </div><div class="col-lg-3 col-md-4 text-right"> <ul class="inner-seg"> <li class="nSpace text-right col-xs-6 col-sm-12"> '+v.FlightSegmentDetails.InBoundSegment.length+' Stops </li> <li class="nSpace text-right col-xs-6 col-sm-12"><span class="list-ico hidden-xs"></span><span class="hidden-xs">Trip Time :</span> '+rvo.FlightDuration+'</li> </ul> </div></div></div></div>';
       })
       outputdatht = outputdatht +'<div class="col-lg-12 as-ticket-book-box"> <div class="col-lg-12 select-trip"></div> <div class="row"> <div class="col-lg-2 col-md-4 col-6 itinerary-details"> <div class="dropdown"> <button class="btn dropdown-toggle as-custom-itinerart-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Itinerary Details </button> <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a> </div> </div> </div> <div class="col-lg-3 col-md-4 col-6 cancellation-text"> <svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><span class="free-cancellation"> Free Cancellation </span> <svg class="svg-inline--fa fa-question-circle fa-w-16" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="question-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"></path></svg> </div> <div class="col-lg-5 as-airline-booking-detail"> <li class="airline-breakup col-lg-7"> <h4><span class="total-price">$'+v.TotalGDSFareV2+'</span></h4> <small>Price Per Person (Incl fee)</small> </li> <li class="book-now-only">Book Now only <strong class="seats">'+v.MinSeatAvailableForContract+' seats </strong> left at the price!</li> </div> <div class="col-lg-2 listing-book-now-btn"> <a href="http://localhost/triphomer/public/flight_payment/'+v.ContractID+'?CacheKey='+CacheKey+'"> <button type="button" class="btn btn-block ">Book Now</button></a> </div> </div> </div></div></div></div>';
     })
-$('.col-lg-9.col-md-9.as-right-listing-box').html(outputdatht);
-})
+    return outputdatht;
+}
 
  
 $("#slider-range-time-cus").slider({
@@ -543,9 +561,14 @@ $("#slider-range-time-cus").slider({
     values: [@if(isset($filterbar['departmin'])) {{$filterbar['departmin']}} @else {{0}} @endif, @if(isset($filterbar['departmax'])) {{$filterbar['departmax']}} @else {{1440}} @endif],
     slide: function (e, ui) {
         // console.log(ui);
-        // console.log(ui.values);
-        var byName = filterByProperty(flights, "DepartureTime", ui.values[0],ui.values[1]);
-        console.log(byName.length);
+        console.log(ui.values);
+        var flightsresult = filterByProperty(flights, "DepartureTime", ui.values[0],ui.values[1]);
+        // console.log(flightsresult);
+         var listing_data = create_listing_dom(flightsresult);
+    
+$('#flightresult').html(listing_data);
+        // console.log(byName.length);
+        $('#totalflights').html(flightsresult.length);
         var hours1 = Math.floor(ui.values[0] / 60);
         var minutes1 = ui.values[0] - (hours1 * 60);
 
@@ -598,7 +621,106 @@ $("#slider-range-time-cus").slider({
         $('.slider-time2').html(hours2 + ':' + minutes2);
     }
 });
+
+$("#slider-range-time-cusr").slider({
+    range: true,
+    min: 0,
+    max: 1440,
+    step: 15,
+    values: [@if(isset($filterbar['rdepartmin'])) {{$filterbar['rdepartmin']}} @else {{0}} @endif, @if(isset($filterbar['rdepartmax'])) {{$filterbar['rdepartmax']}} @else {{1440}} @endif],
+    slide: function (e, ui) {
+        // console.log(ui);
+        console.log(ui.values);
+        var flightsresult = filterByPropertyr(flights, "DepartureTime", ui.values[0],ui.values[1]);
+        // console.log(flightsresult);
+         var listing_data = create_listing_dom(flightsresult);
+    
+$('#flightresult').html(listing_data);
+        // console.log(byName.length);
+        $('#totalflights').html(flightsresult.length);
+        var hours1 = Math.floor(ui.values[0] / 60);
+        var minutes1 = ui.values[0] - (hours1 * 60);
+
+        if (hours1.length == 1) hours1 = '0' + hours1;
+        if (minutes1.length == 1) minutes1 = '0' + minutes1;
+        if (minutes1 == 0) minutes1 = '00';
+        if (hours1 >= 12) {
+            if (hours1 == 12) {
+                hours1 = hours1;
+                minutes1 = minutes1 + " PM";
+            } else {
+                hours1 = hours1 - 12;
+                minutes1 = minutes1 + " PM";
+            }
+        } else {
+            hours1 = hours1;
+            minutes1 = minutes1 + " AM";
+        }
+        if (hours1 == 0) {
+            hours1 = 12;
+            minutes1 = minutes1;
+        }
+
+
+
+        $('.slider-timer').html(hours1 + ':' + minutes1);
+
+        var hours2 = Math.floor(ui.values[1] / 60);
+        var minutes2 = ui.values[1] - (hours2 * 60);
+
+        if (hours2.length == 1) hours2 = '0' + hours2;
+        if (minutes2.length == 1) minutes2 = '0' + minutes2;
+        if (minutes2 == 0) minutes2 = '00';
+        if (hours2 >= 12) {
+            if (hours2 == 12) {
+                hours2 = hours2;
+                minutes2 = minutes2 + " PM";
+            } else if (hours2 == 24) {
+                hours2 = 11;
+                minutes2 = "59 PM";
+            } else {
+                hours2 = hours2 - 12;
+                minutes2 = minutes2 + " PM";
+            }
+        } else {
+            hours2 = hours2;
+            minutes2 = minutes2 + " AM";
+        }
+
+        $('.slider-timer2').html(hours2 + ':' + minutes2);
+    }
+});
  function filterByProperty(array, prop, min,max){
+    var filtered = [];
+    for(var i = 0; i < array.length; i++){
+        var obj = array[i];
+        // console.log(obj);
+        for(var key in obj.FlightSegmentDetails.OutBoundSegment){
+            // console.log(key);
+            if(typeof(obj.FlightSegmentDetails.OutBoundSegment[key] == "object")){
+                var item = obj.FlightSegmentDetails.OutBoundSegment[key];
+                var itemor = obj;
+                // console.log(key);
+                // time_into_min(item[prop]);
+                if(key == 0){
+                if(time_into_min(item[prop]) >= min && time_into_min(item[prop]) <= max){
+                    // console.log(time_into_min(item[prop]));
+                    // console.log(item[prop]);
+                    // console.log(item);
+                    // time_into_min(value);
+                    filtered.push(itemor);
+                }
+            }
+            }
+        }
+
+    }    
+
+    return filtered;
+
+}
+
+function filterByPropertyr(array, prop, min,max){
     var filtered = [];
     for(var i = 0; i < array.length; i++){
         var obj = array[i];
@@ -608,11 +730,13 @@ $("#slider-range-time-cus").slider({
             if(typeof(obj.FlightSegmentDetails.InBoundSegment[key] == "object")){
                 var item = obj.FlightSegmentDetails.InBoundSegment[key];
                 var itemor = obj;
-                // console.log(key);
-                // time_into_min(item[prop]);
+                // console.log( time_into_min(item[prop]));
+              
                 if(key == 0){
                 if(time_into_min(item[prop]) >= min && time_into_min(item[prop]) <= max){
-                    // console.log(time_into_min(item[prop]));
+                    console.log(time_into_min(item[prop]));
+                    // console.log(item[prop]);
+                    // console.log(item);
                     // time_into_min(value);
                     filtered.push(itemor);
                 }
