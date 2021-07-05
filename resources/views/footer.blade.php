@@ -690,6 +690,19 @@ $('#flightresult').html(listing_data);
         $('.slider-timer2').html(hours2 + ':' + minutes2);
     }
 });
+$('button.btn.as-reset-filter-btn.btn-block').click(function(){
+    $("#slider-range-time-cus").slider({
+    values:[@if(isset($filterbar['departmin'])) {{$filterbar['departmin']}} @else {{0}} @endif, @if(isset($filterbar['departmax'])) {{$filterbar['departmax']}} @else {{1440}} @endif]
+});
+$("#slider-range-time-cusr").slider({
+    values:[@if(isset($filterbar['rdepartmin'])) {{$filterbar['rdepartmin']}} @else {{0}} @endif, @if(isset($filterbar['rdepartmax'])) {{$filterbar['rdepartmax']}} @else {{1440}} @endif]
+});
+$('.custom-checkbox.listing-filter').prop( "checked", true );
+var listing_data = create_listing_dom(flights);
+$('#flightresult').html(listing_data);
+        // console.log(byName.length);
+ $('#totalflights').html(flights.length);
+})
  function filterByProperty(array, prop, min,max){
     var filtered = [];
     for(var i = 0; i < array.length; i++){

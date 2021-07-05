@@ -204,6 +204,8 @@ class MainController extends Controller
           $response = $response->getBody()->getContents();
          //die;
          $resultdatao = json_decode($response);
+        //  print_r($resultdatao);
+        //  die;
 
          foreach ($resultdatao->FlightContracts as  $value) {
              foreach($value->FlightSegmentDetails->OutBoundSegment as $key => $flights){
@@ -216,6 +218,7 @@ class MainController extends Controller
                 }
 
              }
+             if($request->tripType == 2){
              foreach($value->FlightSegmentDetails->InBoundSegment as $key => $flights){
                 $lastkey =  count($value->FlightSegmentDetails->InBoundSegment)-1;
                 if ($key == 0) {
@@ -225,10 +228,12 @@ class MainController extends Controller
                 }
 
              }
+            }
          }
          
          
-//          print_r($onedeparturetime);
+        //  print_r($onedeparturetime);
+        //  die;
 $minonedeparturetime = explode(':',min($onedeparturetime));
 // print_r($minonedeparturetime);
 $minonedeparturetime = $minonedeparturetime[0]*60+$minonedeparturetime[1];
@@ -239,12 +244,22 @@ $minonedeparturetimeshow = min($onedeparturetime);
  $maxonedeparturetimeshow = max($onedeparturetime);
 //  print_r($twodeparturetime);
 //          echo $min = min($twodeparturetime);
+
+
+if($request->tripType == 2){
  $mintwodeparturetime = explode(':',min($twodeparturetime));
  $mintwodeparturetime = $mintwodeparturetime[0]*60+$mintwodeparturetime[1];
  $mintwodeparturetimetimeshow = min($twodeparturetime);
  $maxtwodeparturetime = explode(':',max($twodeparturetime));
  $maxtwodeparturetime = $maxtwodeparturetime[0]*60+$maxtwodeparturetime[1];
  $maxtwodeparturetimetimeshow = max($twodeparturetime);
+}else{
+    $mintwodeparturetime = '';
+$mintwodeparturetimetimeshow = '';
+$maxtwodeparturetime = '';
+$maxtwodeparturetimetimeshow = '';
+
+}
 // echo $max = max($twodeparturetime);
 
 $filterbar = array('departmin'=>$minonedeparturetime,'departmax' => $maxonedeparturetime,'departminshow'=>$minonedeparturetimeshow,'departmaxshow' => $maxonedeparturetimeshow,'rdepartmin' => $mintwodeparturetime,'rdepartmax' =>$maxtwodeparturetime,'rdepartminshow'=>$mintwodeparturetimetimeshow,'rdepartmaxshow' => $maxtwodeparturetimetimeshow,);

@@ -116,10 +116,10 @@ START ROUND-TRIP AREA
                 <!-- end flight-filter-tab -->
                 @php
                                         $date = strtotime(date('Y-m-d H:i:s'));
-                                        $date = strtotime("+7 day", $date);
-                                        $dpdate = date("Y-m-d",strtotime("+7 days"));
-                                        $rdate = strtotime("+10 day", $date);
-                                        $apdate = date("Y-m-d",strtotime("+17 days"));
+                                        $date = strtotime("+30 day", $date);
+                                        $dpdate = date("Y-m-d",strtotime("+30 days"));
+                                        $rdate = strtotime("+7 day", $date);
+                                        $apdate = date("Y-m-d",strtotime("+37 days"));
                                         $tdate = date('D, M d', $date);
                                         $trdate = date('D, M d', $rdate);
                                         @endphp
@@ -138,7 +138,7 @@ START ROUND-TRIP AREA
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img.png" alt="air-line-img">
@@ -173,7 +173,7 @@ START ROUND-TRIP AREA
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img2.png" alt="air-line-img">
@@ -206,7 +206,7 @@ START ROUND-TRIP AREA
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img3.png" alt="air-line-img">
@@ -239,7 +239,7 @@ START ROUND-TRIP AREA
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -272,7 +272,7 @@ START ROUND-TRIP AREA
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -305,7 +305,7 @@ START ROUND-TRIP AREA
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img6.png" alt="air-line-img">
@@ -336,15 +336,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HKG">
-                                        <input type="hidden" name="destination" value="XSP"><input type="hidden" name="originshow" value="New York">
-                                        <input type="hidden" name="destinationshow" value="Singapore">
+                                        <input type="hidden" name="origin" value="HKG-Hong Kong Intl,Hong Kong,Hong Kong">
+                                        <input type="hidden" name="destination" value="XSP-Seletar,Singapore,Singapore">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img7.png" alt="air-line-img">
@@ -370,15 +369,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HKG">
-                                        <input type="hidden" name="destination" value="HND"><input type="hidden" name="originshow" value="New York">
-                                        <input type="hidden" name="destinationshow" value="Tokyo">
+                                        <input type="hidden" name="origin" value="HKG-Hong Kong Intl,Hong Kong,Hong Kong">
+                                        <input type="hidden" name="destination" value="TYO-All Airports,Tokyo,Japan">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img8.png" alt="air-line-img">
@@ -404,14 +402,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HKG">
-                                        <input type="hidden" name="destination" value="SSN">
+                                        <input type="hidden" name="origin" value="HKG-Hong Kong Intl,Hong Kong,Hong Kong">
+                                        <input type="hidden" name="destination" value="SSN-Seoul Ab,Seoul East,South Korea">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img9.png" alt="air-line-img">
@@ -437,14 +435,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HKG">
-                                        <input type="hidden" name="destination" value="MNL">
+                                        <input type="hidden" name="origin" value="HKG-Hong Kong Intl,Hong Kong,Hong Kong">
+                                        <input type="hidden" name="destination" value="MNL-Ninoy Aquino Intl,Manila,Philippines">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -470,14 +468,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HKG">
-                                        <input type="hidden" name="destination" value="KEP">
+                                        <input type="hidden" name="origin" value="HKG-Hong Kong Intl,Hong Kong,Hong Kong">
+                                        <input type="hidden" name="destination" value="KEP-Nepalgunj Airport,Nepalgunj,Nepal">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -503,14 +501,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HKG">
-                                        <input type="hidden" name="destination" value="NAY">
+                                        <input type="hidden" name="origin" value="HKG-Hong Kong Intl,Hong Kong,Hong Kong">
+                                        <input type="hidden" name="destination" value="BJS-All Airports,Beijing,China">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img6.png" alt="air-line-img">
@@ -541,14 +539,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="NAY">
-                                        <input type="hidden" name="destination" value="TSA">
+                                        <input type="hidden" name="origin" value="SSN-Seoul Ab,Seoul East,South Korea">
+                                        <input type="hidden" name="destination" value="KEP-Nepalgunj Airport,Nepalgunj,Nepal">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img.png" alt="air-line-img">
@@ -574,14 +572,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="NAY">
-                                        <input type="hidden" name="destination" value="TSA">
+                                        <input type="hidden" name="origin" value="SSN-Seoul Ab,Seoul East,South Korea">
+                                        <input type="hidden" name="destination" value="TSA-Sungshan,Taipei,Taiwan">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img2.png" alt="air-line-img">
@@ -607,14 +605,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="NAY">
-                                        <input type="hidden" name="destination" value="NAY">
+                                        <input type="hidden" name="origin" value="SSN-Seoul Ab,Seoul East,South Korea">
+                                        <input type="hidden" name="destination" value="BJS-All Airports,Beijing,China">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img3.png" alt="air-line-img">
@@ -640,14 +638,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="NAY">
-                                        <input type="hidden" name="destination" value="HND">
+                                        <input type="hidden" name="origin" value="SSN-Seoul Ab,Seoul East,South Korea">
+                                        <input type="hidden" name="destination" value="TYO-All Airports,Tokyo,Japan">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -673,14 +671,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="NAY">
-                                        <input type="hidden" name="destination" value="HKG">
+                                        <input type="hidden" name="origin" value="SSN-Seoul Ab,Seoul East,South Korea">
+                                        <input type="hidden" name="destination" value="HKG-Hong Kong Intl,Hong Kong,Hong Kong">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -706,14 +704,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="NAY">
-                                        <input type="hidden" name="destination" value="HAN">
+                                        <input type="hidden" name="origin" value="SSN-Seoul Ab,Seoul East,South Korea">
+                                        <input type="hidden" name="destination" value="DMK-Don Muang Intl,Bangkok,Thailand">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img6.png" alt="air-line-img">
@@ -744,14 +742,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HND">
-                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="origin" value="TYO-All Airports,Tokyo,Japan">
+                                        <input type="hidden" name="destination" value="TSA-Sungshan,Taipei,Taiwan">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img7.png" alt="air-line-img">
@@ -777,14 +775,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HND">
-                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="origin" value="TYO-All Airports,Tokyo,Japan">
+                                        <input type="hidden" name="destination" value="TSA-Sungshan,Taipei,Taiwan">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img8.png" alt="air-line-img">
@@ -810,14 +808,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HND">
-                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="origin" value="TYO-All Airports,Tokyo,Japan">
+                                        <input type="hidden" name="destination" value="BJS-All Airports,Beijing,China">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img3.png" alt="air-line-img">
@@ -843,14 +841,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HND">
-                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="origin" value="TYO-All Airports,Tokyo,Japan">
+                                        <input type="hidden" name="destination" value="TYO-All Airports,Tokyo,Japan">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -876,14 +874,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HND">
-                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="origin" value="TYO-All Airports,Tokyo,Japan">
+                                        <input type="hidden" name="destination" value="HKG-Hong Kong Intl,Hong Kong,Hong Kong">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -909,14 +907,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="HND">
-                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="origin" value="TYO-All Airports,Tokyo,Japan">
+                                        <input type="hidden" name="destination" value="HAN-Noibai Intl,Hanoi,Vietnam">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img6.png" alt="air-line-img">
@@ -947,14 +945,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="SSN">
-                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="origin" value="BJS-All Airports,Beijing,China">
+                                        <input type="hidden" name="destination" value="TSA-Sungshan,Taipei,Taiwan">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img.png" alt="air-line-img">
@@ -980,14 +978,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="SSN">
-                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="origin" value="BJS-All Airports,Beijing,China">
+                                        <input type="hidden" name="destination" value="TSA-Sungshan,Taipei,Taiwan">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img2.png" alt="air-line-img">
@@ -1013,14 +1011,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="SSN">
-                                        <input type="hidden" name="destination" value="NAY">
+                                        <input type="hidden" name="origin" value="BJS-All Airports,Beijing,China">
+                                        <input type="hidden" name="destination" value="BJS-All Airports,Beijing,China">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img3.png" alt="air-line-img">
@@ -1046,14 +1044,14 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="SSN">
-                                        <input type="hidden" name="destination" value="HND">
+                                        <input type="hidden" name="origin" value="BJS-All Airports,Beijing,China">
+                                        <input type="hidden" name="destination" value="TYO-All Airports,Tokyo,Japan">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img4.png" alt="air-line-img">
@@ -1079,15 +1077,15 @@ START ROUND-TRIP AREA
                                 <div class="col-lg-4 responsive-column">
                                     <form method="POST" action="{{ route('flight_listing') }}">
                                         @csrf
-                                        <input type="hidden" name="origin" value="SSN">
-                                        <input type="hidden" name="destination" value="HND">
+                                        <input type="hidden" name="origin" value="BJS-All Airports,Beijing,China">
+                                        <input type="hidden" name="destination" value="HKG-Hong Kong Intl,Hong Kong,Hong Kong">
 
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
                                             <img src="assets/img/airline-img5.png" alt="air-line-img">
@@ -1114,14 +1112,14 @@ START ROUND-TRIP AREA
                                     <form method="POST" action="{{ route('flight_listing') }}">
 
                                         @csrf
-                                        <input type="hidden" name="origin" value="SSN">
-                                        <input type="hidden" name="destination" value="LAX">
+                                        <input type="hidden" name="origin" value="BJS-All Airports,Beijing,China">
+                                        <input type="hidden" name="destination" value="HAN-Noibai Intl,Hanoi,Vietnam">
                                         <input type="hidden" name="tripType" value="2">
                                         <input type="hidden" name="adult" value="1">
                                         <input type="hidden" name="child" value="0">
                                         <input type="hidden" name="infant" value="0">
                                         <input type="hidden" name="cabinClass" value="4">
-                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+7 days'))}} - {{date('Y-m-d',strtotime('+17 days'))}}">
+                                        <input type="hidden" name="daterangedeal" value="{{date('Y-m-d',strtotime('+30 days'))}} - {{date('Y-m-d',strtotime('+37 days'))}}">
                                         
                                     <div class="deal-card">
                                         <div class="deal-title d-flex align-items-center">
