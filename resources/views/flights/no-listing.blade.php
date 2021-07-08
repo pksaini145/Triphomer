@@ -1,65 +1,41 @@
 @section('title','Flight Listings - Triphomer')
 @extends('layouts.home')
 @section('content')
-<!-- END HEADER AREA -->
 <style type="text/css">
-    .returnflights{
-        border-top: 1px dashed #333;
-    padding-bottom: 15px;
-    }
-    .as-booking-city.listingcustm{
+	.as-booking-city.listingcustm{
     top: 35px;
 }
 </style>
-
-<script type="text/javascript">
-    var flights = @json($resultdatao->FlightContracts);
-    var CacheKey = '{{$resultdatao->CacheKey}}';
-
-</script>
-
-@php 
-
-
-@endphp
-
-
-    <section class="as-listing-top-box">
+<section class="as-listing-top-box">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-12 responsive--column-l">
 
 
-                  
+                    <!-- end section-tab -->
                     <div class="tab-content " id="myTas-ul-hover-navontent">
                         <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
                             <div class="section-tab section-tab-2 mobile-tab pb-1">
                                 <ul class="nav nav-tabs" id="myTab3" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active as-listing-top-radio-box " id="one-way-tab"
-                                            data-toggle="tab" href="#one-way" role="tab" aria-controls="one-way"
-                                            aria-selected="true">
+                                        <a class="nav-link active as-listing-top-radio-box as-only-listing-label" id="one-way-tab" data-toggle="tab" href="#one-way" role="tab" aria-controls="one-way" aria-selected="true">
                                             One way
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link as-listing-top-radio-box " id="round-trip-tab"
-                                            data-toggle="tab" href="#round-trip" role="tab" aria-controls="round-trip"
-                                            aria-selected="false">
+                                        <a class="nav-link as-listing-top-radio-box as-only-listing-label" id="round-trip-tab" data-toggle="tab" href="#round-trip" role="tab" aria-controls="round-trip" aria-selected="false">
                                             Round-trip
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link as-listing-top-radio-box " id="multi-city-tab"
-                                            data-toggle="tab" href="#multi-city" role="tab" aria-controls="multi-city"
-                                            aria-selected="false">
+                                        <a class="nav-link as-listing-top-radio-box as-only-listing-label" id="multi-city-tab" data-toggle="tab" href="#multi-city" role="tab" aria-controls="multi-city" aria-selected="false">
                                             Multi-city
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <!-- end section-tab -->
-                            <div class="tab-content" id="myTas-ul-hover-navontent3">
+                             <div class="tab-content" id="myTas-ul-hover-navontent3">
                                 <div class="tab-pane fade show active" id="one-way" role="tabpanel"
                                     aria-labelledby="one-way-tab">
                                     <form method="POST" action="{{ route('flight_listing')}}">
@@ -100,7 +76,7 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-arrival"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" id="destCode" class="as-custom-search form-control" name="destination" value="{{$searchdata['destination']}}"
+                                                        <input type="text" id="destCode" name="destination" class="as-custom-search form-control" value="{{$searchdata['destination']}}"
                                                             >
                                                             <ul class="as-booking-city listingcustm destiCodesreach as-booking-city listingcustm" style="display:none;">
                                                                                                                       
@@ -116,11 +92,12 @@
                                                             </span>
 
                                                         </div>
-                                                        <input type="text"
+                                                        <!-- <input type="text"
                                                             class="date-range form-control as-custom-date-input"
-                                                            name="daterangesingle" placeholder="Departing"
+                                                            name="daterange-single" placeholder="Departing"
                                                             value=""
-                                                            >
+                                                            > -->
+                                                            <input class="date-range form-control as-custom-date-input" type="text" name="daterangesingle"> 
                                                     </div>
                                                 </div>
 
@@ -271,7 +248,7 @@
 
                                                 </div>
                                                 <div class="col-lg-1 col-md-2 col-5">
-                                                    <button type="Submit"
+                                                    <button type="submit"
                                                         class="btn btn-block as-custom-btn-search">Search</button>
                                                 </div>
 
@@ -320,8 +297,8 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-departure"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" class="as-custom-search form-control"
-                                                            value=" {{$searchdata['origin']}}" name="origin">
+                                                        <input type="text" name="origin" class="as-custom-search form-control"
+                                                            value=" {{$searchdata['origin']}}">
                                                     </div>
                                                 </div>
                                                 <div class="as-exchange-icon ">
@@ -335,21 +312,15 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-arrival"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" class="as-custom-search form-control"
-                                                            value="{{$searchdata['destination']}}" name="destination">
+                                                        <input type="text" name="destination" class="as-custom-search form-control"
+                                                            value="{{$searchdata['destination']}}">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-2 col-md-3">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text as-custom-input-group-text"
-                                                                id="basic-addon1"> <i class="fa fa-calendar"></i>
-                                                            </span>
-
-                                                        </div>
-                                                                                                                    <input class="date-range form-control" type="text" name="daterange" id="example1" readonly="">
-
+                                                    <div class="form-group">
+                                                        <svg class="svg-inline--fa fa-calendar fa-w-14 form-icon as-custom-icon" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="calendar" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"></path></svg><!-- <span class="fa fa-calendar form-icon as-custom-icon"></span> -->
+                                                        <input class="date-range form-control" type="text" name="daterange" id="example1" readonly="">
                                                     </div>
                                                 </div>
 
@@ -500,7 +471,7 @@
 
                                                 </div>
                                                 <div class="col-lg-1 col-md-2">
-                                                    <button type="Submit"
+                                                    <button type="submit"
                                                         class="btn btn-block as-custom-btn-search">Search</button>
                                                 </div>
                                                 <div class="col-lg-2 col-md-4">
@@ -796,30 +767,73 @@
                 </div>
             </div>
         </div>
-        </div>
-        </div>
+        
+        
     </section>
 
 
     <!-- START HERO-WRAPPER AREA -->
+<style>
+    .no-result {
+    width: 73%;
+    margin: 30px auto;
+}
 
+.warning {
+    background: #fcf8e3;
+    border: solid 1px #e8deab;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    padding: 1% 2%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-family: 'Lato', sans-serif !important;
+    color: #f10c0c !important;
+}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="as-listing-signup-box">
-                    <p>Get Most Updated Low Airfare <br><strong> – </strong></p>
-                    <div class="input-group">
+.warning i.fa-exclamation-triangle {
+    color: #f10c0c !important;
+}
 
-                        <input type="text" id="txtEmail" class="form-control" autocomplete="off" autocompletetype="none"
-                            placeholder="Enter email address">
-                        <span class="input-group-btn"><button id="btnSubscribe" class="btn btn-success"
-                                name="Sign Up">Sign Up</button></span>
-                    </div>
-                </div>
+.warning-text {
+    margin-bottom: 50px;
+    border: solid 1px #ddd;
+    border-top: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 2%;
+    font-size: 1.1em;
+    font-family: 'Lato', sans-serif !important;
+    padding-left: 8.5%;
+}
 
-            </div>
-            @php
+.warning-text ul {
+    list-style-type: none;
+    padding-left: 0;
+    outline: none;
+}
+
+.warning-text ul li:first-child {
+    margin-top: 15px;
+}
+
+.warning-text ul li {
+    font-size: 0.8em;
+    line-height: 40px;
+    display: block;
+    font-weight: normal;
+}
+
+@media only screen and (max-width:576px){
+    .no-result {
+    width: 100%;
+    padding: 15px;
+    margin:0px;
+}
+}
+</style>
+ @php
             $ori = explode('-',$searchdata['origin']);
             $oriar = explode(',',$ori[1]);
             $dest = explode('-',$searchdata['destination']);
@@ -844,8 +858,14 @@
             
             
             @endphp
-            <div class="col-lg-9">
-                <div class="as-listing-signup-box">
+            
+                
+
+            
+        
+
+<div class="no-result pad-right-non ie-right-side warning-top">
+<div class="as-listing-signup-box">
                     <h3>{{$oriar[1]}} to {{$destar[1]}} <span>
                         @if($searchdata['tripType'] == 2)
                         {{ date('D, M d', $departureDatestr )}}-{{date('D, M d', $return_datestr)}}
@@ -857,585 +877,24 @@
                     <p>Prices are ROUNDTRIP per person, include all taxes and fees, but do not include baggage fees.</p>
 
                 </div>
-
-            </div>
+        <div class="warning">
+            <center><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  We could not find flights as per your request, please update your search criteria and re-start the search.</center>
         </div>
-
-        <!-- <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 viewed">
-                        <div class="bbb_viewed_title_container">
-                            <h3 class="bbb_viewed_title">Airline Coupne code</h3>
-                            <div class="bbb_viewed_nav_container">
-                                <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
-                                <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
-                            </div>
-                        </div>
-                        <div class="bbb_viewed_slider_container">
-                            <div class="owl-carousel owl-theme bbb_viewed_slider">
-                                <div class="owl-item">
-                                    <div
-                                        class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="bbb_viewed_image"><img src="assets/img/air-logo.png" alt=""></div>
-                                        <div class="bbb_viewed_content text-center">
-                                            <div class="bbb_viewed_price"><span>United Airlines</span></div>
-                                            <div class="bbb_viewed_name"><a href="#">$160.80</a></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="owl-item">
-                                    <div
-                                        class="bbb_viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="bbb_viewed_image"><img src="assets/img/air-logo.png" alt=""></div>
-                                        <div class="bbb_viewed_content text-center">
-                                            <div class="bbb_viewed_price"><span>United Airlines</span></div>
-                                            <div class="bbb_viewed_name"><a href="#">460.80</a></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="owl-item">
-                                    <div
-                                        class="bbb_viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="bbb_viewed_image"><img src="assets/img/air-logo.png" alt=""></div>
-                                        <div class="bbb_viewed_content text-center">
-                                            <div class="bbb_viewed_price"><span>United Airlines</span></div>
-                                            <div class="bbb_viewed_name"><a href="#">$60.80</a></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="owl-item">
-                                    <div
-                                        class="bbb_viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="bbb_viewed_image"><img src="assets/img/air-logo.png" alt=""></div>
-                                        <div class="bbb_viewed_content text-center">
-                                            <div class="bbb_viewed_price"><span>United Airlines</span></div>
-                                            <div class="bbb_viewed_name"><a href="#">$30.80</a></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="owl-item">
-                                    <div
-                                        class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="bbb_viewed_image"><img src="assets/img/air-logo.png" alt=""></div>
-                                        <div class="bbb_viewed_content text-center">
-                                            <div class="bbb_viewed_price"><span>United Airlines</span></div>
-                                            <div class="bbb_viewed_name"><a href="#">$70.80</a></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="owl-item">
-                                    <div
-                                        class="bbb_viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="bbb_viewed_image"><img src="assets/img/air-logo.png" alt=""></div>
-                                        <div class="bbb_viewed_content text-center">
-                                            <div class="bbb_viewed_price"><span>United Airlines</span></div>
-                                            <div class="bbb_viewed_name"><a href="#">$150.80</a></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
-        <div class="row">
-            <div class="col-lg-12 col-md-12 as-main-listing-page">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 as-left-listing-box">
-                        <div class="row">
-                            <div class="col-lg-9 col-md-11 as-left-listing-heading">
-                                <h3>Refine Your Search</h3>
-                                <h5>Stops</h5>
-                                <div class="checkbox">
-                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="1" checked="">
-                                    <label class="form-check-label" for="Check1">Non Stop</label>
-                                </div>
-                                <div class="checkbox">
-                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="2" checked="">
-                                    <label class="form-check-label" for="Check1">One Stop</label>
-                                </div>
-                                <div class="checkbox">
-                                    <input type="checkbox" class="custom-checkbox listing-filter" id="Check1" value="3" checked="">
-                                    <label class="form-check-label" for="Check1">Multi Stops</label>
-                                </div>
-
-                                <!-- <h5>Per Person Price</h5>
-                                <div class="input-range">
-                                    <span><strong id="per-person-min-price">USD $916.62</strong> - <span
-                                            id="per-person-max-price">USD $7954.69</span></span>
-                                </div>
-                                 <div class="multi-range-container">
-                                    <div class="multi-range">
-                                        <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                            id="lower" >
-                                        <span id="range-color" class="range-color"></span>
-                                        <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                            id="upper" >
-                                    </div>
-                                </div> -->
-
-                                <h5>Outbound Time/Duration</h5>
-                                <h6 class="depart">
-                                    <strong>Depart</strong> : {{$searchdata['origin']}}
-                                </h6>
-                                <!-- <div class="input-range">
-                                    <strong id="outbound-dept-min-time">Tue 03:30 AM </strong>- <span
-                                        id="outbound-dept-max-time">Tue 11:00 PM</span>
-                                </div>
-                                <div class="multi-range-container">
-                                    <div class="multi-range">
-                                        <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                            id="lower1">
-                                        <span id="range-color1" class="range-color"></span>
-                                        <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                            id="upper1" >
-                                    </div>
-
-                                    
-                                    <div class="row slider-labels">
-                                        <div class="col-xs-6 caption">
-                                          <span id="slider-range-value1"></span>
-                                        </div>
-                                        <div class="col-xs-6 text-right caption">
-                                            <span id="slider-range-value2"></span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <form>
-                                                <input type="hidden" name="min-value" value="">
-                                                <input type="hidden" name="max-value" value="">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <style>
-    #time-range p {
-    font-family:"Arial", sans-serif;
-    font-size:14px;
-    color:#333;
-}
-.ui-slider-horizontal {
-    height: 8px;
-    background: #D7D7D7;
-    border: 1px solid #BABABA;
-    box-shadow: 0 1px 0 #FFF, 0 1px 0 #CFCFCF inset;
-    clear: both;
-    margin: 8px 0;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
-    border-radius: 6px;
-}
-.ui-slider {
-    position: relative;
-    text-align: left;
-}
-.ui-slider-horizontal .ui-slider-range {
-    top: -1px;
-    height: 100%;
-}
-.ui-slider .ui-slider-range {
-    position: absolute;
-    z-index: 1;
-    height: 8px;
-    font-size: .7em;
-    display: block;
-    border: 1px solid #5BA8E1;
-    box-shadow: 0 1px 0 #AAD6F6 inset;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -khtml-border-radius: 6px;
-    border-radius: 6px;
-    background: #81B8F3;
-    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-    background-size: 100%;
-    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #A0D4F5), color-stop(100%, #81B8F3));
-    background-image: -webkit-linear-gradient(top, #A0D4F5, #81B8F3);
-    background-image: -moz-linear-gradient(top, #A0D4F5, #81B8F3);
-    background-image: -o-linear-gradient(top, #A0D4F5, #81B8F3);
-    background-image: linear-gradient(top, #A0D4F5, #81B8F3);
-}
-.ui-slider .ui-slider-handle {
-    border-radius: 50%;
-    background: #F9FBFA;
-    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-    background-size: 100%;
-    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0%, #C7CED6), color-stop(100%, #F9FBFA));
-    background-image: -webkit-linear-gradient(top, #C7CED6, #F9FBFA);
-    background-image: -moz-linear-gradient(top, #C7CED6, #F9FBFA);
-    background-image: -o-linear-gradient(top, #C7CED6, #F9FBFA);
-    background-image: linear-gradient(top, #C7CED6, #F9FBFA);
-    width: 22px;
-    height: 22px;
-    -webkit-box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.6), 0 -1px 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 0 1px rgba(255, 255, 255, 0.9) inset;
-    -moz-box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.6), 0 -1px 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 0 1px rgba(255, 255, 255, 0.9) inset;
-    box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.6), 0 -1px 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 0 1px rgba(255, 255, 255, 0.9) inset;
-    -webkit-transition: box-shadow .3s;
-    -moz-transition: box-shadow .3s;
-    -o-transition: box-shadow .3s;
-    transition: box-shadow .3s;
-}
-.ui-slider .ui-slider-handle {
-    position: absolute;
-    z-index: 2;
-    width: 22px;
-    height: 22px;
-    cursor: default;
-    border: none;
-    cursor: pointer;
-}
-.ui-slider .ui-slider-handle:after {
-    content:"";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    top: 50%;
-    margin-top: -4px;
-    left: 50%;
-    margin-left: -4px;
-    background: #30A2D2;
-    -webkit-box-shadow: 0 1px 1px 1px rgba(22, 73, 163, 0.7) inset, 0 1px 0 0 #FFF;
-    -moz-box-shadow: 0 1px 1px 1px rgba(22, 73, 163, 0.7) inset, 0 1px 0 0 white;
-    box-shadow: 0 1px 1px 1px rgba(22, 73, 163, 0.7) inset, 0 1px 0 0 #FFF;
-}
-.ui-slider-horizontal .ui-slider-handle {
-    top: -.5em;
-    margin-left: -.6em;
-}
-.ui-slider a:focus {
-    outline:none;
-}
-
-#slider-range {
-  width: 90%;
-  margin: 0 auto;
-}
-/*#time-range {
-  width: 400px;
-}*/
-</style>
-                                <div id="time-range">
-                                    <p>Time Range: <span class="slider-time">{{date('h:i A', strtotime($filterbar['departminshow']))}}</span> - <span class="slider-time2">{{date('h:i A', strtotime($filterbar['departmaxshow']))}}</span>
-
-                                    </p>
-                                    <div class="sliders_step1">
-                                        <div id="slider-range-time-cus"></div>
-                                    </div>
-                                </div>
-
-
-                               
-                                @if($searchdata['tripType'] == 2)
-                                <div class="inbound-duration">
-                                    <h5>Inbound Time/Duration</h5>
-                                    <h6 class="depart">
-                                        <strong>Depart </strong>: {{$searchdata['destination']}}
-                                    </h6>
-                                    <!-- <div class="input-range">
-                                        <strong id="inbound-dept-min-time">Mon 02:45 AM </strong> - <span
-                                            id="inbound-dept-max-time">Mon 09:15 PM</span>
-                                    </div>
-                                    <div class="multi-range-container">
-                                        <div class="multi-range">
-                                            <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower4">
-                                            <span id="range-color4" class="range-color"></span>
-                                            <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper4">
-                                        </div>
-                                    </div> -->
-                                    <div id="time-ranger">
-                                    <p>Time Range: <span class="slider-timer">{{date('h:i A', strtotime($filterbar['rdepartminshow']))}}</span> - <span class="slider-timer2">{{date('h:i A', strtotime($filterbar['rdepartmaxshow']))}}</span>
-
-                                    </p>
-                                    <div class="sliders_stepr1">
-                                        <div id="slider-range-time-cusr"></div>
-                                    </div>
-                                </div>
-                                    <!-- <h6 class="arrive">
-                                        <strong>Arrive </strong>: FLL - Ft Lauderdale Hollywood Intl Arpt, Ft
-                                        Lauderdale, Florida, United States
-                                    </h6>
-                                    <div class="input-range">
-                                        <strong id="inbound-arrive-min-time">Tue 05:55 AM</strong> - <span
-                                            id="inbound-arrive-max-time">Tue 11:03 PM</span>
-                                    </div>
-                                    <div class="multi-range-container">
-                                        <div class="multi-range">
-                                            <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower5">
-                                            <span id="range-color5" class="range-color"></span>
-                                            <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper5">
-                                        </div>
-                                    </div>
-
-                                    <span class="duration"><strong>Flight Duration</strong></span>
-                                    <div class="input-range">
-                                        <strong id="inbound-flight-min-duration">23hrs 59mins</strong> - <span
-                                            id="inbound-flight-max-duration">34hrs 55mins</span>
-                                    </div>
-                                    <div class="multi-range-container">
-                                        <div class="multi-range">
-                                            <input class="range" type="range" min="0" max="10" value="0" step="0.1"
-                                                id="lower6">
-                                            <span id="range-color6" class="range-color"></span>
-                                            <input class="range" type="range" min="0" max="10" value="10" step="0.1"
-                                                id="upper6">
-                                        </div>
-                                    </div> -->
-                                </div>
-                                @endif
-
-                                <button type="button" class="btn as-reset-filter-btn btn-block">Reset All
-                                    Filter</button>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="col-lg-9 col-md-9 as-right-listing-box">
-                    <p><span id="totalflights">{{ count($resultdatao->FlightContracts)}}</span> Flights</p>
-                    <div id="flightresult">
-                    
-
-
-                        <!-- <div class="row as-flexible-dropdown">
-                            <div class="col-lg-5 col-6 as-custom-dropdown-listing">
-                                <select class="as-custom-select">
-                                    <option>Flexible Date</option>
-                                    <option>Flight 2</option>
-                                    <option>Flight 3</option>
-                                    <option>Flight 4</option>
-                                    <option>Flight 5</option>
-
-                                </select>
-                                <p>Compare cheapest price for nearby days</p>
-                            </div>
-
-
-                            <div class="col-lg-5 col-6 as-custom-dropdown-listing">
-                                <select class="as-custom-select">
-                                    <option>Flexible Date</option>
-                                    <option>Flight 2</option>
-                                    <option>Flight 3</option>
-                                    <option>Flight 4</option>
-                                </select>
-                                <p>Compare cheapest price for nearby days</p>
-                            </div>
-                        </div> -->
-                        
-                        @foreach($resultdatao->FlightContracts as $flight_listing)
-
-                                                    @php
-                                                    $AvailableSeats = $flight_listing->FlightSegmentDetails->OutBoundSegment[0]->AvailableSeats;
-                                                    @endphp
-                        <div class="row">
-
-                            <div class="col-lg-12 as-ticket-box">
-                                <div class="row">
-                                    @foreach($flight_listing->FlightSegmentDetails->OutBoundSegment as $flights)
-                                    <div class="col-lg-12 col-md-12 col-12 as-ticket-under-box">
-                                        <div class="row">
-                                            <div class="col-lg-3 as-listing-img-box">
-                                                <img src="https://skyhikes.com/ImageApp/AirlineLogo/{{$flights->MarketingCarrier->AirlineCode}}.png" alt="{{$flights->MarketingCarrier->AirlineName}}" width="60" height="35">
-                                                <div class="as-ticket-img-heading">
-                                                    <!-- <h6>{{$flight_listing->Provider}}</h6> -->
-                                                    <h6>{{$flights->MarketingCarrier->AirlineName}}</h6>
-                                                    <p>Economy</p>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            {{$flights->Origin}}, </strong>
-                                                            
-                                                        <span class="city-name hidden-xs">
-                                                           {{$flights->OriginCity}}
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <time class="time">{{ date("g:i a", strtotime($flights->DepartureTime)) }} | </time>
-                                                         <span
-                                                            class="date hidden-xs">
-                                                            {{ date('l',strtotime($flights->DepartureDate)) }}, {{date('F',strtotime($flights->DepartureDate))}} {{date('j',strtotime($flights->DepartureDate))}}, {{date('Y',strtotime($flights->DepartureDate))}}
-                                                        </span>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                          {{$flights->Destination}}, 
-                                                        </strong><span class="city-name hidden-xs">
-                                                            {{$flights->DestinationCity}}
-                                                        </span>
-                                                    </li>
-                                                    <li><time class="time">{{ date("g:i a", strtotime($flights->ArrivalTime)) }} | </time> <span
-                                                            class="date hidden-xs"> {{ date('l',strtotime($flights->ArrivalDate)) }}, {{date('F',strtotime($flights->ArrivalDate))}} {{date('j',strtotime($flights->ArrivalDate))}}, {{date('Y',strtotime($flights->ArrivalDate))}}</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 text-right">
-                                                <ul class="inner-seg">
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12">
-                                                        @if($loop->index == 0)
-                                                        {{$loop->count}} Stops
-                                                        @endif
-
-                                                    </li>
-                                                    <!-- <span class="tech-stopage">ORD, ATL </span> -->
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12"><span
-                                                            class="list-ico hidden-xs"></span><span
-                                                            class="hidden-xs">Trip Time :</span> {{$flights->FlightDuration}}</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                    @if($flight_listing->FlightSegmentDetails->InBoundSegment)
-                                    <div class="returnflights">
-                                     @foreach($flight_listing->FlightSegmentDetails->InBoundSegment as $flightsr)
-                                    <div class="col-lg-12 col-md-12 col-12 as-ticket-under-box">
-                                        <div class="row">
-                                            <div class="col-lg-3 as-listing-img-box">
-                                                <img src="https://skyhikes.com/ImageApp/AirlineLogo/{{$flightsr->MarketingCarrier->AirlineCode}}.png" alt="{{$flightsr->MarketingCarrier->AirlineName}}" width="60" height="35">
-                                                <div class="as-ticket-img-heading">
-                                                    <!-- <h6>{{$flight_listing->Provider}}</h6> -->
-                                                    <h6>{{$flightsr->MarketingCarrier->AirlineName}}</h6>
-                                                    <p>Economy</p>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                            {{$flightsr->Origin}}, </strong>
-                                                            
-                                                        <span class="city-name hidden-xs">
-                                                           {{$flightsr->OriginCity}}
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <time class="time">{{ date("g:i a", strtotime($flightsr->DepartureTime)) }} | </time>
-                                                         <span
-                                                            class="date hidden-xs">
-                                                            {{ date('l',strtotime($flightsr->DepartureDate)) }}, {{date('F',strtotime($flightsr->DepartureDate))}} {{date('j',strtotime($flightsr->DepartureDate))}}, {{date('Y',strtotime($flightsr->DepartureDate))}}
-                                                        </span>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-6">
-                                                <ul class="inner-seg">
-                                                    <li>
-                                                        <strong class="city">
-                                                          {{$flightsr->Destination}}, 
-                                                        </strong><span class="city-name hidden-xs">
-                                                            {{$flightsr->DestinationCity}}
-                                                        </span>
-                                                    </li>
-                                                    <li><time class="time">{{ date("g:i a", strtotime($flightsr->ArrivalTime)) }} | </time> <span
-                                                            class="date hidden-xs"> {{ date('l',strtotime($flightsr->ArrivalDate)) }}, {{date('F',strtotime($flightsr->ArrivalDate))}} {{date('j',strtotime($flightsr->ArrivalDate))}}, {{date('Y',strtotime($flightsr->ArrivalDate))}}</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 text-right">
-                                                <ul class="inner-seg">
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12">
-                                                        @if($loop->index == 0)
-                                                        {{$loop->count}} Stops
-                                                        @endif
-
-                                                    </li>
-                                                    <!-- <span class="tech-stopage">ORD, ATL </span> -->
-                                                    <li class="nSpace text-right col-xs-6 col-sm-12"><span
-                                                            class="list-ico hidden-xs"></span><span
-                                                            class="hidden-xs">Trip Time :</span> {{$flightsr->FlightDuration}}</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     @endforeach
-                                 </div>
-                                    @endif
-
-                                    <div class="col-lg-12 as-ticket-book-box">
-                                        <div class="col-lg-12 select-trip"></div>
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-4 col-6 itinerary-details">
-                                                <div class="dropdown">
-                                                    <button class="btn dropdown-toggle as-custom-itinerart-button"
-                                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        Itinerary Details
-                                                    </button>
-                                                    <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Action</a>
-                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-4 col-6 cancellation-text">
-                                                <i class="fa fa-check" aria-hidden="true"></i> <span
-                                                    class="free-cancellation"> Free Cancellation </span>
-                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                            </div>
-
-                                            <div class="col-lg-5 as-airline-booking-detail">
-                                                <li class="airline-breakup col-lg-7">
-                                                    <h4><span class="total-price">${{ round($flight_listing->AdultFare->TotalFareV2, 2)}}</span></h4>
-                                                    <small>Price Per Person (Incl fee)</small>
-                                                </li>
-                                                <li class="book-now-only">Book Now only <strong class="seats">{{$AvailableSeats}} seats
-                                                    </strong> left at the price!</li>
-                                            </div>
-
-
-                                            <div class="col-lg-2 listing-book-now-btn">
-                                                <a href="{{ route('flight_payment',['id'=>$flight_listing->ContractID, 'CacheKey'=>$resultdatao->CacheKey]) }}"> <button type="button" class="btn btn-block ">Book Now</button></a>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-
-                        </div>
-                    </div>
-                </div>
+        <div class="warning-text">
+            <strong>You can choose from following options</strong>
+            <ul>
+                <li>1. Confirm the search criteria you have entered, and try again</li>
+                <li>2. Enter new search details</li>
+                <li>
+                    3. For further assistance, call us toll free at<b>
+855-845-4400
+                    </b>
+                </li>
+            </ul>
+            <div>
+                Thank you for choosing triphomer.com
             </div>
         </div>
     </div>
 
-    <script type="text/javascript">
-        
-    </script>
-
-
-
-    <!-- END HERO-WRAPPER AREA -->
-    
 @endsection

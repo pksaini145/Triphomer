@@ -25,13 +25,16 @@
     <div class="container">
         <div class="row mt-4 mb-4">
             <div class="col-lg-8">
-                <p>you must have received a confirmation email at ashishpal@gmal.com.</p>
+                <p>you must have received a confirmation email at {{$resultdatao->FlightTransactions->Email}}.</p>
                 <p>Please take some time to review your car hire voucher to ensure you have everything you need.</p>
             </div>
 
             <div class="col-lg-4 as-booking-accepted">
                 <h6>Your booking is accepted.</h6>
-                <span>Book number is : <b>11326</b></span>
+                @php
+                $bkid = $resultdatao->FlightBookingDetails[0]->ID;
+                @endphp
+                <span>Book number is : <b>{{ $bkid }}</b></span>
                 <div class="row">
                     <div class="col-lg-12">
                         <ul class="as-print-email-btn">
@@ -60,9 +63,9 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>John</td>
-                            <td>john@example.com</td>
-                            <td>+1864123454</td>
+                            <td>{{$resultdatao->FlightBillingDetails->CCHolderName}}</td>
+                            <td>{{$resultdatao->FlightTransactions->Email}}</td>
+                            <td>{{$resultdatao->FlightBillingDetails->BillingPhone}}</td>
                         </tr>
 
                     </tbody>
@@ -127,40 +130,41 @@
         <div class="col-lg-12 as-car-booking-detail">
             <h6 class="as-car">Flight</h6>
             <h1>Flydubai</h1>
-            <p>Class : Standard</p>
-
+            <p>Class : {{$resultdatao->FlightDetails->BookingClass}}</p>
+                @foreach($resultdatao->FlightBookingDetails as $value)
             <div class="row mt-3">
                 <div class="col-lg-3">
-                    <img src="assets/img/checkout-img/flydubai.gif" alt="car" class="img-fluid">
+                    <img src="{{$value->OperatedBy}}" alt="{{$value->OperatedBy}}" class="img-fluid">
                 </div>
               
                 <div class="col-lg-3 as-car-pick-up">
                     <span> <i class="fa fa-location-arrow"></i> Pick Up:</span>
-                    <p>DEL, Delhi</p>
-                    <h6>26 July, 2021</h6>
-                    <h6>10:00 PM</h6>
+                    <p>{{$value->OriginCity}}, {{$value->OriginAirport}}</p>
+                    <h6>{{$value->DeptDateTime}}</h6>
+                    <h6>{{$value->DeptDateTime}}</h6>
                     
                 </div>
                 <div class="col-lg-3 as-car-pick-up">
                     <span> <i class="fa fa-location-arrow"></i> Drop Off:</span>
-                    <p>FDF, Fort De France</p>
-                    <h6>26 Apr, 2021</h6>
-                    <h6>01:00 AM</h6>
+                    <p>{{$value->DestCity}}, {{$value->DestAirport}}</p>
+                    <h6>{{$value->ReturnDateTime}}</h6>
+                    <h6>{{$value->ReturnDateTime}}</h6>
                     
                 </div>
                 <div class="col-lg-3">
                     <div class="row">
                         <ul class="inner-seg">
                             <li class="nSpace text-right col-xs-6 col-sm-12">
-                                2 Stops
+                                {{ count($resultdatao->FlightBookingDetails) }} Stops
 
                             </li>
                             <!-- <span class="tech-stopage">ORD, ATL </span> -->
-                            <li class="nSpace text-right col-xs-6 col-sm-12"><span class="list-ico hidden-xs"></span><span class="hidden-xs">Trip Time :</span> 3 hours</li>
+                            <li class="nSpace text-right col-xs-6 col-sm-12"><span class="list-ico hidden-xs"></span><span class="hidden-xs">Trip Time :</span> {{$value->Duration}}</li>
                         </ul>
                     </div>
                 </div>
             </div>
+            @endforeach
             <h6 class="as-car">Currency: USD</h6>
             <table class="table mt-3">
 

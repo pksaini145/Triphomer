@@ -207,7 +207,7 @@ body {
     }
     .as-custom-navbar a img {
         width: 170px;
-     
+        margin-right: 15px;
     }
 
     .as-tollfree-number {
@@ -226,9 +226,9 @@ body {
         font-size: 16px !important;
     }
     
-    /* .directory__link {
-        font-size: 10px !important;
-    } */
+    .directory__link {
+        /*font-size: 10px !important;*/
+    }
 
     .signUpWarp {
         width: 100% !important;
@@ -2090,7 +2090,7 @@ body {
 }
 
 .section-tab-2 .nav-tabs .nav-link {
-    color: #0d233e ;
+    color: #0d233e !important;
     background-color: transparent;
     padding: 5px 0 0 20px;
     font-size: 14px;
@@ -2132,9 +2132,8 @@ body {
 }
 
 .section-tab-2 .nav-tabs .nav-link::after {
-    border: 2px solid rgba(19, 41, 104, .2) ;
+    border: 2px solid rgba(19, 41, 104, .2) !important;
 }
-
 
 .section-tab-2 .nav-tabs .nav-link.active,
 .section-tab-2 .nav-tabs .nav-link:hover {
@@ -2384,7 +2383,7 @@ body {
 }
 
 .as-custom-icon {
-    color: #287DF9 
+    color: #287DF9 !important
 }
 
 .contact-form-action .form-group .form-icon {
@@ -3361,8 +3360,6 @@ font-size: 14px;
     }
 
 /* Flight destination and Airline css end */
-
-/* as-booking Engine css start */
 
 .as-booking-city{
     background-color: #fff;

@@ -1,16 +1,7 @@
 @section('title','Flight Payment - Triphomer')
 @extends('layouts.home')
 @section('content')
-<style>
-    .as-listing-ticket-content {
-    background-color: #fff;
-    margin-left: 0px;
-}
-.returnflights{
-        border-top: 1px dashed #333;
-    padding-bottom: 15px;
-    }
-</style>
+
  <section class="as-main-booking-box as-main-booking-heading">
         <div class="container ">
             <div class="row">
@@ -114,7 +105,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
                                 <h6 class="as-duration-ticket">{{$flights->FlightDuration}} </h6>
-                                <!-- <p>Non Stop</p> -->
+                                <p>Non Stop</p>
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
                                 <span class="as-souce-flight">
@@ -129,7 +120,7 @@
                     @endforeach
 
                     @if($resultdatao->SelectedContract->FlightSegmentDetails->InBoundSegment)
-                                    <div class="returnflights">
+                                    <div class="row">
                                      @foreach($resultdatao->SelectedContract->FlightSegmentDetails->InBoundSegment as $flightsr)
                                     <div class="col-lg-12 as-listing-ticket-content">
                         <div class="row as-listing-ticket-row">
@@ -150,7 +141,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
                                 <h6 class="as-duration-ticket">{{$flightsr->FlightDuration}} </h6>
-                                <!-- <p>Non Stop</p> -->
+                                <p>Non Stop</p>
                             </div>
                             <div class="col-lg-3 col-md-3 col-3">
                                 <span class="as-souce-flight">
@@ -186,10 +177,11 @@
                 <input type="hidden" name="CacheKey" value="{{ request()->CacheKey }}">
                 @for ($i =0; $i <$resultdatao->SelectedContract->Adult; $i++)
                 <div class="row as-flight-detail-box">
-                    <div class="col-lg-12 as-listing-ticket-content">
-                        <div class="row as-listing-ticket-row">
+                    <div class="col-lg-12">
+                        <div class="row">
                             <div class="col-lg-6 col-md-6 col-6">
                                 <div class="form-check">
+                                    <input type="hidden" name="paxtype[]" value="ADT">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Adult
@@ -206,11 +198,12 @@
 
 
                                 <div class="form-row">
-                                    <div class="form-group col-lg-1 col-md-3">
+                                    <div class="col-lg-1 col-md-3">
                                         <label for="title">Title</label>
                                         <select id="inputState" class="form-control" name="PaxTItle[]">
-                                            <option selected>Mr</option>
-                                            <option>Mrs</option>
+                                             <option value="1">Mr</option>
+                                            <option value="1">Ms</option>
+                                            <option value="3">Mrs</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-2 col-md-3">
@@ -232,42 +225,73 @@
                                         <label for="dob">DOB</label>
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-4">
-                                                <select id="month" class="form-control">
-                                                    <option selected>Month</option>
-                                                    <option>Jan</option>
-                                                    <option>Feb</option>
-                                                    <option>Mar</option>
+                                                <select id="month" class="form-control" name="month[]">
+                                                   <option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
                                                 </select>
                                             </div>
 
 
                                             <div class="col-lg-4 col-md-4 col-4">
-                                                <select id="day" class="form-control">
-                                                    <option selected>Day</option>
-                                                    <option>Jan</option>
-                                                    <option>Feb</option>
-                                                    <option>Mar</option>
+                                                <select id="day" class="form-control" name="day[]">
+                                                    <option selected="selected" value="0">Day</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
                                                 </select>
                                             </div>
 
 
                                             <div class="col-lg-4 col-md-4 col-4">
-                                                <select id="year" class="form-control">
-                                                    <option selected>Year</option>
-                                                    <option>2010</option>
-                                                    <option>2011</option>
-                                                    <option>2012</option>
-                                                </select>
+                                                 <input type="text" name="year[]" placeholder="Year*">
                                             </div>
                                         </div>
                                     </div>
 
 
-                                    <div class="form-group col-md-1 col-md-3">
+                                    <div class=" col-lg-4 col-md-3">
                                         <label for="inputState">Gender</label>
                                         <select id="inputState" class="form-control" name="Gender[]">
-                                            <option selected>Male</option>
-                                            <option>Female</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
                                         </select>
                                     </div>
                                 </div>
@@ -280,10 +304,11 @@
 
                 @for ($i =0; $i <$resultdatao->SelectedContract->Child; $i++)
                 <div class="row as-flight-detail-box">
-                    <div class="col-lg-12 as-listing-ticket-content">
-                        <div class="row as-listing-ticket-row">
+                    <div class="col-lg-12 ">
+                        <div class="row ">
                             <div class="col-lg-6 col-md-6 col-6">
                                 <div class="form-check">
+                                    <input type="hidden" name="paxtype[]" value="CHD">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Child
@@ -303,8 +328,9 @@
                                     <div class="form-group col-lg-1 col-md-3">
                                         <label for="title">Title</label>
                                         <select id="inputState" class="form-control" name="PaxTItle[]">
-                                            <option selected>Mr</option>
-                                            <option>Mrs</option>
+                                            <option value="1">Mr</option>
+                                            <option value="1">Ms</option>
+                                            <option value="3">Mrs</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-2 col-md-3">
@@ -326,42 +352,73 @@
                                         <label for="dob">DOB</label>
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-4">
-                                                <select id="month" class="form-control">
-                                                    <option selected>Month</option>
-                                                    <option>Jan</option>
-                                                    <option>Feb</option>
-                                                    <option>Mar</option>
+                                                <select id="month" class="form-control" name="month[]">
+                                                   <option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
                                                 </select>
                                             </div>
 
 
                                             <div class="col-lg-4 col-md-4 col-4">
-                                                <select id="day" class="form-control">
-                                                    <option selected>Day</option>
-                                                    <option>Jan</option>
-                                                    <option>Feb</option>
-                                                    <option>Mar</option>
+                                                <select id="day" class="form-control" name="day[]">
+                                                    <option selected="selected" value="0">Day</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
                                                 </select>
                                             </div>
 
 
                                             <div class="col-lg-4 col-md-4 col-4">
-                                                <select id="year" class="form-control">
-                                                    <option selected>Year</option>
-                                                    <option>2010</option>
-                                                    <option>2011</option>
-                                                    <option>2012</option>
-                                                </select>
+                                                 <input type="text" name="year[]" placeholder="Year*">
                                             </div>
                                         </div>
                                     </div>
 
 
-                                    <div class="form-group col-md-1 col-md-3">
+                                    <div class=" col-lg-4 col-md-3">
                                         <label for="inputState">Gender</label>
                                         <select id="inputState" class="form-control" name="Gender[]">
-                                            <option selected>Male</option>
-                                            <option>Female</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
                                         </select>
                                     </div>
                                 </div>
@@ -374,10 +431,11 @@
 
                 @for ($i =0; $i <$resultdatao->SelectedContract->Infant; $i++)
                 <div class="row as-flight-detail-box">
-                    <div class="col-lg-12 as-listing-ticket-content">
-                        <div class="row as-listing-ticket-row">
+                    <div class="col-lg-12 ">
+                        <div class="row ">
                             <div class="col-lg-6 col-md-6 col-6">
                                 <div class="form-check">
+                                     <input type="hidden" name="paxtype[]" value="INS">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Infant
@@ -394,11 +452,12 @@
 
 
                                 <div class="form-row">
-                                    <div class="form-group col-lg-1 col-md-3">
+                                    <div class="col-lg-1 col-md-3">
                                         <label for="title">Title</label>
                                         <select id="inputState" class="form-control" name="PaxTItle[]">
-                                            <option selected>Mr</option>
-                                            <option>Mrs</option>
+                                            <option value="1">Mr</option>
+                                            <option value="1">Ms</option>
+                                            <option value="3">Mrs</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-2 col-md-3">
@@ -420,42 +479,74 @@
                                         <label for="dob">DOB</label>
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-4">
-                                                <select id="month" class="form-control">
-                                                    <option selected>Month</option>
-                                                    <option>Jan</option>
-                                                    <option>Feb</option>
-                                                    <option>Mar</option>
+                                                <select id="month" class="form-control" name="month[]">
+                                                    <option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
                                                 </select>
                                             </div>
 
 
                                             <div class="col-lg-4 col-md-4 col-4">
-                                                <select id="day" class="form-control">
-                                                    <option selected>Day</option>
-                                                    <option>Jan</option>
-                                                    <option>Feb</option>
-                                                    <option>Mar</option>
+                                                <select id="day" class="form-control" name="day[]">
+                                                   <option selected="selected" value="0">Day</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+                                                
                                                 </select>
                                             </div>
 
 
                                             <div class="col-lg-4 col-md-4 col-4">
-                                                <select id="year" class="form-control">
-                                                    <option selected>Year</option>
-                                                    <option>2010</option>
-                                                    <option>2011</option>
-                                                    <option>2012</option>
-                                                </select>
+                                                 <input type="text" name="year[]" placeholder="Year*">
                                             </div>
                                         </div>
                                     </div>
 
 
-                                    <div class="form-group col-md-1 col-md-3">
+                                    <div class="col-lg-4 col-md-3">
                                         <label for="inputState">Gender</label>
                                         <select id="inputState" class="form-control" name="Gender[]">
-                                            <option selected>Male</option>
-                                            <option>Female</option>
+                                           <option value="1">Male</option>
+                                            <option value="2">Female</option>
                                         </select>
                                     </div>
                                 </div>
@@ -490,28 +581,40 @@
                                         <td>Sub Total</td>
                                     </thead>
                                     <tbody>
+                                        @php
+                                        $totalpriceforall = 0;
+                                        @endphp
                                         @if($resultdatao->SelectedContract->Adult)
                                         <tr>
                                             <td>{{$resultdatao->SelectedContract->Adult}} Adult</td>
-                                            <td>${{$resultdatao->SelectedContract->AdultFare->BaseFare}}</td>
-                                            <td>${{$resultdatao->SelectedContract->AdultFare->Tax}}</td>
-                                            <td>${{$resultdatao->SelectedContract->AdultFare->TotalFare * $resultdatao->SelectedContract->Adult}}</td>
+                                            <td>${{round($resultdatao->SelectedContract->AdultFare->BaseFare, 2)}}</td>
+                                            <td>${{round($resultdatao->SelectedContract->AdultFare->Tax, 2)}}</td>
+                                            <td>${{round($resultdatao->SelectedContract->AdultFare->TotalFare * $resultdatao->SelectedContract->Adult, 2)}}</td>
+                                            @php
+                                            $totalpriceforall = $totalpriceforall+$resultdatao->SelectedContract->AdultFare->TotalFare * $resultdatao->SelectedContract->Adult;
+                                            @endphp
                                         </tr>
                                         @endif
                                         @if($resultdatao->SelectedContract->Child)
                                         <tr>
                                             <td>{{$resultdatao->SelectedContract->Child}} Child</td>
-                                            <td>${{$resultdatao->SelectedContract->ChildFare->BaseFare}}</td>
-                                            <td>${{$resultdatao->SelectedContract->ChildFare->Tax}}</td>
-                                            <td>${{$resultdatao->SelectedContract->ChildFare->TotalFare * $resultdatao->SelectedContract->Child}}</td>
+                                            <td>${{round($resultdatao->SelectedContract->ChildFare->BaseFare, 2)}}</td>
+                                            <td>${{round($resultdatao->SelectedContract->ChildFare->Tax, 2)}}</td>
+                                            <td>${{round($resultdatao->SelectedContract->ChildFare->TotalFare * $resultdatao->SelectedContract->Child, 2)}}</td>
+                                            @php
+                                            $totalpriceforall = $totalpriceforall+$resultdatao->SelectedContract->ChildFare->TotalFare * $resultdatao->SelectedContract->Child;
+                                            @endphp
                                         </tr>
                                         @endif
                                         @if($resultdatao->SelectedContract->Infant)
                                         <tr>
                                             <td>{{$resultdatao->SelectedContract->Infant}} Infant</td>
-                                            <td>${{$resultdatao->SelectedContract->InfantFare->BaseFare}}</td>
-                                            <td>${{$resultdatao->SelectedContract->InfantFare->Tax}}</td>
-                                            <td>${{$resultdatao->SelectedContract->InfantFare->TotalFare * $resultdatao->SelectedContract->Infant}}</td>
+                                            <td>${{round($resultdatao->SelectedContract->InfantFare->BaseFare, 2)}}</td>
+                                            <td>${{round($resultdatao->SelectedContract->InfantFare->Tax, 2)}}</td>
+                                            <td>${{round($resultdatao->SelectedContract->InfantFare->TotalFare * $resultdatao->SelectedContract->Infant, 2)}}</td>
+                                            @php
+                                            $totalpriceforall = $totalpriceforall+$resultdatao->SelectedContract->InfantFare->TotalFare * $resultdatao->SelectedContract->Infant;
+                                            @endphp
                                         </tr>
                                         @endif
                                         
@@ -522,8 +625,9 @@
                                         <td>Sub Total</td>
                                         <td></td>
                                         <td></td>
-                                        <td>${{$resultdatao->SelectedContract->TotalGDSFareV2}}</td>
+                                        <td>${{round($totalpriceforall, 2)}}</td>
                                     </thead>
+                                     <input type="hidden" name="TotalAmount" value="{{round($totalpriceforall, 2)}}">
 
                                 </table class="as-price-toal">
 
@@ -557,7 +661,7 @@
                                         </h6>
                                     </div>
                                     <div class="col-lg-3 col-md-3">
-                                        <h6>${{$resultdatao->SelectedContract->TotalGDSFareV2}}</h6>
+                                        <h6>${{round($totalpriceforall, 2)}}</h6>
 
                                     </div>
                                 </div>
@@ -593,6 +697,18 @@
                 </div>
 
                 <div class="col-lg-12">
+
+                    <div class="form-group row">
+                            <label for="inputPassword" class="col-lg-3 col-md-4 col-form-label">Credit Type*</label>
+                            <div class="col-lg-5 col-md-6">
+                    <select class="f-ctrl" id="BillingInformation_PaymentMethod" name="cardtype" ><option value="0">Select Card Type</option>
+<option selected="selected" value="1">Visa</option>
+<option value="2">MasterCard</option>
+<option value="3">American Express</option>
+<option value="5">Discover</option>
+</select>
+</div>
+</div>
                     
                         <div class="form-group row">
                             <label for="inputPassword" class="col-lg-3 col-md-4 col-form-label">Credit / Debit Card
@@ -611,6 +727,7 @@
                                                 </path>
                                             </svg><!-- <i class="fa fa-credit-card"></i> --></span>
                                     </div>
+
                                     <input class="form-control" required="" type="text"
                                         placeholder="Credit / Debit Card Number" name="CardNumber">
                                 </div>
@@ -646,8 +763,8 @@
 
                                     <div class="form-inline">
                                         <select class="form-control" style="width:45%" name="ExpiryMonth">
-                                            <option selected="" value="1">Month</option>
-                                            <option>Janaury</option>
+                                            <option selected="" value="0">Month</option>
+                                            <option value="1">Janaury</option>
                                             <option value="2">February</option>
                                             <option value="3">March</option>
                                             <option value="4">April</option>
@@ -663,6 +780,15 @@
                                         <span style="width:10%; text-align: center"> / </span>
                                         <select class="form-control" style="width:45%" name="ExpiryYear">
                                             <option>Year</option>
+                                            <option value="2029">2029</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
                                             <option value="2020">2020</option>
                                             <option value="2019">2019</option>
                                             <option value="2018">2018</option>

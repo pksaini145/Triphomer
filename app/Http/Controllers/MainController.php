@@ -16,6 +16,18 @@ use DB;
 class MainController extends Controller
 {
     public function airports(Request $request){
+
+        $url = 'http://72.167.47.207:81/Api/Flight/GetConfirmation?id=182';
+         $client = new \GuzzleHttp\Client(); 
+        $response = $client->request("GET", $url);
+          $response = $response->getBody()->getContents();
+         $resultdatao = json_decode($response);
+         // echo "<pre>";
+         // print_r($resultdatao);
+         return view('flights.ty-new',compact('resultdatao'));
+         // echo "<pre>";
+         // print_r($resultdatao->FlightTransactions->FlightBookingDetails);
+         die;
         $search = $request->name;
         $slen = strlen($search);
         if ($slen == 3) {
@@ -154,6 +166,8 @@ class MainController extends Controller
         // echo"<pre>";
         // print_r($request->all());
         // die();
+        $flight_destinations = Flight::select('slug','heading')->where('footer_link',1)->where('type',1)->limit(12)->get();
+            $flight_destinations2 = Flight::select('slug','heading')->where('footer_link',1)->where('type',2)->limit(12)->get();
         $searchdata = $request->all();
         $ori = explode('-',$request->origin);
         $desti = explode('-',$request->destination);
@@ -196,16 +210,25 @@ class MainController extends Controller
         $ip =  request()->ip();
 
         $data = array("searchID"=> 0, "portalID"=> 1001, "originCode"=> $originCode, "originCityCode"=> $originCode, "destCode"=> $destCode, "destCityCode"=> $destCode, "departureDate"=> $departureDate, "returnDate"=> $return_date, "senior"=> 0, "adult"=> $adult, "child"=> $child, "infant"=> $infant, "infantInLap"=> 0, "tripType"=> $tripType, "cabinClass"=> $cabinClass, "preferredCarrier"=> null, "customerIpAddress"=> "103.226.226.207", "serverMachineName"=> null, "flightGuid"=> $token, "totalPaxCount"=> $tottal, "flexiblityqualifier"=> null, "refundableFaresOnly"=> false, "isDirectFlight"=> false, "isFlexibalFlight"=> false, "appServer"=> null, "searchDate"=> $departureDate);
-        $stream = json_encode($data);
+         $stream = json_encode($data);
+        //die;
+        // print_r();
+        // echo "<br>";
+
         // $data = array("searchID"=> 0, "portalID"=> 1001, "originCode"=> "NYC", "originCityCode"=> "NYC", "destCode"=> "MCO", "destCityCode"=> "MCO", "departureDate"=> "2021-08-30", "returnDate"=> null, "senior"=> 0, "adult"=> 1, "child"=> 0, "infant"=> 0, "infantInLap"=> 0, "tripType"=> 1, "cabinClass"=> 2, "preferredCarrier"=> null, "customerIpAddress"=> "103.226.226.207", "serverMachineName"=> null, "flightGuid"=> "cmVzdWx0MC42ODUwNTMwMDk1NzE5Nzg2=", "totalPaxCount"=> 1, "flexiblityqualifier"=> null, "refundableFaresOnly"=> false, "isDirectFlight"=> false, "isFlexibalFlight"=> false, "appServer"=> null, "searchDate"=> "2021-05-03");
-         $url = 'http://travelapish.test.com/api/mobile/SearchFlights';
+         // $url = 'http://travelapish.test.com/api/mobile/SearchFlights';
+         $url = 'http://72.167.47.207:81/api/mobile/SearchFlights';
          $client = new \GuzzleHttp\Client(); 
         $response = $client->request("POST", $url, ['body'=>$stream,'headers' =>['Content-Type'=> 'application/json','X-Signature' => '263HDKLJDJ*@723923HCC$BCB%76HJUI%$2#R']]);
           $response = $response->getBody()->getContents();
          //die;
          $resultdatao = json_decode($response);
-        //  print_r($resultdatao);
-        //  die;
+         // print_r($resultdatao);
+         if (empty($resultdatao->FlightContracts)) {
+             return view('flights.no-listing',compact('flight_destinations','flight_destinations2','searchdata'));
+         }
+         // echo count($resultdatao->FlightContracts);
+         //die;
 
          foreach ($resultdatao->FlightContracts as  $value) {
              foreach($value->FlightSegmentDetails->OutBoundSegment as $key => $flights){
@@ -265,15 +288,15 @@ $maxtwodeparturetimetimeshow = '';
 $filterbar = array('departmin'=>$minonedeparturetime,'departmax' => $maxonedeparturetime,'departminshow'=>$minonedeparturetimeshow,'departmaxshow' => $maxonedeparturetimeshow,'rdepartmin' => $mintwodeparturetime,'rdepartmax' =>$maxtwodeparturetime,'rdepartminshow'=>$mintwodeparturetimetimeshow,'rdepartmaxshow' => $maxtwodeparturetimetimeshow,);
          
 
-        $flight_destinations = Flight::select('slug','heading')->where('footer_link',1)->where('type',1)->limit(12)->get();
-            $flight_destinations2 = Flight::select('slug','heading')->where('footer_link',1)->where('type',2)->limit(12)->get();
+        
         return view('flights.listing',compact('flight_destinations','flight_destinations2','resultdatao','response','searchdata','filterbar'));
     }
     public function flight_payment(Request $request){
             $data = array("ContractID"=> $request->id, "CacheKey"=> $request->CacheKey);
         $stream = json_encode($data);
         
-         $url = 'http://travelapish.test.com/api/mobile/RateRuleDetails';
+         // $url = 'http://travelapish.test.com/api/mobile/RateRuleDetails';
+         $url = 'http://72.167.47.207:81/api/mobile/RateRuleDetails';
          $client = new \GuzzleHttp\Client(); 
         $response = $client->request("POST", $url, ['body'=>$stream,'headers' =>['Content-Type'=> 'application/json','X-Signature' => '263HDKLJDJ*@723923HCC$BCB%76HJUI%$2#R']]);
           $response = $response->getBody()->getContents();
@@ -289,6 +312,9 @@ $filterbar = array('departmin'=>$minonedeparturetime,'departmax' => $maxonedepar
     }
 
     public function flight_pay(Request $request){
+        //echo "<pre>";
+        //print_r($request->all());
+        // die;
          foreach($request->FirstName as $key => $value ) {
             $travellers[$key]['PaxTItle']=$request->PaxTItle[$key];
             $travellers[$key]['FirstName']=$request->FirstName[$key];
@@ -298,21 +324,37 @@ $filterbar = array('departmin'=>$minonedeparturetime,'departmax' => $maxonedepar
             $travellers[$key]['Email']=null;
             $travellers[$key]['MealPreference']=null;
             $travellers[$key]['PaxOrder']=0;
-            $travellers[$key]['PaxType']=2;
+            $travellers[$key]['PaxType']=$request->paxtype[$key];
+            $travellers[$key]['DOB']=$request->year[$key].'-'.$request->month[$key].'-'.$request->day[$key];
             }
 
-         $data = array ('CacheKey' => $request->CacheKey, 'ContractID' => $request->ContractID, 'TravellerDetails' => $travellers, 'BillingDetails' => array ('TransactionID' => 0, 'CCHolderName' => $request->CCHolderName, 'CardNumber' => $request->CardNumber, 'CVVNumber' => $request->CVVNumber, 'ExpiryMonth' => $request->ExpiryMonth, 'ExpiryYear' => $request->ExpiryYear, 'Country' => $request->Country, 'State' => $request->State, 'ZipCode' => $request->ZipCode, 'AddressLine1' => $request->AddressLine1, 'AddressLine2' => $request->AddressLine2, 'AddressLine3' => NULL, 'City' => $request->City, 'BillingPhone' => $request->BillingPhone, 'BillingPhoneCode' => NULL, 'ContactPhone' => $request->ContactPhone, 'ContactPhoneCode' => NULL, 'Email' => $request->Email, 'CardType' => 1, 'PaymentPaidFor' => 0, 'TotalAmount' => 0, ), );
+            //print_r($travellers);
+        
 
-         $fidata = json_encode($data);
+         $data = array ('CacheKey' => $request->CacheKey, 'ContractID' => $request->ContractID, 'TravellerDetails' => $travellers, 'BillingDetails' => array ('TransactionID' => 0, 'CCHolderName' => $request->CCHolderName, 'CardNumber' => $request->CardNumber, 'CVVNumber' => $request->CVVNumber, 'ExpiryMonth' => $request->ExpiryMonth, 'ExpiryYear' => $request->ExpiryYear, 'Country' => $request->Country, 'State' => $request->State, 'ZipCode' => $request->ZipCode, 'AddressLine1' => $request->AddressLine1, 'AddressLine2' => $request->AddressLine2, 'AddressLine3' => NULL, 'City' => $request->City, 'BillingPhone' => $request->BillingPhone, 'BillingPhoneCode' => NULL, 'ContactPhone' => $request->ContactPhone, 'ContactPhoneCode' => NULL, 'Email' => $request->Email, 'CardType' => $request->cardtype, 'PaymentPaidFor' => 0, 'TotalAmount' => $request->TotalAmount, ), );
 
-         $url = 'http://travelapish.test.com/api/mobile/bookflights';
+          $fidata = json_encode($data);
+         //die;
+
+
+         $url = 'http://72.167.47.207:81/api/mobile/bookflights';
          $client = new \GuzzleHttp\Client(); 
         $response = $client->request("POST", $url, ['body'=>$fidata,'headers' =>['Content-Type'=> 'application/json','X-Signature' => '263HDKLJDJ*@723923HCC$BCB%76HJUI%$2#R']]);
           $response = $response->getBody()->getContents();
          $resultdatao = json_decode($response);
-         echo "<pre>";
-         print_r($resultdatao);
-         die('endresult');
+         // echo "<pre>";
+         // print_r($resultdatao);
+         // die;
+         if ($resultdatao->TransactionId) {
+            $url = 'http://72.167.47.207:81/Api/Flight/GetConfirmation?id='.$resultdatao->TransactionId;
+         $client = new \GuzzleHttp\Client(); 
+        $response = $client->request("GET", $url);
+          $response = $response->getBody()->getContents();
+         $resultdatao = json_decode($response);
+         return view('flights.ty-new',compact('flight_destinations','flight_destinations2','resultdatao')); 
+         
+         }
+         
     }
 
 
