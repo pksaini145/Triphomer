@@ -17,6 +17,12 @@ $fclass = array(1 => 'Economy',
 6 => 'First'
 );
 
+$card = array(1 => 'Visa',
+2 => 'MasterCard',
+3 => 'AmericanExpress',
+4 => 'Discover'
+);
+
 $Gender = array(1 => 'Male',
         2 => 'Female'
         );
@@ -102,7 +108,7 @@ $PaxType = array('ADT' => 'Adult',
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <div class="flight-duration time-duration pull-right color"><span>Total Trip <strong>Time:02h:05m</strong></span></div>
+                                            <div class="flight-duration time-duration pull-right color"><span>Total Trip <strong>Time:{{$flights->DurationInTime}}</strong></span></div>
                                         </div>
 
 
@@ -238,7 +244,7 @@ $PaxType = array('ADT' => 'Adult',
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
-                                        <span>Visa ****1111</span>
+                                        <span>{{$card[$resultdatao->FlightBillingDetails->CardType]}} ****{{$resultdatao->FlightBillingDetails->LastNoOfCreditCard}}</span>
                                     </div>
 
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 text-right">
