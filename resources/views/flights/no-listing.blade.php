@@ -12,30 +12,35 @@
                 <div class="col-lg-12 col-12 responsive--column-l">
 
 
-                    <!-- end section-tab -->
-                    <div class="tab-content " id="myTas-ul-hover-navontent">
+                <div class="tab-content " id="myTas-ul-hover-navontent">
                         <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
                             <div class="section-tab section-tab-2 mobile-tab pb-1">
                                 <ul class="nav nav-tabs" id="myTab3" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active as-listing-top-radio-box as-only-listing-label" id="one-way-tab" data-toggle="tab" href="#one-way" role="tab" aria-controls="one-way" aria-selected="true">
+                                        <a class="nav-link active as-listing-top-radio-box " id="one-way-tab"
+                                            data-toggle="tab" href="#one-way" role="tab" aria-controls="one-way"
+                                            aria-selected="true">
                                             One way
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link as-listing-top-radio-box as-only-listing-label" id="round-trip-tab" data-toggle="tab" href="#round-trip" role="tab" aria-controls="round-trip" aria-selected="false">
+                                        <a class="nav-link as-listing-top-radio-box " id="round-trip-tab"
+                                            data-toggle="tab" href="#round-trip" role="tab" aria-controls="round-trip"
+                                            aria-selected="false">
                                             Round-trip
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link as-listing-top-radio-box as-only-listing-label" id="multi-city-tab" data-toggle="tab" href="#multi-city" role="tab" aria-controls="multi-city" aria-selected="false">
+                                        <a class="nav-link as-listing-top-radio-box " id="multi-city-tab"
+                                            data-toggle="tab" href="#multi-city" role="tab" aria-controls="multi-city"
+                                            aria-selected="false">
                                             Multi-city
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <!-- end section-tab -->
-                             <div class="tab-content" id="myTas-ul-hover-navontent3">
+                            <div class="tab-content" id="myTas-ul-hover-navontent3">
                                 <div class="tab-pane fade show active" id="one-way" role="tabpanel"
                                     aria-labelledby="one-way-tab">
                                     <form method="POST" action="{{ route('flight_listing')}}">
@@ -76,7 +81,7 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-arrival"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" id="destCode" name="destination" class="as-custom-search form-control" value="{{$searchdata['destination']}}"
+                                                        <input type="text" id="destCode" class="as-custom-search form-control" name="destination" value="{{$searchdata['destination']}}"
                                                             >
                                                             <ul class="as-booking-city listingcustm destiCodesreach as-booking-city listingcustm" style="display:none;">
                                                                                                                       
@@ -92,12 +97,11 @@
                                                             </span>
 
                                                         </div>
-                                                        <!-- <input type="text"
+                                                        <input type="text"
                                                             class="date-range form-control as-custom-date-input"
-                                                            name="daterange-single" placeholder="Departing"
+                                                            name="daterangesingle" placeholder="Departing"
                                                             value=""
-                                                            > -->
-                                                            <input class="date-range form-control as-custom-date-input" type="text" name="daterangesingle"> 
+                                                            >
                                                     </div>
                                                 </div>
 
@@ -184,7 +188,7 @@
                                                                                 
                                                                             </div>
                                                                             <input type="text" name="child"
-                                                                                value=" {{$searchdata['child']}}">
+                                                                                value=" {{$searchdata['child'] ?? 0}}">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -223,7 +227,7 @@
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
                                                                             <input type="text" name="infant"
-                                                                                value=" {{$searchdata['infant']}}" class="qty-input">
+                                                                                value=" {{$searchdata['infant'] ?? 0}}" class="qty-input">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -247,26 +251,23 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="col-lg-1 col-md-2 col-5">
-                                                    <button type="submit"
-                                                        class="btn btn-block as-custom-btn-search">Search</button>
+                                                <div class="col-lg-2">
+                                                    <div class="input-box">
+                                                        <div class="form-group">
+                                                            <div class="select-contain w-auto">
+                                                            <select class="as-trip-value mt-3" name="cabinClass" required="">
+                                                                            <option value="">Select Class</option>
+                                                                            <option value="1" @if($searchdata['cabinClass'] == 1) selected  @endif>Economy </option>
+                                                                            <option value="4" @if($searchdata['cabinClass'] == 4) selected  @endif>Business </option>
+                                                                            <option value="6" @if($searchdata['cabinClass'] == 6) selected  @endif>First </option>
+                                                            </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-
-                                                <div class="col-lg-2 col-md-4 col-7 as-advance-mobile-btn">
-                                                    <a class="btn collapse-btn theme-btn-hover-gray font-size-13 as-listing-advance"
-                                                        data-toggle="collapse" href="#collapseSix" role="button"
-                                                        aria-expanded="true" aria-controls="collapseSix">
-                                                        Advanced search <svg
-                                                            class="svg-inline--fa fa-angle-down fa-w-10 ml-1"
-                                                            aria-hidden="true" focusable="false" data-prefix="fas"
-                                                            data-icon="angle-down" role="img"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
-                                                            data-fa-i2svg="">
-                                                            <path fill="currentColor"
-                                                                d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z">
-                                                            </path>
-                                                        </svg><!-- <i class="fas fa-angle-down ml-1"></i> -->
-                                                    </a>
+                                                <div class="col-lg-1 col-md-2 col-5">
+                                                    <button type="Submit"
+                                                        class="btn btn-block as-custom-btn-search">Search</button>
                                                 </div>
 
                                             </div>
@@ -297,8 +298,11 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-departure"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" name="origin" class="as-custom-search form-control"
-                                                            value=" {{$searchdata['origin']}}">
+                                                        <input type="text" id="toriginCode" class="as-custom-search form-control"
+                                                            value=" {{$searchdata['origin']}}" name="origin">
+                                                            <ul class="as-booking-city toriginCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
                                                     </div>
                                                 </div>
                                                 <div class="as-exchange-icon ">
@@ -312,15 +316,24 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-arrival"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" name="destination" class="as-custom-search form-control"
-                                                            value="{{$searchdata['destination']}}">
+                                                        <input type="text" id="tdestCode" class="as-custom-search form-control"
+                                                            value="{{$searchdata['destination']}}" name="destination">
+                                                            <ul class="as-booking-city tdestiCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-2 col-md-3">
-                                                    <div class="form-group">
-                                                        <svg class="svg-inline--fa fa-calendar fa-w-14 form-icon as-custom-icon" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="calendar" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"></path></svg><!-- <span class="fa fa-calendar form-icon as-custom-icon"></span> -->
-                                                        <input class="date-range form-control" type="text" name="daterange" id="example1" readonly="">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text as-custom-input-group-text"
+                                                                id="basic-addon1"> <i class="fa fa-calendar"></i>
+                                                            </span>
+
+                                                        </div>
+                                                        <input class="form-control" type="text" name="daterange" id="example1">
+
                                                     </div>
                                                 </div>
 
@@ -368,7 +381,7 @@
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
                                                                             <input type="text" name="adult"
-                                                                                value="0">
+                                                                                value="{{$searchdata['adult'] or 0}}">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -407,7 +420,7 @@
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
                                                                             <input type="text" name="child"
-                                                                                value="0">
+                                                                                value="{{$searchdata['child'] ?? 0}}">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -445,8 +458,8 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="infants"
-                                                                                value="0" class="qty-input">
+                                                                            <input type="text" name="infant"
+                                                                                value="{{$searchdata['infant'] ?? 0}}" class="qty-input">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -470,26 +483,25 @@
                                                     </div>
 
                                                 </div>
+                                                <div class="col-lg-2">
+                                                    <div class="input-box">
+                                                        <div class="form-group">
+                                                            <div class="select-contain w-auto">
+                                                            <select class="as-trip-value mt-3" name="cabinClass" required="">
+                                                                            <option value="">Select Class</option>
+                                                                            <option value="1" @if($searchdata['cabinClass'] == 1) selected  @endif>Economy </option>
+                                                                            <option value="4" @if($searchdata['cabinClass'] == 4) selected  @endif>Business </option>
+                                                                            <option value="6" @if($searchdata['cabinClass'] == 6) selected  @endif>First </option>
+                                                            </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-lg-1 col-md-2">
-                                                    <button type="submit"
+                                                    <button type="Submit"
                                                         class="btn btn-block as-custom-btn-search">Search</button>
                                                 </div>
-                                                <div class="col-lg-2 col-md-4">
-                                                    <a class="btn collapse-btn theme-btn-hover-gray font-size-13 as-listing-advance"
-                                                        data-toggle="collapse" href="#collapseSix" role="button"
-                                                        aria-expanded="true" aria-controls="collapseSix">
-                                                        Advanced search <svg
-                                                            class="svg-inline--fa fa-angle-down fa-w-10 ml-1"
-                                                            aria-hidden="true" focusable="false" data-prefix="fas"
-                                                            data-icon="angle-down" role="img"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
-                                                            data-fa-i2svg="">
-                                                            <path fill="currentColor"
-                                                                d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z">
-                                                            </path>
-                                                        </svg><!-- <i class="fas fa-angle-down ml-1"></i> -->
-                                                    </a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -664,7 +676,7 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="infants"
+                                                                            <input type="text" name="infant"
                                                                                 value="0" class="qty-input">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"

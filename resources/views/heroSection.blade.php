@@ -384,7 +384,8 @@
                                                         <label class="label-text">Preferred airline</label>
                                                         <div class="form-group">
                                                             <div class="select-contain w-100">
-                                                                <select class="as-trip-value">
+                                                            <input type="text" name="prefairline" class="form-control">
+                                                                <!-- <select class="as-trip-value">
                                                                     <option selected="selected" value=""> No
                                                                         preference
                                                                     </option>
@@ -643,7 +644,7 @@
                                                                         International</option>
                                                                     <option value="MF">Xiamen Airlines</option>
                                                                     <option value="SE">XL Airways</option>
-                                                                </select>
+                                                                </select> -->
                                                             </div>
                                                         </div>
                                                     </div>

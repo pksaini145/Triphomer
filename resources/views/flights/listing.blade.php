@@ -15,6 +15,7 @@
 <script type="text/javascript">
     var flights = @json($resultdatao->FlightContracts);
     var CacheKey = '{{$resultdatao->CacheKey}}';
+    var paymenturl = '{{url("/flight_listing")}}';
 
 </script>
 
@@ -207,7 +208,7 @@
                                                                                 
                                                                             </div>
                                                                             <input type="text" name="child"
-                                                                                value=" {{$searchdata['child']}}">
+                                                                                value=" {{$searchdata['child'] ?? 0}}">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -246,7 +247,7 @@
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
                                                                             <input type="text" name="infant"
-                                                                                value=" {{$searchdata['infant']}}" class="qty-input">
+                                                                                value=" {{$searchdata['infant'] ?? 0}}" class="qty-input">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -270,26 +271,23 @@
                                                     </div>
 
                                                 </div>
+                                                <div class="col-lg-2">
+                                                    <div class="input-box">
+                                                        <div class="form-group">
+                                                            <div class="select-contain w-auto">
+                                                            <select class="as-trip-value mt-3" name="cabinClass" required="">
+                                                                            <option value="">Select Class</option>
+                                                                            <option value="1" @if($searchdata['cabinClass'] == 1) selected  @endif>Economy </option>
+                                                                            <option value="4" @if($searchdata['cabinClass'] == 4) selected  @endif>Business </option>
+                                                                            <option value="6" @if($searchdata['cabinClass'] == 6) selected  @endif>First </option>
+                                                            </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-lg-1 col-md-2 col-5">
                                                     <button type="Submit"
                                                         class="btn btn-block as-custom-btn-search">Search</button>
-                                                </div>
-
-                                                <div class="col-lg-2 col-md-4 col-7 as-advance-mobile-btn">
-                                                    <a class="btn collapse-btn theme-btn-hover-gray font-size-13 as-listing-advance"
-                                                        data-toggle="collapse" href="#collapseSix" role="button"
-                                                        aria-expanded="true" aria-controls="collapseSix">
-                                                        Advanced search <svg
-                                                            class="svg-inline--fa fa-angle-down fa-w-10 ml-1"
-                                                            aria-hidden="true" focusable="false" data-prefix="fas"
-                                                            data-icon="angle-down" role="img"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
-                                                            data-fa-i2svg="">
-                                                            <path fill="currentColor"
-                                                                d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z">
-                                                            </path>
-                                                        </svg><!-- <i class="fas fa-angle-down ml-1"></i> -->
-                                                    </a>
                                                 </div>
 
                                             </div>
@@ -320,8 +318,11 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-departure"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" class="as-custom-search form-control"
+                                                        <input type="text" id="toriginCode" class="as-custom-search form-control"
                                                             value=" {{$searchdata['origin']}}" name="origin">
+                                                            <ul class="as-booking-city toriginCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
                                                     </div>
                                                 </div>
                                                 <div class="as-exchange-icon ">
@@ -335,8 +336,11 @@
                                                                 id="basic-addon1"> <i class="fa fa-plane-arrival"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <input type="text" class="as-custom-search form-control"
+                                                        <input type="text" id="tdestCode" class="as-custom-search form-control"
                                                             value="{{$searchdata['destination']}}" name="destination">
+                                                            <ul class="as-booking-city tdestiCodesreach as-booking-city" style="display:none;">
+                                                                                                                      
+                                                        </ul>
                                                     </div>
                                                 </div>
 
@@ -348,7 +352,7 @@
                                                             </span>
 
                                                         </div>
-                                                                                                                    <input class="date-range form-control" type="text" name="daterange" id="example1" readonly="">
+                                                        <input class="form-control" type="text" name="daterange" id="example1">
 
                                                     </div>
                                                 </div>
@@ -397,7 +401,7 @@
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
                                                                             <input type="text" name="adult"
-                                                                                value="0">
+                                                                                value="{{$searchdata['adult'] or 0}}">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -436,7 +440,7 @@
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
                                                                             <input type="text" name="child"
-                                                                                value="0">
+                                                                                value="{{$searchdata['child'] ?? 0}}">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -474,8 +478,8 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="infants"
-                                                                                value="0" class="qty-input">
+                                                                            <input type="text" name="infant"
+                                                                                value="{{$searchdata['infant'] ?? 0}}" class="qty-input">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
                                                                                     aria-hidden="true" focusable="false"
@@ -499,26 +503,25 @@
                                                     </div>
 
                                                 </div>
+                                                <div class="col-lg-2">
+                                                    <div class="input-box">
+                                                        <div class="form-group">
+                                                            <div class="select-contain w-auto">
+                                                            <select class="as-trip-value mt-3" name="cabinClass" required="">
+                                                                            <option value="">Select Class</option>
+                                                                            <option value="1" @if($searchdata['cabinClass'] == 1) selected  @endif>Economy </option>
+                                                                            <option value="4" @if($searchdata['cabinClass'] == 4) selected  @endif>Business </option>
+                                                                            <option value="6" @if($searchdata['cabinClass'] == 6) selected  @endif>First </option>
+                                                            </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-lg-1 col-md-2">
                                                     <button type="Submit"
                                                         class="btn btn-block as-custom-btn-search">Search</button>
                                                 </div>
-                                                <div class="col-lg-2 col-md-4">
-                                                    <a class="btn collapse-btn theme-btn-hover-gray font-size-13 as-listing-advance"
-                                                        data-toggle="collapse" href="#collapseSix" role="button"
-                                                        aria-expanded="true" aria-controls="collapseSix">
-                                                        Advanced search <svg
-                                                            class="svg-inline--fa fa-angle-down fa-w-10 ml-1"
-                                                            aria-hidden="true" focusable="false" data-prefix="fas"
-                                                            data-icon="angle-down" role="img"
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
-                                                            data-fa-i2svg="">
-                                                            <path fill="currentColor"
-                                                                d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z">
-                                                            </path>
-                                                        </svg><!-- <i class="fas fa-angle-down ml-1"></i> -->
-                                                    </a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -693,7 +696,7 @@
                                                                                 </svg>
                                                                                 <!-- <i class="fas fa-minus"></i> -->
                                                                             </div>
-                                                                            <input type="text" name="infants"
+                                                                            <input type="text" name="infant"
                                                                                 value="0" class="qty-input">
                                                                             <div class="qtyInc"><svg
                                                                                     class="svg-inline--fa fa-plus fa-w-14"
@@ -1274,7 +1277,7 @@
                                                         <time class="time">{{ date("g:i a", strtotime($flights->DepartureTime)) }} | </time>
                                                          <span
                                                             class="date hidden-xs">
-                                                            {{ date('l',strtotime($flights->DepartureDate)) }}, {{date('F',strtotime($flights->DepartureDate))}} {{date('j',strtotime($flights->DepartureDate))}}, {{date('Y',strtotime($flights->DepartureDate))}}
+                                                            {{ date('D',strtotime($flights->DepartureDate)) }}, {{date('M',strtotime($flights->DepartureDate))}} {{date('j',strtotime($flights->DepartureDate))}}, {{date('Y',strtotime($flights->DepartureDate))}}
                                                         </span>
                                                         </span>
                                                     </li>
@@ -1290,7 +1293,7 @@
                                                         </span>
                                                     </li>
                                                     <li><time class="time">{{ date("g:i a", strtotime($flights->ArrivalTime)) }} | </time> <span
-                                                            class="date hidden-xs"> {{ date('l',strtotime($flights->ArrivalDate)) }}, {{date('F',strtotime($flights->ArrivalDate))}} {{date('j',strtotime($flights->ArrivalDate))}}, {{date('Y',strtotime($flights->ArrivalDate))}}</span></li>
+                                                            class="date hidden-xs"> {{ date('D',strtotime($flights->ArrivalDate)) }}, {{date('M',strtotime($flights->ArrivalDate))}} {{date('j',strtotime($flights->ArrivalDate))}}, {{date('Y',strtotime($flights->ArrivalDate))}}</span></li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-3 col-md-4 text-right">
@@ -1338,7 +1341,7 @@
                                                         <time class="time">{{ date("g:i a", strtotime($flightsr->DepartureTime)) }} | </time>
                                                          <span
                                                             class="date hidden-xs">
-                                                            {{ date('l',strtotime($flightsr->DepartureDate)) }}, {{date('F',strtotime($flightsr->DepartureDate))}} {{date('j',strtotime($flightsr->DepartureDate))}}, {{date('Y',strtotime($flightsr->DepartureDate))}}
+                                                            {{ date('D',strtotime($flightsr->DepartureDate)) }}, {{date('M',strtotime($flightsr->DepartureDate))}} {{date('j',strtotime($flightsr->DepartureDate))}}, {{date('Y',strtotime($flightsr->DepartureDate))}}
                                                         </span>
                                                         </span>
                                                     </li>
@@ -1354,7 +1357,7 @@
                                                         </span>
                                                     </li>
                                                     <li><time class="time">{{ date("g:i a", strtotime($flightsr->ArrivalTime)) }} | </time> <span
-                                                            class="date hidden-xs"> {{ date('l',strtotime($flightsr->ArrivalDate)) }}, {{date('F',strtotime($flightsr->ArrivalDate))}} {{date('j',strtotime($flightsr->ArrivalDate))}}, {{date('Y',strtotime($flightsr->ArrivalDate))}}</span></li>
+                                                            class="date hidden-xs"> {{ date('D',strtotime($flightsr->ArrivalDate)) }}, {{date('M',strtotime($flightsr->ArrivalDate))}} {{date('j',strtotime($flightsr->ArrivalDate))}}, {{date('Y',strtotime($flightsr->ArrivalDate))}}</span></li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-3 col-md-4 text-right">
